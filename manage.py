@@ -7,6 +7,9 @@ from datetime import datetime, timedelta
 def create_tables():
     db.create_all()
 
+def drop_tables():
+    db.drop_all()
+
 
 option = argv[1]
 if __name__ == "__main__":
@@ -14,5 +17,8 @@ if __name__ == "__main__":
     if option == "create":
         create_tables()
         print("tables successfullt created")
+    elif option == "drop":
+        drop_tables()
+        print("successfully deleted")
     else:
         print("not defined yet")

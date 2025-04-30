@@ -12,6 +12,9 @@ db.init_app(app)
 
 @app.route("/")
 def home():
-    return "welcom to CIT secret wall"
+    return render_template("base.html")
+
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
