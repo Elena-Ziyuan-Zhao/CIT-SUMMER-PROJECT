@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set css_file = url_for('static', filename='static/custom.css') %}
+{% block pagetitle %}My Profile{% endblock %}
+
+{% block content %}
+  <h2>Profile</h2>
+
+  <div class="mb-4">
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Joined:</strong> {{ user.created_at }}</p>
+  </div>
+
+  <hr>
+  <h3>My Secrets</h3>
+
+  {% for secret in user.secrets %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <p class="card-text">{{ secret.content }}</p>
+        <p class="text-muted small">
+          Posted on {{ secret.created_at }}
+          {% if secret.expires_at %}
+            | Expires at: {{ secret.expires_at }}
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  {% else %}
+    <p>You haven't posted any secrets yet.</p>
+  {% endfor %}
+{% endblock %}
