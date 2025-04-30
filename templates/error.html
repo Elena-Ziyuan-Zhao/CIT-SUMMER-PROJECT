@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% set css_file = url_for('static', filename='styles/custom.css') %}
+
+{% block content %}
+  <div class="alert alert-danger">
+    <h2>Error</h2>
+    <p>{{ message }}</p>
+    <a href="{{ url_for('home') }}">Go back to homepage</a>
+  </div>
+{% endblock %}
