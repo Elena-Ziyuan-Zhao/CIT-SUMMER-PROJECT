@@ -17,12 +17,7 @@ def import_data():
     with open("users.csv", "r") as file:
         reader = csv.DictReader(file)
         for row in reader:
-            user = User()
-            user.first_name = row["first_name"]
-            user.second_name = row["second_name"]
-            user.email = row["email"]
-            user.username = row["username"]
-            user.password = row["password"]
+            user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], password = row["password"], user_type = row["user_type"])
             db.session.add(user)
     db.session.commit()
 
@@ -30,11 +25,8 @@ def generate_secrets():
     with open("secrets.csv") as file:
         reader = csv.DictReader(file)
         for row in reader:
-            secret = Secret()
-            secret.title = row["title"]
-            secret.content = row["content"]
             random_user = db.session.execute(db.select(User).order_by(db.func.random())).scalar()
-            secret.user = random_user
+            secret = Secret(title = row["title"], content = row["content"], user = random_user)
             db.session.add(secret)
     db.session.commit()            
             
