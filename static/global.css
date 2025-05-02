@@ -64,3 +64,36 @@ nav li {
 nav li:last-child {
     border-right: 2px solid var(--color-primary);
 }
+
+nav span {
+    display: flex;
+    align-content: center;
+}
+
+nav img {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+}
+
+/* Footer */
+footer {
+    position: static;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-primary);
+}
+
+footer ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+footer li {
+    display: inline;
+    color: white;
+}

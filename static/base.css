@@ -1,0 +1,9 @@
+@import url('./global.css');
+
+/* Main */
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 300px;
+}

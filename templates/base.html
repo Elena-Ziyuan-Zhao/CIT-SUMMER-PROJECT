@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block pagetitle %}Secret Wall{% endblock %}</title>
-    <link href="../static/global.css" rel="stylesheet">
+    <link href="../static/base.css" rel="stylesheet">
 </head>    
 <body>
     <!-- Navigation Bar -->
@@ -16,51 +16,64 @@
         </div>
     </header>
     <nav>
-        <div class="container">
+        <div>
             <ul>
                 <!-- TEMP DELETE WHEN ROUTES ARE DONE -->
                 <li>
                     <a href="#">
                         <span>
-                            <img src="" alt="">
                             <p>All Secrets</p>
+                            <!-- <img src="../static/images/dropdown.svg" alt=""> -->
                         </span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <span>
-                            <img src="" alt="">
                             <p>Login</p>
+                            <!-- <img src="../static/images/user.svg" alt=""> -->
                         </span>
                     </a>
                 </li>
                 <li>
                     <a href="#">
                         <span>
-                            <img src="" alt="">
                             <p>Tell a secret</p>
+                            <!-- <img src="" alt=""> -->
                         </span>
                     </a>
                 </li>
                 {#
                     <li>
-                        <span>
-                            <a href="{{ url_for('all_secrets') }}">All Secrets</a>
-                        </span>
+                        <a href="#">
+                            <span>
+                                <img src="" alt="">
+                                <p>All Secrets</p>
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <span>
-                            <a href="{{ url_for('') }}">Login</a>
-                        </span>
+                        <a href="#">
+                            <span>
+                                <img src="" alt="">
+                                <p>Login</p>
+                            </span>
+                        </a>
                     </li>
                     <li>
-                        <span>
-                            <a href="{{ url_for('') }}">Tell a Secret</a>        
-                        </span>
+                        <a href="#">
+                            <span>
+                                <img src="" alt="">
+                                <p>Tell a secret</p>
+                            </span>
+                        </a>
                     </li>
                 }#
             </ul>
+
+            <div>
+                
+            </div>
             <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
@@ -83,13 +96,24 @@
     </nav>
 
     <!-- Page Content -->
-    <main class="container mt-5">
+    <main>
         {% block content %}
-        <div class="text-center">
+        <div>
             <h1>Welcome to Secret Wall</h1>
-            <p class="text-muted">A safe place to share your thoughts anonymously</p>
+            <p>A safe place to share your thoughts anonymously</p>
         </div>
         {% endblock %}
     </main>
+
+    <footer>
+        <ul>            
+            <li>ziyuan zhao</li>
+            <li>abhinav dixit</li>
+            <li>chenyue li</li>
+            <li>marcus bonacci</li>
+            <li>quang long chau</li>
+            <li>gillian downey</li>
+        </ul>
+    </footer>
 </body>
 </html>
