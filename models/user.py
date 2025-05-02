@@ -6,7 +6,6 @@ class User(db.Model):
     id = db.mapped_column(db.Integer, primary_key = True)
     first_name = db.mapped_column(db.String)
     second_name = db.mapped_column(db.String)
-    anonymous_name = db.mapped_column(db.String, default = None)
     username = db.mapped_column(db.String)
     user_type = db.mapped_column(db.String, default = "regular")
     email = db.mapped_column(db.String)
