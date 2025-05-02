@@ -1,1 +1,6 @@
+.venv
+.env
+.vscode
+*.csv
+.db
 __pycache__

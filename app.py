@@ -15,14 +15,32 @@ db.init_app(app)
 def home():
     return render_template("base.html")
 
-# show all secrets
-@app.route("/all-secrets")
-def all_secrets():
-    secrets = Secret.query.order_by(Secret.created_date.desc()).all()
+@app.route("/secrets")
+def secrets():
+    secrets = db.session.execute(db.select(Secret)).scalars()
     return render_template("all_secrets.html", secrets=secrets)
 
+@app.route("/profile/<int:id>" )
+def profile_detail(id):
+    user = db.session.execute(db.select(User).where(User.id == id)).scalar()
+    return render_template("profile.html", user=user)
+
+
+@app.route("/profile/<int:id>/create", methods = ["POST", "GET"])
+def create_secret(id):
+    user =db.session.execute(db.select(User).where(User.id == id)).scalar()
+    if request.method == "POST":
+        content = request.form.get("content")
+        title = request.form.get("title")
+        new_secret = Secret(title = title, content = content, user = user)
+        db.session.add(new_secret)
+        db.session.commit()
+        return redirect(url_for(f'profile_detail', id=user.id))
+    else:
+        return render_template("create.html", user=user)
+
 # show single secret by id
-@app.route("/secret/<int:secret_id>")
+@app.route("/secrets/<int:secret_id>")
 def view_secret(secret_id):
     secret = Secret.query.get(secret_id)
     if not secret:
