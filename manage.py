@@ -9,8 +9,6 @@ import random
 def create_tables():
     db.create_all()
 
-def drop_tables():
-    db.drop_all()
 
 
 def import_data():
@@ -30,7 +28,9 @@ def generate_secrets():
             db.session.add(secret)
     db.session.commit()            
             
-    
+
+def drop_tables():
+    db.drop_all()
 
 
 option = argv[1]
