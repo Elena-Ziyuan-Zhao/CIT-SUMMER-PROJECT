@@ -1,0 +1,66 @@
+/* Imports */
+@import url('./reset.css');
+@import url('./colors.css');
+@import url('./typography.css');
+
+* {
+    color: var(--color-primary);
+    font-family: var(--space-mono);
+}
+
+body {
+    background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-primary);
+}
+
+/* Header */
+header {
+    background-color: var(--color-background-2);
+}
+
+header div {
+    display: flex;
+    justify-content: space-around;
+}
+
+header div p:nth-child(2) {
+    margin-top: 128px
+}
+header div p:nth-child(3) {
+    margin-top: 192px
+}
+
+header * {
+    font-size: 64px;
+    color: var(--color-text-grey);
+}
+
+/* Navbar */
+nav {
+    border-block: 2px solid var(--color-primary);
+    background-color: var(--color-secondary);
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    border-left: 2px solid var(--color-primary);
+    padding-inline: 2rem;
+    padding-block: .5rem;
+}
+
+nav li:last-child {
+    border-right: 2px solid var(--color-primary);
+}
