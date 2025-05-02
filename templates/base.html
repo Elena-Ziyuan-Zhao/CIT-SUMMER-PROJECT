@@ -13,19 +13,19 @@
             <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-{# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('all_secrets') }}">All Secrets</a>
                     </li>
+{# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('top_secrets') }}">Top Secrets</a>
                     </li>
-                    {% if current_user.is_authenticated %}
+#}
+{#                    {% if current_user.is_authenticated %}   #}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
                     </li>
-                    {% endif %}
-#}
+{#                    {% endif %}    #}
                 </ul>
             </div>
         </div>
