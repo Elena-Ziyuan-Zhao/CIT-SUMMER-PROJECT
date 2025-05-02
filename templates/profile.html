@@ -33,6 +33,6 @@
     </div>
   {% else %}
     <p>You haven't posted any secrets yet.</p>
-    <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
   {% endfor %}
+  <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
 {% endblock %}
