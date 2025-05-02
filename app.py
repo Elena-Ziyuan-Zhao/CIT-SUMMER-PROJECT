@@ -14,7 +14,29 @@ db.init_app(app)
 def home():
     return render_template("base.html")
 
+@app.route("/secrets")
+def secrets():
+    secrets = db.session.execute(db.select(Secret)).scalars()
+    return render_template("all_secrets.html", secrets=secrets)
 
+@app.route("/profile/<int:id>" )
+def profile_detail(id):
+    user = db.session.execute(db.select(User).where(User.id == id)).scalar()
+    return render_template("profile.html", user=user)
+
+
+@app.route("/profile/<int:id>/create", methods = ["POST", "GET"])
+def create_secret(id):
+    user =db.session.execute(db.select(User).where(User.id == id)).scalar()
+    if request.method == "POST":
+        content = request.form.get("content")
+        title = request.form.get("title")
+        new_secret = Secret(title = title, content = content, user = user)
+        db.session.add(new_secret)
+        db.session.commit()
+        return redirect(url_for(f'profile_detail', id=user.id))
+    else:
+        return render_template("create.html", user=user)
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)

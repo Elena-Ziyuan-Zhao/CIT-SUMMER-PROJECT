@@ -1,0 +1,11 @@
+<h2>Create a Secret</h2>
+
+{% if user.secrets|length == 0 %}
+  <p>You haven't posted any secrets yet.</p>
+{% endif %}
+
+<form method="POST">
+    <textarea name="title" placeholder="Write your title here..." required></textarea>
+    <textarea name="content" placeholder="Write your secret here..." required></textarea>
+    <button type="submit">Submit Secret</button>
+</form>
