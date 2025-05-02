@@ -8,7 +8,7 @@
   <div class="mb-4">
     <p><strong>Username:</strong> {{ user.username }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Joined:</strong> {{ user.created_at }}</p>
+    <p><strong>Joined:</strong> {{ user.created_date }}</p>
   </div>
 
   <hr>
@@ -17,9 +17,10 @@
   {% for secret in user.secrets %}
     <div class="card mb-3">
       <div class="card-body">
+        <p class="card-text">{{ secret.title }}</p>
         <p class="card-text">{{ secret.content }}</p>
         <p class="text-muted small">
-          Posted on {{ secret.created_at }}
+          Posted on {{ secret.created_date }}
           {% if secret.expires_at %}
             | Expires at: {{ secret.expires_at }}
           {% endif %}
@@ -28,5 +29,6 @@
     </div>
   {% else %}
     <p>You haven't posted any secrets yet.</p>
+    <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
   {% endfor %}
 {% endblock %}
