@@ -41,7 +41,7 @@ def create_secret(id):
 
 # show single secret by id
 @app.route("/secrets/<int:secret_id>")
-def view_secret(secret_id):
+def secret_detail(secret_id):
     secret = Secret.query.get(secret_id)
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
