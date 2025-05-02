@@ -38,5 +38,6 @@ def create_secret(id):
     else:
         return render_template("create.html", user=user)
 
+
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
