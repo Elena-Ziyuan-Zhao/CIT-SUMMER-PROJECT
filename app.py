@@ -36,8 +36,13 @@ def home():
 
 @app.route("/secrets")
 def secrets():
-    secrets = db.session.execute(db.select(Secret)).scalars()
+    sort = request.args.get("sort")
+    if sort == "spicy":
+        secrets = db.session.execute(db.select(Secret).order_by(Secret.rating.desc())).scalars()
+    else:
+        secrets = db.session.execute(db.select(Secret)).scalars()
     return render_template("all_secrets.html", secrets=secrets)
+
 
 # show single secret by id
 @app.route("/secrets/<int:id>", methods=["GET"])
@@ -48,14 +53,22 @@ def secret_detail(id):
     return render_template("secret_detail.html", secret=secret)
 
 @app.route("/secrets/<int:id>", methods=["POST"])
-def comment_secret(id):
+def react_secret(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
     comment = request.form.get("comment")
-    new_comment = Comment(secret = secret, comment = comment)
-    db.session.add(new_comment)
-    db.session.commit()
+    if comment:
+        new_comment = Comment(secret = secret, comment = comment)
+        db.session.add(new_comment)
+        db.session.commit()
+    rating = request.form.get("rating")
+    if rating:
+        rating = int(rating)
+        new_rate = Rating(rating = rating, secret = secret)
+        secret.rating += rating
+        db.session.add(new_rate)
+        db.session.commit()
     return render_template("secret_detail.html", secret=secret)
 
 @app.route("/profile/<int:id>")
