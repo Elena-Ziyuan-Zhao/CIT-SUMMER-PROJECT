@@ -1,12 +1,29 @@
-<h2>Create a Secret</h2>
+{% extends "base.html" %}
 
-{% if user.secrets|length == 0 %}
-  <p>You haven't posted any secrets yet.</p>
-{% endif %}
+{% block pagetitle %}Create Secret{% endblock %}
 
-<form method="POST">
-    <textarea name="title" placeholder="Write your title here..." required></textarea>
-    <textarea name="content" placeholder="Write your secret here..." required></textarea>
-    <input type="number" name="expires_at" placeholder="Secret will expire in..." min="1" required>
-    <button type="submit">Submit Secret</button>
-</form>
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="mb-4 text-center">Create a Secret</h2>
+
+        {% if user.secrets|length == 0 %}
+            <div class="alert alert-info text-center">
+                You haven't posted any secrets yet.
+            </div>
+        {% endif %}
+
+        <form method="POST" class="card p-4 shadow-sm">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <textarea class="form-control" name="title" id="title" rows="2" placeholder="Write your title here..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Secret</label>
+                <textarea class="form-control" name="content" id="content" rows="4" placeholder="Write your secret here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit Secret</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

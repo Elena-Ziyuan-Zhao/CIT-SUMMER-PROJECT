@@ -13,7 +13,7 @@ class User(db.Model):
     created_date = db.mapped_column(db.DateTime, default = datetime.now())
 
     secrets = db.relationship("Secret", back_populates="user")
-
+    # comments = db.relationship("Comment", back_populates="user")
 
 
     
