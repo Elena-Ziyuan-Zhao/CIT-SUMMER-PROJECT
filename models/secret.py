@@ -11,6 +11,7 @@ class Secret(db.Model):
     created_date = db.mapped_column(db.DateTime, default = datetime.now())
     user_id = db.mapped_column(db.ForeignKey("users.id"))
     user = db.relationship("User", back_populates="secrets")
+    expires_at = db.mapped_column(db.DateTime, nullable = False)
 
     @property
     def anonymous_poster(self):

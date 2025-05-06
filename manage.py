@@ -24,7 +24,7 @@ def generate_secrets():
         reader = csv.DictReader(file)
         for row in reader:
             random_user = db.session.execute(db.select(User).order_by(db.func.random())).scalar()
-            secret = Secret(title = row["title"], content = row["content"], user = random_user)
+            secret = Secret(title = row["title"], content = row["content"], user = random_user, expires_at = datetime.now() + timedelta(seconds=10))
             db.session.add(secret)
     db.session.commit()            
             
