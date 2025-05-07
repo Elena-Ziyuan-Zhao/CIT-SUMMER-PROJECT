@@ -31,11 +31,34 @@
         </nav>
     </header>
     <main>
-        <div class="alert alert-danger">
-            <h2>Error</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore in, iste qui fugit voluptas vel veniam magni eius exercitationem repellendus. Rem qui reprehenderit eveniet totam asperiores vero ab soluta provident.</p>
-            <a href="{{ url_for('home') }}">Go back to homepage</a>
+        <h2>Profile</h2>
+
+        <div class="mb-4">
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Joined:</strong> {{ user.created_date }}</p>
         </div>
+      
+        <hr>
+        <h3>My Secrets</h3>
+      
+        {% for secret in user.secrets %}
+          <div class="card mb-3">
+            <div class="card-body">
+              <p class="card-text">{{ secret.title }}</p>
+              <p class="card-text">{{ secret.content }}</p>
+              <p class="text-muted small">
+                Posted on {{ secret.created_date }}
+                {% if secret.expires_at %}
+                  | Expires at: {{ secret.expires_at }}
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        {% else %}
+          <p>You haven't posted any secrets yet.</p>
+        {% endfor %}
+        <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
     </main>
     <footer>
         <ul>

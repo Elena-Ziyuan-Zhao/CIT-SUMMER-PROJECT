@@ -384,9 +384,11 @@ html a {
 }
 .alert.alert-danger h2 {
   font-size: clamp(1.25rem, 1vw, 1.5rem);
+  margin: 0;
 }
 .alert.alert-danger p {
   font-size: clamp(1rem, 1vw, 1.25rem);
+  margin: 2rem 0;
 }
 .alert.alert-danger a {
   background-color: #F2F47B;
