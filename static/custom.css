@@ -400,4 +400,18 @@ html a {
   text-transform: lowercase;
 }
 
+.profile-page {
+  color: #2B00CC;
+  margin: 0.5rem;
+}
+.profile-page h2 {
+  font-size: clamp(1.25rem, 1vw, 1.5rem);
+}
+.profile-page .mb-4 p {
+  font-family: "Space Grotesk", sans-serif;
+}
+.profile-page .mb-4 p strong {
+  font-family: "Space Mono", monospace;
+}
+
 /*# sourceMappingURL=custom.css.map */

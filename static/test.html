@@ -31,34 +31,44 @@
         </nav>
     </header>
     <main>
-        <h2>Profile</h2>
+        <div class="profile-page">
+            <h2>Profile</h2>
 
-        <div class="mb-4">
-          <p><strong>Username:</strong> {{ user.username }}</p>
-          <p><strong>Email:</strong> {{ user.email }}</p>
-          <p><strong>Joined:</strong> {{ user.created_date }}</p>
-        </div>
-      
-        <hr>
-        <h3>My Secrets</h3>
-      
-        {% for secret in user.secrets %}
-          <div class="card mb-3">
-            <div class="card-body">
-              <p class="card-text">{{ secret.title }}</p>
-              <p class="card-text">{{ secret.content }}</p>
-              <p class="text-muted small">
-                Posted on {{ secret.created_date }}
-                {% if secret.expires_at %}
-                  | Expires at: {{ secret.expires_at }}
-                {% endif %}
-              </p>
+            <div class="mb-4">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Joined:</strong> {{ user.created_date }}</p>
             </div>
-          </div>
-        {% else %}
-          <p>You haven't posted any secrets yet.</p>
-        {% endfor %}
-        <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
+        
+            <hr>
+            <h3>My Secrets</h3>
+            <div class="card mb-3">
+                <div class="card-body">
+                <p class="card-text">{{ secret.title }}</p>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
+                <p class="text-muted small">
+                    Posted on {{ secret.created_date }}
+                    {% if secret.expires_at %}
+                    | Expires at: {{ secret.expires_at }}
+                    {% endif %}
+                </p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ secret.title }}</p>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
+                    <p class="text-muted small">
+                    Posted on {{ secret.created_date }}
+                    {% if secret.expires_at %}
+                        | Expires at: {{ secret.expires_at }}
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            {% else %}
+            <p>You haven't posted any secrets yet.</p>
+            {% endfor %}
+            <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
+        </div>
     </main>
     <footer>
         <ul>

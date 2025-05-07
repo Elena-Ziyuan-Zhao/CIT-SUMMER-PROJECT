@@ -1,3 +1,21 @@
 @use '../vars_mixins/vars' as *;
 @use '../vars_mixins/mixins' as *;
 
+.profile-page{
+    color: $txt-dark;
+    margin: 0.5rem;
+    h2{
+        font-size: clamp(1.25rem, 1vw, 1.5rem);
+    }
+
+    // profile info
+    .mb-4{
+        p{
+            font-family: $body-font;
+            
+            strong{
+                font-family: $header-font;
+            }
+        }
+    }
+}
