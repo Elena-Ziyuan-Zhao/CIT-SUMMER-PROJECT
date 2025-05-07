@@ -21,4 +21,5 @@ def test_post_secret_has_fake_name(client):
         "content": "check fake name"
     }, follow_redirects=True)
     assert res.status_code == 200
-    assert b"anonymous" in res.data.lower() or b"by" in res.data.lower() # this 'by' checks if the name is in the format "Posted by <name>" -- can be adjusted based on the actual HTML structure
+    assert b"anonymous" in res.data.lower()
+    assert b"testuser" not in res.data.lower()
