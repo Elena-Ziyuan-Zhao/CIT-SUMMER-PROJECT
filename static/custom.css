@@ -358,7 +358,7 @@ template {
 html {
   width: 100%;
 }
-html body main {
+html body main .alert {
   min-height: 100%;
 }
 

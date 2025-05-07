@@ -1,8 +1,10 @@
+@use '../vars_mixins/vars' as *;
+
 html{
     width: 100%;
 
     body{
-        main{
+        main .alert{
             min-height: 100%;
         }
     }
