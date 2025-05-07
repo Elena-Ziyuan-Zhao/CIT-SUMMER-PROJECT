@@ -399,12 +399,15 @@ html a {
   text-decoration: none;
   text-transform: lowercase;
 }
+.alert.alert-danger a a {
+  text-decoration: none;
+}
 
 .profile-page {
   color: #2B00CC;
   margin: 0.5rem;
 }
-.profile-page h2 {
+.profile-page h2, .profile-page h3 {
   font-size: clamp(1.25rem, 1vw, 1.5rem);
 }
 .profile-page .mb-4 p {
@@ -412,6 +415,18 @@ html a {
 }
 .profile-page .mb-4 p strong {
   font-family: "Space Mono", monospace;
+}
+.profile-page button {
+  background-color: #F2F47B;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.profile-page button a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=custom.css.map */

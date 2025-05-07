@@ -39,7 +39,6 @@
             <p><strong>Email:</strong> {{ user.email }}</p>
             <p><strong>Joined:</strong> {{ user.created_date }}</p>
             </div>
-        
             <hr>
             <h3>My Secrets</h3>
             <div class="card mb-3">
@@ -64,9 +63,7 @@
                     </p>
                 </div>
             </div>
-            {% else %}
             <p>You haven't posted any secrets yet.</p>
-            {% endfor %}
             <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
         </div>
     </main>

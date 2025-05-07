@@ -4,7 +4,7 @@
 .profile-page{
     color: $txt-dark;
     margin: 0.5rem;
-    h2{
+    h2,h3{
         font-size: clamp(1.25rem, 1vw, 1.5rem);
     }
 
@@ -17,5 +17,11 @@
                 font-family: $header-font;
             }
         }
+    }
+
+    
+    button{
+        @include button-style
+
     }
 }
