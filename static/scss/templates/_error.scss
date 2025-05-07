@@ -1,0 +1,22 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+.alert.alert-danger{
+    @include flex-center;
+    padding: 0.75rem;
+    color: $txt-dark;
+    min-height: 30rem;
+    
+    h2{
+        font-size: clamp(1.25rem, 1vw, 1.5rem);
+        margin: 0;
+    }
+    p{
+        font-size: clamp(1rem, 1vw, 1.25rem);
+        margin: 2rem 0;
+    }
+
+    a{
+        @include button-style;
+    }
+}

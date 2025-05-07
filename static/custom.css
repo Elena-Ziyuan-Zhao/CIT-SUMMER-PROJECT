@@ -380,6 +380,33 @@ html {
 html body main {
   min-height: 100%;
 }
+
+.alert.alert-danger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  color: #2B00CC;
+  min-height: 30rem;
+}
+.alert.alert-danger h2 {
+  font-size: clamp(1.25rem, 1vw, 1.5rem);
+  margin: 0;
+}
+.alert.alert-danger p {
+  font-size: clamp(1rem, 1vw, 1.25rem);
+  margin: 2rem 0;
+}
+.alert.alert-danger a {
+  background-color: #F2F47B;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+}
 .alert.alert-danger a a {
   text-decoration: none;
 }
