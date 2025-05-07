@@ -7,8 +7,23 @@ nav {
     align-items: center;
     background-color: $header-background;
     border-block: 2px solid $brand-border;
-
+    height: 50px;
+    
     ul {
+        display: flex;
+        justify-content: center;
         list-style-type: none;
+        height: 100%;
+    }
+
+    ul > .nav-item {
+        display: flex;
+        align-items: center;
+        padding-inline: 50px;
+        border-left: 2px solid $brand-border;
+    }
+
+    ul .nav-item:last-child {
+        border-right: 2px solid $brand-border;
     }
 }

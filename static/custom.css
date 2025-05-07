@@ -51,14 +51,7 @@ header .hero p:nth-child(2) {
 }
 header .hero p:nth-child(3) {
   margin-top: 100px;
-}
-
-header nav .container .navbar-brand {
-  text-decoration: none;
-}
-header nav .container .collapse .navbar-nav {
-  list-style: none;
-  padding-left: 0;
+  margin-bottom: 50px;
 }
 
 nav {
@@ -67,11 +60,28 @@ nav {
   align-items: center;
   background-color: #F2F47B;
   border-block: 2px solid #2B00CC;
+  height: 50px;
 }
 nav ul {
+  display: flex;
+  justify-content: center;
   list-style-type: none;
+  height: 100%;
+}
+nav ul > .nav-item {
+  display: flex;
+  align-items: center;
+  padding-inline: 50px;
+  border-left: 2px solid #2B00CC;
+}
+nav ul .nav-item:last-child {
+  border-right: 2px solid #2B00CC;
 }
 
+.post .post-body {
+  padding-inline: 20px;
+  padding-block: 10px;
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
 	 ========================================================================== */
@@ -89,7 +99,7 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-body {
+* {
   margin: 0;
 }
 
