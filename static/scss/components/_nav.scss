@@ -1,4 +1,13 @@
+@use '../vars_mixins/vars' as *;
+
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    background-color: $header-background;
+    border-block: 2px solid $brand-border;
+
+    ul {
+        list-style-type: none;
+    }
 }

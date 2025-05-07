@@ -36,6 +36,7 @@ footer ul li {
 }
 header {
   font-family: "Space Mono", monospace;
+  font-size: 32px;
   background-color: #F3F4EC;
 }
 header .hero {
@@ -62,7 +63,13 @@ header nav .container .collapse .navbar-nav {
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  background-color: #F2F47B;
+  border-block: 2px solid #2B00CC;
+}
+nav ul {
+  list-style-type: none;
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -379,9 +386,6 @@ html {
 }
 html body main {
   min-height: 100%;
-}
-.alert.alert-danger a a {
-  text-decoration: none;
 }
 
 .profile-page {

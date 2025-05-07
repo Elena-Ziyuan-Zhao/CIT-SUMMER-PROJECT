@@ -1,6 +1,7 @@
+@use '../vars_mixins/vars' as *;
 
 @mixin button-style{
-    background-color: $btn-backbround;
+    background-color: $btn-background;
     padding: 0.5rem 1.5rem;
     min-width: 8.75rem;
     border: .125rem solid $btn-border;
@@ -12,13 +13,7 @@
     }
 }
 
-// header font
-$header-font-size: 24px;
-
 // body font
-
-
-
 
 // text overflow/truncate
 

@@ -14,21 +14,21 @@
             <p>secret</p>
             <p>WALL</p>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav>
             <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
+            <div class="">
+                <ul class="">
+                    <li class="">
+                        <a class="" href="{{ url_for('secrets') }}">All Secrets</a>
                     </li>
 {# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('top_secrets') }}">Top Secrets</a>
+                    <li class="">
+                        <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
                     </li>
 #}
 {#                    {% if current_user.is_authenticated %}   
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                    <li class="">
+                        <a class="" href="{{ url_for('profile') }}">Profile</a>
                     </li>
                         {% endif %}    #}
                 </ul>
