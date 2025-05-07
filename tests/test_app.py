@@ -16,10 +16,14 @@ def test_post_secret(client):
 
 # Unit Test 3: Each post should be assigned to a random anonymous name
 def test_post_secret_has_fake_name(client):
+    # Post a secret
     res = client.post("/profile/1/create", data={
         "title": "anonymous test",
         "content": "check fake name"
     }, follow_redirects=True)
+
+    # Go to the secrets page and check if the secret is posted with an anonymous name
+    res = client.get("/secrets")
     assert res.status_code == 200
     assert b"anonymous" in res.data.lower()
     assert b"testuser" not in res.data.lower()
