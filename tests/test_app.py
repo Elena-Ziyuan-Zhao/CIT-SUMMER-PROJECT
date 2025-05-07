@@ -27,3 +27,48 @@ def test_post_secret_has_fake_name(client):
     assert res.status_code == 200
     assert b"anonymous" in res.data.lower()
     assert b"testuser" not in res.data.lower()
+
+# Unit Test 4: Submit a comment for a secret and check if it appears in the response
+def test_add_comment(client):
+    # Add a secret to comment
+    client.post("/profile/1/create", data={"title": "WithComment", "content": "Let's test comments"}, follow_redirects=True)
+
+    # Submit a comment
+    res = client.post("/secrets/1", data={"comment": "This is great!"}, follow_redirects=True)
+    assert res.status_code == 200
+    assert b"this is great" in res.data.lower()
+
+# Unit Test 5: Submit a rating and verify it is accepted and displayed
+def test_add_rating(client):
+    # Add a secret to rate
+    client.post("/profile/1/create", data={"title": "RatingTest", "content": "Should be rated"}, follow_redirects=True)
+
+    # Submit a rating
+    res = client.post("/secrets/1", data={"rating": "4"}, follow_redirects=True)
+    assert res.status_code == 200
+    assert b"4" in res.data or b"rating" in res.data.lower()
+
+# Unit Test 6: Submitting an invalid (non-integer) rating should not crash the app
+def test_invalid_rating(client):
+    # Add a secret to rate
+    client.post("/profile/1/create", data={"title": "BadRating", "content": "Testing invalid rating"}, follow_redirects=True)
+
+    # Submit a rating with string input
+    res = client.post("/secrets/1", data={"rating": "bad_input"}, follow_redirects=True)
+    assert res.status_code == 200
+    assert b"error" not in res.data.lower() 
+
+# Unit Test 7: Submitting a rating out of accepted range (not between 1 and 5) should be ignored
+def test_out_of_range_rating(client):
+    # Step 1: Create a new secret to rate
+    client.post("/profile/1/create", data={"title": "OutOfRange", "content": "testing rating limits"}, follow_redirects=True)
+
+    # Step 2: Submit a rating that is too high, like 6
+    res_high = client.post("/secrets/1", data={"rating": "6"}, follow_redirects=True)
+    assert res_high.status_code == 200
+    assert b"6" not in res_high.data 
+
+    # Step 3: Submit a rating that is too low, like -1
+    res_low = client.post("/secrets/1", data={"rating": "-1"}, follow_redirects=True)
+    assert res_low.status_code == 200
+    assert b"-1" not in res_low.data 
