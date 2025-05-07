@@ -1,23 +1,9 @@
-@use '../vars_mixins/vars' as *;
-
 html{
     width: 100%;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6{
-        font-family: $header-font;
-    }
-
-    p{
-        font-family: $body-font;
-    }
-
-    a{
-        font-family: $header-font;
-        
+    body{
+        main{
+            min-height: 100%;
+        }
     }
 }
