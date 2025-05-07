@@ -1,6 +1,4 @@
-@use '../vars_mixins/vars' as *;
 
-// buttons
 @mixin button-style{
     background-color: $btn-backbround;
     padding: 0.5rem 1.5rem;
@@ -13,6 +11,12 @@
         text-decoration: none;
     }
 }
+
+// header font
+$header-font-size: 24px;
+
+// body font
+
 
 
 

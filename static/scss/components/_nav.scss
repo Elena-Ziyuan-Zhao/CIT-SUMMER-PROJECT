@@ -1,1 +1,4 @@
-@use '../vars_mixins/vars' as *;
+nav {
+    display: flex;
+    justify-content: space-between;
+}

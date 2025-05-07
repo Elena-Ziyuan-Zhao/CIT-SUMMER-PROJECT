@@ -1,8 +1,26 @@
 @use '../vars_mixins/vars' as *;
 
-header nav{
-    background-color: $brand-background;
+header {
     font-family: $header-font;
+    background-color: $brand-background;
+
+    .hero {
+        display: flex;
+        justify-content: space-around;
+
+        p:nth-child(1) {
+            margin-top: 50px;
+        }
+        p:nth-child(2) {
+            margin-top: 75px;
+        }
+        p:nth-child(3) {
+            margin-top: 100px;
+        }
+    }
+}
+
+header nav{
 
     .container{
 
