@@ -36,7 +36,7 @@ footer ul li {
 }
 header {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   background-color: #F3F4EC;
 }
 header .hero {
@@ -408,6 +408,7 @@ html body main {
 .alert.alert-danger a {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -421,36 +422,48 @@ html body main {
 
 .profile-page {
   color: #2B00CC;
-  margin: 0.5rem;
+  margin: 8px;
+  max-width: 70rem;
 }
 .profile-page h2, .profile-page h3 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   font-weight: 600;
   text-align: center;
 }
+.profile-page h2 {
+  text-align: left;
+}
+.profile-page h3 {
+  border-top: 0.125rem solid #2B00CC;
+  padding: 2rem 0 1rem;
+}
 .profile-page p {
   font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
 }
 .profile-page .mb-4 p strong {
   font-family: "Space Mono", monospace;
 }
 .profile-page .card.mb-3 .card-body {
-  border: 0.125rem solid #2B00CC;
-  padding: 0.25rem 0.5rem;
+  border: 2px solid #2B00CC;
+  padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
   background-color: #F3F4EC;
 }
 .profile-page .card.mb-3 .card-body .card-title {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 600;
 }
 .profile-page .profile-no-posts {
   text-align: center;
+  margin: 2rem 0 2rem;
 }
 .profile-page button {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -463,6 +476,33 @@ html body main {
 }
 .profile-page button a {
   text-decoration: none;
+}
+@media (min-width: 600px) {
+  .profile-page {
+    margin: 2rem;
+  }
+  .profile-page h3 {
+    padding: 3rem 0 2rem;
+    margin-top: 3rem;
+  }
+  .profile-page .card.mb-3 .card-body {
+    padding: 0.5rem 2rem 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .profile-page {
+    margin: 4rem;
+  }
+  .profile-page h3 {
+    padding: 4rem 0 3rem;
+    margin-top: 4rem;
+  }
+}
+@media (min-width: 70rem) {
+  .profile-page {
+    margin: 1rem auto;
+    padding: 2rem;
+  }
 }
 
 /*# sourceMappingURL=custom.css.map */
