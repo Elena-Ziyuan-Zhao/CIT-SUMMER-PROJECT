@@ -36,7 +36,7 @@ footer ul li {
 }
 header {
   font-family: "Space Mono", monospace;
-  font-size: 32px;
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
   background-color: #F3F4EC;
 }
 header .hero {
@@ -407,6 +407,7 @@ html body main {
 }
 .alert.alert-danger a {
   background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -433,6 +434,7 @@ html body main {
 }
 .profile-page button {
   background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
