@@ -1,11 +1,22 @@
+@use '../vars_mixins/vars' as *;
+
 // buttons
-
-// header font
-
-// body font
+@mixin button-style{
+    background-color: $btn-backbround;
+    padding: 0.5rem 1.5rem;
+    min-width: 8.75rem;
+    border: .125rem solid $btn-border;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    text-transform: lowercase;
+}
 
 // text overflow/truncate
 
 // flex center
-
-// 
+@mixin flex-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

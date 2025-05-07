@@ -358,8 +358,44 @@ template {
 html {
   width: 100%;
 }
-html body main .alert {
-  min-height: 100%;
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6 {
+  font-family: "Space Mono", monospace;
+}
+html p {
+  font-family: "Space Grotesk", sans-serif;
+}
+html a {
+  font-family: "Space Mono", monospace;
+}
+
+.alert.alert-danger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  color: #2B00CC;
+  min-height: 30rem;
+}
+.alert.alert-danger h2 {
+  font-size: clamp(1.25rem, 1vw, 1.5rem);
+}
+.alert.alert-danger p {
+  font-size: clamp(1rem, 1vw, 1.25rem);
+}
+.alert.alert-danger a {
+  background-color: #F2F47B;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
 }
 
 /*# sourceMappingURL=custom.css.map */
