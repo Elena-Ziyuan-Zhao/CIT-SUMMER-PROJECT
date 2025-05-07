@@ -1,0 +1,21 @@
+@use '../vars_mixins/vars' as *;
+
+header nav{
+    background-color: $brand-background;
+    font-family: $header-font;
+
+    .container{
+
+        .navbar-brand{
+            text-decoration: none;
+        }
+
+
+        .collapse{
+            .navbar-nav{
+                list-style: none;
+                padding-left: 0;
+            }
+        }
+    }
+}

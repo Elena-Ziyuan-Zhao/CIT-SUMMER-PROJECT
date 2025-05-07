@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('home') }}">The Secret Wall</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('top_secrets') }}">Top Secrets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('profile') }}">Post A Secret</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main></main>
+    <footer>
+        <ul>
+            <li>Ziyuan Zhao</li>
+            <li>Abhinav Dixit</li>
+            <li>Chenyue Li</li>
+            <li>Marcus Bonacci</li>
+            <li>Quang Long Chau</li>
+            <li>Gillian Downey</li>
+        </ul>
+        <!-- hidden -->
+        <ul aria-hidden="true" >
+            <li>Ziyuan Zhao</li>
+            <li>Abhinav Dixit</li>
+            <li>Chenyue Li</li>
+            <li>Marcus Bonacci</li>
+            <li>Quang Long Chau</li>
+            <li>Gillian Downey</li>
+        </ul>
+    </footer>
+</body>
+</html>

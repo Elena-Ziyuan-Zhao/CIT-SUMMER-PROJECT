@@ -5,3 +5,5 @@
 *.db
 __pycache__
 node_modules/
+static/custom.css
+static/custom.css.map
