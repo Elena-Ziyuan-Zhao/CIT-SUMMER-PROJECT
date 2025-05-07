@@ -1,14 +1,21 @@
 @use '../vars_mixins/vars' as *;
 @use '../vars_mixins/mixins' as *;
 
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $header-background;
-    border-block: 2px solid $brand-border;
+header nav {
 
-    ul {
-        list-style-type: none;
+    background-color: $brand-background;
+    width: 100%;
+
+    .container{
+        a.navbar-brand{
+            color: $txt-alt;
+            width: 100%;
+            height: 15rem;
+            margin: 2rem;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+        }
     }
 }

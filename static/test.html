@@ -9,63 +9,38 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url_for('home') }}">The Secret Wall</a>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('top_secrets') }}">Top Secrets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('profile') }}">Post A Secret</a>
-                        </li>
-                    </ul>
-                </div>
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <div class="hero">
+                <p>THE</p>
+                <p>secret</p>
+                <p>WALL</p>
+            </div>
+        </a>
+        <nav>
+            <div class="">
+                <ul class="">
+                    <li class="">
+                        <a class="" href="{{ url_for('secrets') }}">All Secrets</a>
+                    </li>
+                    <li class="">
+                        <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
+                    </li>
+                    <li class="">
+                        <a class="" href="{{ url_for('profile') }}">Profile</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
-
     <main>
-        <div class="profile-page">
-            <h2>Profile</h2>
-
-            <div class="mb-4">
-            <p><strong>Username:</strong> {{ user.username }}</p>
-            <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>Joined:</strong> {{ user.created_date }}</p>
+        <div class="text-center">
+            <h1 class="mb-4">Welcome to Secret Wall</h1>
+            <p class="lead">Share your darkest secrets anonymously here.</p>
+            <div class="home-btn-container">
+                <a href="{{ url_for('secrets') }}" class="btn btn-primary mt-3">All Secrets</a>
+                <a href="{{ url_for('top_secrets') }}" class="btn btn-outline-success">Top Secrets</a>
+                <a href="{{ url_for('profile', id=1) }}" class="btn btn-outline-secondary">My Profile</a>
             </div>
-            <h3>My Secrets</h3>
-            <div class="card mb-3">
-                <div class="card-body">
-                <p class="card-title">{{ secret.title }}</p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
-                <p class="text-muted small">
-                    Posted on {{ secret.created_date }}
-                    {% if secret.expires_at %}
-                    | Expires at: {{ secret.expires_at }}
-                    {% endif %}
-                </p>
-                </div>
-                <div class="card-body">
-                    <p class="card-title">{{ secret.title }}</p>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
-                    <p class="text-muted small">
-                    Posted on {{ secret.created_date }}
-                    {% if secret.expires_at %}
-                        | Expires at: {{ secret.expires_at }}
-                    {% endif %}
-                    </p>
-                </div>
-            </div>
-            <p class="profile-no-posts">You haven't posted any secrets yet.</p>
-            <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
         </div>
     </main>
     <footer>
