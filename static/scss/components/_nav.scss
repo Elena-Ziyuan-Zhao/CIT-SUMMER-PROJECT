@@ -4,7 +4,8 @@
 nav {
     background-color: $header-background;
     border-block: 2px solid $brand-border;
-
+    height: 50px;
+    
     ul {
         display: flex;
         flex-direction: column;
