@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="custom.css">
+
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
             <h3>My Secrets</h3>
             <div class="card mb-3">
                 <div class="card-body">
-                <p class="card-text">{{ secret.title }}</p>
+                <p class="card-title">{{ secret.title }}</p>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
                 <p class="text-muted small">
                     Posted on {{ secret.created_date }}
@@ -54,7 +55,7 @@
                 </p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ secret.title }}</p>
+                    <p class="card-title">{{ secret.title }}</p>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad soluta rerum inventore praesentium excepturi. Impedit, incidunt ea. Nemo labore libero, ullam temporibus voluptatum provident illum explicabo, ducimus autem earum praesentium!</p>
                     <p class="text-muted small">
                     Posted on {{ secret.created_date }}

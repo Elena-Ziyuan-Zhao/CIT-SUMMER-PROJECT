@@ -5,26 +5,46 @@
     color: $txt-dark;
     margin: 0.5rem;
     h2,h3{
-        font-size: clamp(1.25rem, 1vw, 1.5rem);
+        font-family: $header-font;
+        font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+        font-weight: 600;
+        text-align: center;
+    }
+    p{
+        font-family: $body-font;
     }
 
-    // profile info
+// profile info
     .mb-4{
-        p{
-            font-family: $body-font;
-            
-            strong{
+        p strong{
+            font-family: $header-font;
+        }   
+    }
+    
+// profile posts
+    .card.mb-3{
+        .card-body{
+            border: .125rem solid $brand-border;
+            padding: 0.25rem 0.5rem;
+            margin-bottom: 1rem;
+            background-color: $post-background;
+
+            .card-title{
                 font-family: $header-font;
+                font-size: $header-font-size;
             }
         }
     }
-
     
-    button{
-        @include button-style
+// no posts yet
+    .profile-no-posts{
+        text-align: center
+    }
 
+    button{
+        @include button-style;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
     }
 }
-
-
-
