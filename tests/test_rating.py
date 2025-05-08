@@ -1,5 +1,8 @@
 import unittest
-from rating.py import Rating
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from models.rating import Rating
 from db import db
 
 class TestRatingModel(unittest.TestCase):
