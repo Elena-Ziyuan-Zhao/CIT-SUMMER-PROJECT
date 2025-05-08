@@ -1,2 +1,59 @@
 @use '../vars_mixins/vars' as *;
 @use '../vars_mixins/mixins' as *;
+
+.create-secret-page{
+    padding: 0.5rem;
+    margin:3rem auto 20rem;
+    color: $txt-dark;
+    max-width: 48rem;
+
+    h2{
+        font-family: $header-font;
+        font-size: $header-font-size;
+        text-align: center;
+    }
+
+    p{
+        font-family: $body-font;
+        font-size: $body-font-size;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+
+
+        textarea,
+        input{
+            font-family: $body-font;
+            font-size: $body-font-size;
+            border: .125rem solid $brand-border;
+            border-radius: 4px;
+            padding: 0.5rem;
+            background-color: $field-background;
+            color: $field-color;
+            width: 90%;
+            margin: auto;
+        }
+        textarea:nth-child(2){
+            height: 8rem;
+        }
+
+        button{
+            @include button-style;
+        
+        }
+    }
+
+    @media (min-width: 600px) {
+
+    }
+
+    @media (min-width: 1024px){
+
+    }
+}

@@ -33,14 +33,17 @@
         </nav>
     </header>
     <main>
-        <div class="text-center">
-            <h1 class="mb-4">Welcome to Secret Wall</h1>
-            <p class="lead">Share your darkest secrets anonymously here.</p>
-            <div class="home-btn-container">
-                <a href="{{ url_for('secrets') }}" class="btn btn-primary mt-3">All Secrets</a>
-                <a href="{{ url_for('top_secrets') }}" class="btn btn-outline-success">Top Secrets</a>
-                <a href="{{ url_for('profile', id=1) }}" class="btn btn-outline-secondary">My Profile</a>
-            </div>
+        <div class="create-secret-page">
+            <h2>Create a Secret</h2>
+
+            <p>You haven't posted any secrets yet.</p>
+
+            <form method="POST">
+                <textarea name="title" placeholder="Write your title here..." required></textarea>
+                <textarea name="content" placeholder="Write your secret here..." required></textarea>
+                <input type="number" name="expires_at" placeholder="Secret will expire in..." min="1" required>
+                <button type="submit">Submit Secret</button>
+            </form>
         </div>
     </main>
     <footer>

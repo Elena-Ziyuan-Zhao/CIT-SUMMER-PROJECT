@@ -393,6 +393,59 @@ html body main {
   min-height: 100%;
 }
 
+.create-secret-page {
+  padding: 0.5rem;
+  margin: 3rem auto 20rem;
+  color: #2B00CC;
+  max-width: 48rem;
+}
+.create-secret-page h2 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  text-align: center;
+}
+.create-secret-page p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.create-secret-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+.create-secret-page form textarea,
+.create-secret-page form input {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  border: 0.125rem solid #2B00CC;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #D9D9D9;
+  color: #525252;
+  width: 90%;
+  margin: auto;
+}
+.create-secret-page form textarea:nth-child(2) {
+  height: 8rem;
+}
+.create-secret-page form button {
+  background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.create-secret-page form button a {
+  text-decoration: none;
+}
 .alert.alert-danger {
   display: flex;
   flex-direction: column;
@@ -414,6 +467,7 @@ html body main {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -470,6 +524,7 @@ html body main {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -513,7 +568,7 @@ html body main {
 
 .text-center {
   text-align: center;
-  height: calc(100vh - 24rem);
+  height: calc(100vh - 20rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -540,6 +595,7 @@ html body main {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
   border: 0.125rem solid #2B00CC;
@@ -562,6 +618,11 @@ html body main {
   .text-center .home-btn-container .btn {
     width: 5rem;
     margin: 0;
+  }
+}
+@media (min-width: 1024px) {
+  .text-center {
+    height: calc(100vh - 24rem);
   }
 }
 
