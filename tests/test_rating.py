@@ -1,5 +1,5 @@
 import unittest
-from models.rating import Rating
+from rating.py import Rating
 from db import db
 
 class TestRatingModel(unittest.TestCase):
