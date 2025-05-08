@@ -13,11 +13,10 @@
 @use 'generic/normalize';
 
 // templates
-@use 'templates/all_secrets';
+@use 'templates/all_top_secrets';
 @use 'templates/base';
 @use 'templates/create';
 @use 'templates/error';
 @use 'templates/profile';
 @use 'templates/secret_details';
-@use 'templates/top_secrets';
 @use 'templates/home';
