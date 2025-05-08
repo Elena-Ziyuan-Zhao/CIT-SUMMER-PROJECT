@@ -7,8 +7,8 @@
 {% block pagetitle %}My Profile{% endblock %}
 
 {% block content %}
-  <div class="profile-page">
-    <h2>Profile</h2>
+<div class="profile-page">
+  <h2>Profile</h2>
 
     <div class="mb-4">
       <p><strong>Username:</strong> {{ user.username }}</p>
@@ -16,7 +16,6 @@
       <p><strong>Joined:</strong> {{ user.created_date }}</p>
     </div>
 
-    <hr>
     <h3>My Secrets</h3>
 
     {% for secret in user.secrets %}
