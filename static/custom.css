@@ -386,6 +386,79 @@ template {
   display: none;
 }
 
+.all-secrets-page,
+.top-secrets-page {
+  margin: 0 0.5rem;
+  color: #2B00CC;
+  max-width: 70rem;
+}
+.all-secrets-page h2,
+.top-secrets-page h2 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  text-align: center;
+}
+.all-secrets-page .card-body,
+.top-secrets-page .card-body {
+  border: 2px solid #2B00CC;
+  padding: 0.25rem 0.75rem 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #F3F4EC;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+}
+.all-secrets-page .card-body .card-text,
+.top-secrets-page .card-body .card-text {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+}
+.all-secrets-page .card-body .card-text a,
+.top-secrets-page .card-body .card-text a {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-weight: 600;
+  text-decoration: none;
+}
+.all-secrets-page .all-secrets-no-posts,
+.top-secrets-page .all-secrets-no-posts {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  text-align: center;
+}
+@media (min-width: 600px) {
+  .all-secrets-page,
+  .top-secrets-page {
+    margin: 2rem;
+  }
+  .all-secrets-page h3,
+  .top-secrets-page h3 {
+    padding: 3rem 0 2rem;
+    margin-top: 3rem;
+  }
+  .all-secrets-page .card.mb-3 .card-body,
+  .top-secrets-page .card.mb-3 .card-body {
+    padding: 0.5rem 2rem 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .all-secrets-page,
+  .top-secrets-page {
+    margin: 4rem;
+  }
+  .all-secrets-page h3,
+  .top-secrets-page h3 {
+    padding: 4rem 0 3rem;
+    margin-top: 4rem;
+  }
+}
+@media (min-width: 70rem) {
+  .all-secrets-page,
+  .top-secrets-page {
+    margin: 1rem auto;
+    padding: 2rem;
+  }
+}
+
 html {
   width: 100%;
 }

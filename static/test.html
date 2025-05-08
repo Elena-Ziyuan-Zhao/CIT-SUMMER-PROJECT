@@ -33,17 +33,37 @@
         </nav>
     </header>
     <main>
-        <div class="create-secret-page">
-            <h2>Create a Secret</h2>
+        <div class="all-secrets-page">
+        <h2>All Secrets</h2>
 
-            <p>You haven't posted any secrets yet.</p>
-
-            <form method="POST">
-                <textarea name="title" placeholder="Write your title here..." required></textarea>
-                <textarea name="content" placeholder="Write your secret here..." required></textarea>
-                <input type="number" name="expires_at" placeholder="Secret will expire in..." min="1" required>
-                <button type="submit">Submit Secret</button>
-            </form>
+        {% for secret in secrets %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text"><a href="{{ url_for('secret_detail', secret_id=secret.id) }}">{{ secret.title }}</a></p>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic reiciendis ab rerum velit laboriosam aspernatur quaerat eum nemo esse? Quibusdam repellat, maxime veritatis officia quis dicta reprehenderit at dolorum nisi?</p>
+                    <p class="text-muted small">
+                    Posted by {{ secret.anonymous_poster }} on {{ secret.created_date }}
+                    {% if secret.expires_at %}
+                        | Expires at: {{ secret.expires_at }}
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text"><a href="{{ url_for('secret_detail', secret_id=secret.id) }}">{{ secret.title }}</a></p>
+                    <p class="card-text">{{ secret.content }}</p>
+                    <p class="text-muted small">
+                        Posted by {{ secret.anonymous_poster }} on {{ secret.created_date }}
+                        {% if secret.expires_at %}
+                        | Expires at: {{ secret.expires_at }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        {% else %}
+            <p class="all-secrets-no-posts">No secrets yet.</p>
+        {% endfor %}
         </div>
     </main>
     <footer>
