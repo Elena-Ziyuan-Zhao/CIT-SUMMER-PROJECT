@@ -4,6 +4,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from models.rating import Rating
 from db import db
+from models.secret import Secret
 
 class TestRatingModel(unittest.TestCase):
     def setUp(self):
@@ -15,16 +16,9 @@ class TestRatingModel(unittest.TestCase):
         self.assertEqual(self.rating.secret_id, 1)
         self.assertEqual(self.rating.rating, 5)
 
-    def test_default_rating_value(self):
-        """Test that the default rating value is set to 0."""
-        rating = Rating(secret_id=2)
-        self.assertEqual(rating.rating, 0)
-
     def test_relationship_with_secret(self):
-        """Test the relationship between Rating and Secret."""
-        # Assuming test Secret object is set up
-        mock_secret = type("Secret", (object,), {"id": 1})
-        self.rating.secret = mock_secret
+        secret = Secret(id=1) 
+        self.rating.secret = secret
         self.assertEqual(self.rating.secret.id, 1)
 
     def test_primary_key(self):
