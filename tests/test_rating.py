@@ -8,7 +8,7 @@ from models.secret import Secret
 
 class TestRatingModel(unittest.TestCase):
     def setUp(self):
-        # Set up a test database 
+        # Set up a test object
         self.rating = Rating(secret_id=1, rating=5)
 
     def test_rating_creation(self):
