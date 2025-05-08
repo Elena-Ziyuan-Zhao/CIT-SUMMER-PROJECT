@@ -33,37 +33,25 @@
         </nav>
     </header>
     <main>
-        <div class="all-secrets-page">
-        <h2>All Secrets</h2>
-
-        {% for secret in secrets %}
-            <div class="card mb-3">
+        <div class="page-secret-details">
+            <h2>Secret Detail</h2>
+          
+            <div class="card">
                 <div class="card-body">
-                    <p class="card-text"><a href="{{ url_for('secret_detail', secret_id=secret.id) }}">{{ secret.title }}</a></p>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic reiciendis ab rerum velit laboriosam aspernatur quaerat eum nemo esse? Quibusdam repellat, maxime veritatis officia quis dicta reprehenderit at dolorum nisi?</p>
+                    <p class="card-text">{{ secret.content }}</p>
                     <p class="text-muted small">
                     Posted by {{ secret.anonymous_poster }} on {{ secret.created_date }}
                     {% if secret.expires_at %}
                         | Expires at: {{ secret.expires_at }}
                     {% endif %}
+                    {% if secret.likes is defined %}
+                        | ❤️ Likes: {{ secret.likes }}
+                    {% endif %}
                     </p>
                 </div>
             </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <p class="card-text"><a href="{{ url_for('secret_detail', secret_id=secret.id) }}">{{ secret.title }}</a></p>
-                    <p class="card-text">{{ secret.content }}</p>
-                    <p class="text-muted small">
-                        Posted by {{ secret.anonymous_poster }} on {{ secret.created_date }}
-                        {% if secret.expires_at %}
-                        | Expires at: {{ secret.expires_at }}
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
-        {% else %}
-            <p class="all-secrets-no-posts">No secrets yet.</p>
-        {% endfor %}
+          
+            <a href="{{ url_for('secrets') }}" class="btn btn-outline-secondary mt-3">← Back to All Secrets</a>
         </div>
     </main>
     <footer>

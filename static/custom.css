@@ -4,7 +4,6 @@ footer {
   background-color: #2B00CC;
   color: #F3F4EC;
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
   width: 100%;
   height: 5rem;
   position: relative;
@@ -634,6 +633,70 @@ html body main {
 }
 @media (min-width: 70rem) {
   .profile-page {
+    margin: 1rem auto;
+    padding: 2rem;
+  }
+}
+
+.page-secret-details {
+  margin: 0 0.5rem;
+  color: #2B00CC;
+  max-width: 70rem;
+  height: calc(100vh - 20rem);
+  text-align: center;
+}
+.page-secret-details h2 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-weight: 600;
+  text-align: center;
+}
+.page-secret-details .card {
+  margin-bottom: 3rem;
+}
+.page-secret-details .card .card-body {
+  border: 2px solid #2B00CC;
+  padding: 0.25rem 0.75rem 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #F3F4EC;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  text-align: left;
+}
+.page-secret-details .btn {
+  background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.page-secret-details .btn a {
+  text-decoration: none;
+}
+@media (min-width: 600px) {
+  .page-secret-details {
+    margin: 2rem;
+  }
+  .page-secret-details .card .card-body {
+    padding: 0.5rem 2rem 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .page-secret-details {
+    margin: 4rem;
+  }
+  .page-secret-details h2 {
+    padding: 1rem 0 3rem;
+    margin-top: 4rem;
+  }
+}
+@media (min-width: 70rem) {
+  .page-secret-details {
     margin: 1rem auto;
     padding: 2rem;
   }
