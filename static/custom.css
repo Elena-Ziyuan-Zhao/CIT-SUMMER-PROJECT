@@ -758,7 +758,7 @@ html body main {
   }
 }
 
-.text-center {
+.page-home {
   text-align: center;
   height: calc(100vh - 20rem);
   display: flex;
@@ -767,23 +767,23 @@ html body main {
   margin: 0.5rem;
   color: #2B00CC;
 }
-.text-center h1 {
+.page-home h1 {
   font-family: "Space Mono", monospace;
   font-size: clamp(1.625rem, 2.5vw, 2rem);
   font-weight: 500;
   margin-top: 3rem;
 }
-.text-center .lead {
+.page-home .lead {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   margin: 2rem 0;
 }
-.text-center .home-btn-container {
+.page-home .home-btn-container {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.text-center .home-btn-container .btn {
+.page-home .home-btn-container .btn {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
@@ -797,26 +797,26 @@ html body main {
   min-width: 13rem;
   margin: 0 auto;
 }
-.text-center .home-btn-container .btn a {
+.page-home .home-btn-container .btn a {
   text-decoration: none;
 }
-.text-center .home-btn-container .btn:hover {
+.page-home .home-btn-container .btn:hover {
   background-color: #ebed65;
 }
 @media (min-width: 600px) {
-  .text-center .home-btn-container {
+  .page-home .home-btn-container {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
   }
-  .text-center .home-btn-container .btn {
+  .page-home .home-btn-container .btn {
     width: 5rem;
     margin: 0;
   }
 }
 @media (min-width: 1024px) {
-  .text-center {
+  .page-home {
     height: calc(100vh - 24rem);
   }
 }

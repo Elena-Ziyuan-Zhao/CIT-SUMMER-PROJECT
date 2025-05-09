@@ -4,14 +4,14 @@
 
 {% block content %}
 <div class="text-center">
-    <h1 class="mb-4">Welcome to Secret Wall</h1>
+    <h1 class="mb-4">Welcome to Secret Wall</h2>
     <p class="lead">Share your darkest secrets anonymously here.</p>
     <div class="home-btn-container">
         <a href="{{ url_for('secrets') }}" class="btn btn-primary mt-3">View All Secrets</a>
-        {# TO DO: Once the route is ready, uncomment the following lines
-            <a href="{{ url_for('top_secrets') }}" class="btn btn-outline-success">Top Secrets</a>
-            <a href="{{ url_for('profile', id=1) }}" class="btn btn-outline-secondary">My Profile</a>
-        #}
+    {# TO DO: Once the route is ready, uncomment the following lines
+        <a href="{{ url_for('top_secrets') }}" class="btn btn-outline-success">Top Secrets</a>
+        <a href="{{ url_for('profile', id=1) }}" class="btn btn-outline-secondary">My Profile</a>
+    #}
     </div>
 </div>
 {% endblock %}
