@@ -11,9 +11,9 @@ class User(db.Model):
     email = db.mapped_column(db.String)
     password = db.mapped_column(db.String)
     created_date = db.mapped_column(db.DateTime, default = datetime.now())
-
+    
     secrets = db.relationship("Secret", back_populates="user")
-
+    # comments = db.relationship("Comment", back_populates="user")
 
 
     
