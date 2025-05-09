@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ secret.content }}</p>
                     <p class="text-muted small">
-                    Posted by {{ secret.anonymous_poster }} on {{ secret.created_date }}
+                    carded by {{ secret.anonymous_carder }} on {{ secret.created_date }}
                     {% if secret.expires_at %}
                         | Expires at: {{ secret.expires_at }}
                     {% endif %}

@@ -20,7 +20,7 @@
           <p class="card-title">{{ secret.title }}</p>
           <p class="card-text">{{ secret.content }}</p>
           <p class="text-muted small">
-            Posted on {{ secret.created_date }}
+            carded on {{ secret.created_date }}
             {% if secret.expires_at %}
               | Expires at: {{ secret.expires_at }}
             {% endif %}
@@ -28,7 +28,7 @@
         </div>
       </div>
     {% else %}
-      <p class="profile-no-posts">You haven't posted any secrets yet.</p>
+      <p class="profile-no-posts">You haven't carded any secrets yet.</p>
     {% endfor %}
     <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
   </div>
