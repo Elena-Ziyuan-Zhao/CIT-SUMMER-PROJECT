@@ -27,6 +27,8 @@
           Posted on {{ secret.created_date }}
           {% if secret.expires_at %}
             | Expires at: {{ secret.expires_at }}
+          {% else %}
+            <span class="text-success">Permanent</span>
           {% endif %}
         </p>
         <form  method="POST" action="{{ url_for('delete_secret', id=secret.id) }}">
