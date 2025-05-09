@@ -50,7 +50,7 @@ def create_secret(id):
         content = request.form.get("content")
         title = request.form.get("title")
         expiry_time = request.form.get("number")
-        new_secret = Secret(title = title, content = content, user = user, expires_at = datetime.now() + timedelta(minutes=1))
+        new_secret = Secret(title = title, content = content, user = user, expires_at = datetime.now() + timedelta(hours=24))
         db.session.add(new_secret)
         db.session.commit()
         return redirect(url_for(f'profile_detail', id=user.id))
