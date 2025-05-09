@@ -18,24 +18,25 @@ header {
         }
         p:nth-child(3) {
             margin-top: 100px;
+            margin-bottom: 50px;
         }
     }
 }
 
-header nav{
+// header nav{
 
-    .container{
+//     .container{
 
-        .navbar-brand{
-            text-decoration: none;
-        }
+//         .navbar-brand{
+//             text-decoration: none;
+//         }
 
 
-        .collapse{
-            .navbar-nav{
-                list-style: none;
-                padding-left: 0;
-            }
-        }
-    }
-}
+//         .collapse{
+//             .navbar-nav{
+//                 list-style: none;
+//                 padding-left: 0;
+//             }
+//         }
+//     }
+// }

@@ -1,7 +1,7 @@
 @use '../vars_mixins/vars' as *;
 @use '../vars_mixins/mixins' as *;
 
-.text-center{
+.page-home{
     text-align: center;
     height: calc(100vh - 20rem);
     display: flex;
