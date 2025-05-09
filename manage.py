@@ -13,6 +13,8 @@ def create_tables():
 
 def import_data():
     with open("users.csv", "r") as file:
+        # read csv into dictionary
+        # for example: {first_name: a, second_name: b}
         reader = csv.DictReader(file)
         for row in reader:
             user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], password = row["password"], user_type = row["user_type"])
@@ -24,9 +26,9 @@ def generate_secrets():
         reader = csv.DictReader(file)
         for row in reader:
             random_user = db.session.execute(db.select(User).order_by(db.func.random())).scalar()
-            secret = Secret(title = row["title"], content = row["content"], user = random_user, expires_at = datetime.now() + timedelta(seconds=10))
+            secret = Secret(title = row["title"], content = row["content"], user = random_user)
             db.session.add(secret)
-    db.session.commit()            
+    db.session.commit()
             
 
 def drop_tables():
