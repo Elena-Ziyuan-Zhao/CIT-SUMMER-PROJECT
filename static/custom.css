@@ -61,18 +61,35 @@ header nav .container .collapse .navbar-nav {
   padding-left: 0;
 }
 
-header nav {
-  background-color: #F3F4EC;
+nav {
+  background-color: #F2F47B;
+  border-block: 2px solid #2B00CC;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-header nav .container a.navbar-brand {
+nav ul {
+  display: flex;
+  margin: 0;
+  list-style-type: none;
+}
+nav li {
+  padding-inline: 30px;
+  padding-block: 10px;
+  border-left: 2px solid #2B00CC;
+}
+nav li:last-child {
+  border-right: 2px solid #2B00CC;
+}
+nav .container a.navbar-brand {
   color: #525252;
   width: 100%;
   height: 15rem;
   margin: 2rem;
   text-align: center;
 }
-header nav .container ul {
+nav .container ul {
   list-style-type: none;
 }
 

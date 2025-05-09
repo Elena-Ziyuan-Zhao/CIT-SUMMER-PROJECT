@@ -11,24 +11,30 @@
     <header>
         <div class="hero">
             <p>THE</p>
-            <p>secret</p>
+            <p><a href="{{ url_for('home') }}">secret</a></p>
             <p>WALL</p>
         </div>
         <nav>
-            <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
-            <div class="">
-                <ul class="">
-                    <li class="">
-                        <a class="" href="{{ url_for('secrets') }}">All Secrets</a>
+            <!-- <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a> -->
+            <div>
+                <ul>
+                    <li>
+                        <a href="{{ url_for('secrets') }}">Spicy secrets</a>
+                    </li>
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                    <li>
+                        <a href="#">Tell a secret</a>
                     </li>
 {# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
-                    <li class="">
+                    <li>
                         <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
                     </li>
 #}
 {#                    {% if current_user.is_authenticated %}   
-                    <li class="">
-                        <a class="" href="{{ url_for('profile') }}">Profile</a>
+                    <li>
+                        <a href="{{ url_for('profile') }}">Profile</a>
                     </li>
                         {% endif %}    #}
                 </ul>
@@ -47,7 +53,14 @@
     </main>
 
     <footer>
-        
+        <ul>
+            <li>Ziyuan Zhao</li>
+            <li>abhinav dixit</li>
+            <li>chenyue li</li>
+            <li>marcus bonacci</li>
+            <li>Quang Long Chau</li>
+            <li>gillian downey</li>
+        </ul>
     </footer>
 </body>
 </html>
