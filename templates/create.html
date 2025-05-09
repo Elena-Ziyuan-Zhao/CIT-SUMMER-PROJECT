@@ -1,12 +1,16 @@
-<h2>Create a Secret</h2>
+<div class="create-secret-page">
+  
+  <h2>Create a Secret</h2>
 
-{% if user.secrets|length == 0 %}
-  <p>You haven't posted any secrets yet.</p>
-{% endif %}
+  {% if user.secrets|length == 0 %}
+    <p>You haven't posted any secrets yet.</p>
+  {% endif %}
 
-<form method="POST">
-    <textarea name="title" placeholder="Write your title here..." required></textarea>
-    <textarea name="content" placeholder="Write your secret here..." required></textarea>
-    <input type="number" name="expires_at" placeholder="Secret will expire in..." min="1" required>
-    <button type="submit">Submit Secret</button>
-</form>
+  <form method="POST">
+      <textarea name="title" placeholder="Write your title here..." required></textarea>
+      <textarea name="content" placeholder="Write your secret here..." required></textarea>
+      <input type="number" name="expires_at" placeholder="Secret will expire in..." min="1" required>
+      <button type="submit">Submit Secret</button>
+  </form>
+
+</div>
