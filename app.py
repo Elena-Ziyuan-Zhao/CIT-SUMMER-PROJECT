@@ -71,10 +71,30 @@ def react_secret(id):
         db.session.commit()
     return render_template("secret_detail.html", secret=secret)
 
-@app.route("/profile/<int:id>")
+@app.route("/profile/<int:id>", methods = ["GET"])
 def profile_detail(id):
     user = db.session.execute(db.select(User).where(User.id == id)).scalar()
     return render_template("profile.html", user=user)
+
+@app.route("/secret/<int:id>/delete", methods = ["POST"])
+def delete_secret(id):
+    secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
+    db.session.delete(secret)
+    db.session.commit()
+    return redirect(url_for('profile_detail', id = secret.user_id))
+
+@app.route("/secret/<int:id>/edit", methods = ["POST", "GET"])
+def edit_secret(id):
+    secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
+    if request.method == "GET":
+        return render_template("edit_secrets.html", secret = secret)
+    if request.method == "POST":
+        title = request.form.get("title")
+        content = request.form.get("content")
+        secret.title = title
+        secret.content = content
+        db.session.commit()
+        return redirect(url_for("profile_detail", id = secret.user_id))
 
 
 @app.route("/profile/<int:id>/create", methods = ["POST", "GET"])
@@ -88,7 +108,7 @@ def create_secret(id):
         new_secret = Secret(title = title, content = content, user = user)
         db.session.add(new_secret)
         db.session.commit()
-        return redirect(url_for(f'profile_detail', id=user.id))
+        return redirect(url_for('profile_detail', id=user.id))
     else:
         return render_template("create.html", user=user)
 

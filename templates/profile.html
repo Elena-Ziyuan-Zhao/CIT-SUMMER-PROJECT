@@ -21,7 +21,7 @@
   {% for secret in user.secrets %}
     <div class="card mb-3">
       <div class="card-body">
-        <p class="card-text">{{ secret.title }}</p>
+        <p class="card-text"><a href="{{ url_for('secret_detail', id=secret.id) }}">{{ secret.title }}</a></p>
         <p class="card-text">{{ secret.content }}</p>
         <p class="text-muted small">
           Posted on {{ secret.created_date }}
@@ -29,6 +29,10 @@
             | Expires at: {{ secret.expires_at }}
           {% endif %}
         </p>
+        <form  method="POST" action="{{ url_for('delete_secret', id=secret.id) }}">
+          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+        </form>
+        <a href="{{ url_for('edit_secret', id=secret.id) }}" class="btn btn-sm btn-warning">Edit</a>
       </div>
     </div>
   {% else %}
