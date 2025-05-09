@@ -10,13 +10,14 @@ class Secret(db.Model):
     content = db.mapped_column(db.String)
     created_date = db.mapped_column(db.DateTime, default = datetime.now())
     user_id = db.mapped_column(db.ForeignKey("users.id"))
-    expires_at = db.mapped_column(db.DateTime, default = None)
-    
+
+    expires_at = db.mapped_column(db.DateTime, nullable = True, default = None)
+
     user = db.relationship("User", back_populates="secrets")
     comments = db.relationship("Comment", back_populates="secret", cascade="all, delete-orphan")
 
     rating = db.mapped_column(db.Integer, default = 0)
-    ratings = db.relationship("Rating", back_populates = "secret")
+    ratings = db.relationship("Rating", back_populates = "secret", cascade="all, delete-orphan")
 
     @property
     def anonymous_poster(self):
