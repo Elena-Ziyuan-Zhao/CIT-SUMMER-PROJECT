@@ -2,40 +2,56 @@
 @use '../vars_mixins/mixins' as *;
 
 nav {
-
     background-color: $header-background;
     border-block: 2px solid $brand-border;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 
     ul {
         display: flex;
+        flex-direction: column;
         margin: 0;
         list-style-type: none;
-    }
+        width: 100%;
+        padding-left: 0;
 
-    li {
-        padding-inline: 30px;
-        padding-block: 10px;
-        border-left: 2px solid $brand-border;
-    }
-
-    li:last-child {
-        border-right: 2px solid $brand-border;
-    }
-
-    .container{
-        a.navbar-brand{
-            color: $txt-alt;
-            width: 100%;
-            height: 15rem;
-            margin: 2rem;
+        li {
+            border-bottom: 2px solid $brand-border;
+            width: 100vw;
             text-align: center;
+            padding: 1rem 0;
+
+            &:hover{
+                background-color: $btn-background-hover;
+            }
+
+            a{
+                width: 100vw;
+                padding: 1rem 3rem;
+                text-decoration: none;
+                margin: 0;
+
+            }
         }
-        ul {
-            list-style-type: none;
+    
+        li:last-child {
+            border-bottom: none;
+        }
+    }
+    @media (min-width: 600px) {
+        ul{
+            flex-direction: row;
+            max-width: $max-content-width;
+            margin: 0 auto;
+
+            li {
+                border-bottom: none;
+
+                a{
+                    padding: 1rem ;
+                    margin: 0 0.125rem;
+                }
+            }
+
         }
     }
 }
+
