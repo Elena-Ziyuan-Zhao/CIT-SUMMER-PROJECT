@@ -13,7 +13,7 @@ class Secret(db.Model):
     expires_at = db.mapped_column(db.DateTime, default = None)
     
     user = db.relationship("User", back_populates="secrets")
-    comments = db.relationship("Comment", back_populates="secret")
+    comments = db.relationship("Comment", back_populates="secret", cascade="all, delete-orphan")
 
     rating = db.mapped_column(db.Integer, default = 0)
     ratings = db.relationship("Rating", back_populates = "secret")
