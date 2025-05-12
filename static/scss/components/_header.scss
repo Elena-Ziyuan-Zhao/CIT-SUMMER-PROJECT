@@ -1,0 +1,42 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+header {
+    font-family: $header-font;
+    font-size: $header-font-size;
+    background-color: $brand-background;
+
+    .hero {
+        display: flex;
+        justify-content: space-around;
+
+        p:nth-child(1) {
+            margin-top: 50px;
+        }
+        p:nth-child(2) {
+            margin-top: 75px;
+        }
+        p:nth-child(3) {
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+// header nav{
+
+//     .container{
+
+//         .navbar-brand{
+//             text-decoration: none;
+//         }
+
+
+//         .collapse{
+//             .navbar-nav{
+//                 list-style: none;
+//                 padding-left: 0;
+//             }
+//         }
+//     }
+// }

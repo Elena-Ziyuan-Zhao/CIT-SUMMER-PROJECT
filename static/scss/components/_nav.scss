@@ -1,0 +1,62 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+nav {
+    background-color: $header-background;
+    height: 10.25rem;
+    
+    ul {
+        border-top: 2px solid $brand-border;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        list-style-type: none;
+        width: 100%;
+        padding-left: 0;
+
+        li {
+
+            font-size: 1.125rem;
+            border-bottom: 2px solid $brand-border;
+            width: 100vw;
+            text-align: center;
+            padding: 1rem 0;
+            text-transform: lowercase;
+
+            &:hover{
+                background-color: $btn-background-hover;
+            }
+
+            a{
+                width: 100vw;
+                padding: 1rem 3rem;
+                text-decoration: none;
+                margin: 0;
+
+            }
+        }
+    
+    }
+    @media (min-width: 634px) {
+        height: 3.75rem;
+        ul{
+            flex-direction: row;
+            max-width: $max-content-width;
+            margin: 0 auto;
+            border-bottom: 2px solid $brand-border;
+
+            li {
+
+                font-size: 22px;
+                border-bottom: none;
+
+                a{
+                    padding: 1rem ;
+                    margin: 0 0.125rem;
+                }
+            }
+
+        }
+    }
+}
+

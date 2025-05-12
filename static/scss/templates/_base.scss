@@ -1,0 +1,11 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+html{
+    width: 100%;
+
+    body{
+        main{
+            min-height: 100%;
+        }
+    }
+}

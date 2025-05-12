@@ -1,0 +1,95 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+.profile-page{
+    color: $txt-dark;
+    margin: 8px;
+    max-width: $max-content-width;
+    h2,h3{
+        font-family: $header-font;
+        font-size: $header-font-size;
+        font-weight: 600;
+        text-align: center;
+    }
+    h2{
+        text-align: left;
+    }
+    h3{
+        border-top: .125rem solid $brand-border;
+        padding: 2rem 0 1rem;
+    }
+    p{
+        font-family: $body-font;
+        font-size: $body-font-size;
+    }
+
+// profile info
+    .mb-4{
+        p strong{
+            font-family: $header-font;
+            text-transform: uppercase;
+        }   
+    }
+    
+// profile posts
+    .card.mb-3{
+        .card-body{
+            border: 2px solid $brand-border;
+            padding: 0.25rem 0.75rem 0.5rem;
+            margin-bottom: 1rem;
+            background-color: $post-background;
+
+            .card-title{
+                font-family: $header-font;
+                font-size: $header-font-size;
+                font-weight: 600;
+            }
+        }
+    }
+    
+// no posts yet
+    .profile-no-posts{
+        text-align: center;
+        margin: 2rem 0 2rem
+    }
+
+    button{
+        @include button-style;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+    }
+
+// page breaks
+
+// tablet
+    @media (min-width: 600px) {
+        margin: 2rem;
+        h3{
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .card.mb-3{
+            .card-body{
+                padding: 0.5rem 2rem 1rem;
+            }
+        }
+    }
+
+// laptop
+    @media (min-width: 1024px){
+        margin: 4rem;
+
+        h3{
+            padding: 4rem 0 3rem;
+            margin-top: 4rem;
+        }
+    }
+
+// max-screen
+    @media (min-width: 70rem){
+        margin: 1rem auto;
+        padding: 2rem;
+    }
+}

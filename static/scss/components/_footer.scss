@@ -1,0 +1,39 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+// MARQUEE FROM: https://codepen.io/hexagoncircle/pen/eYMrGwW
+footer {
+    background-color: $footer-background;
+    color: $txt-light;
+    font-family: $header-font;
+    width: 100%;
+    height: 5rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    gap: 2rem;
+
+    ul{
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: space-around;
+        animation: scroll 10s linear infinite;
+
+        li{
+            list-style: none;
+            text-align: center;
+            min-width: max-content;
+        }
+    }
+}
+@keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - 2rem));
+    }
+  }

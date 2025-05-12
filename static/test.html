@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="custom.css">
+
+</head>
+<body>
+    <header>
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <div class="hero">
+                <p>THE</p>
+                <p>secret</p>
+                <p>WALL</p>
+            </div>
+        </a>
+        <nav>
+            <div class="">
+                <ul class="">
+                    <li class="">
+                        <a class="" href="{{ url_for('secrets') }}">All Secrets</a>
+                    </li>
+                    <li class="">
+                        <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
+                    </li>
+                    <li class="">
+                        <a class="" href="{{ url_for('profile') }}">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="page-secret-details">
+            <h2>Secret Detail</h2>
+          
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ secret.content }}</p>
+                    <p class="text-muted small">
+                    carded by {{ secret.anonymous_carder }} on {{ secret.created_date }}
+                    {% if secret.expires_at %}
+                        | Expires at: {{ secret.expires_at }}
+                    {% endif %}
+                    {% if secret.likes is defined %}
+                        | ❤️ Likes: {{ secret.likes }}
+                    {% endif %}
+                    </p>
+                </div>
+            </div>
+          
+            <a href="{{ url_for('secrets') }}" class="btn btn-outline-secondary mt-3">← Back to All Secrets</a>
+        </div>
+    </main>
+    <footer>
+        <ul>
+            <li>Ziyuan Zhao</li>
+            <li>Abhinav Dixit</li>
+            <li>Chenyue Li</li>
+            <li>Marcus Bonacci</li>
+            <li>Quang Long Chau</li>
+            <li>Gillian Downey</li>
+        </ul>
+        <!-- hidden -->
+        <ul aria-hidden="true" >
+            <li>Ziyuan Zhao</li>
+            <li>Abhinav Dixit</li>
+            <li>Chenyue Li</li>
+            <li>Marcus Bonacci</li>
+            <li>Quang Long Chau</li>
+            <li>Gillian Downey</li>
+        </ul>
+    </footer>
+</body>
+</html>

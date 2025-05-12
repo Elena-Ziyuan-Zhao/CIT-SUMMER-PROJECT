@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 
-{# css_file is not set — will use Bootstrap as default 
-  {% set css_file = url_for('static', filename='static/custom.css') %}
-  #}
-
 {% block pagetitle %}My Profile{% endblock %}
 
 {% block content %}
+<div class="profile-page">
   <h2>Profile</h2>
 
   <div class="mb-4">
@@ -15,7 +12,6 @@
     <p><strong>Joined:</strong> {{ user.created_date }}</p>
   </div>
 
-  <hr>
   <h3>My Secrets</h3>
 
   {% for secret in user.secrets %}
@@ -37,8 +33,12 @@
         <a href="{{ url_for('edit_secret', id=secret.id) }}" class="btn btn-sm btn-warning">Edit</a>
       </div>
     </div>
-  {% else %}
-    <p>You haven't posted any secrets yet.</p>
-  {% endfor %}
-  <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
+
+    {% else %}
+      <p class="profile-no-posts">You haven't carded any secrets yet.</p>
+
+    {% endfor %}
+    <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
+  </div>
+  
 {% endblock %}
