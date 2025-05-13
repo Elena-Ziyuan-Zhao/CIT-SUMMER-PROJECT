@@ -4,26 +4,23 @@ footer {
   background-color: #2B00CC;
   color: #F3F4EC;
   font-family: "Space Mono", monospace;
-  width: 100%;
-  height: 5rem;
+  height: 3rem;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
-  gap: 2rem;
 }
-footer ul {
+footer .marquee {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  justify-content: space-around;
-  animation: scroll 10s linear infinite;
+  align-items: center;
+  width: max-content;
+  animation: scroll 25s linear infinite;
 }
-footer ul li {
-  list-style: none;
-  text-align: center;
-  min-width: max-content;
+footer .marquee .marquee-content {
+  display: flex;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+footer .marquee p {
+  white-space: nowrap;
 }
 
 @keyframes scroll {
@@ -31,7 +28,7 @@ footer ul li {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-100% - 2rem));
+    transform: translateX(calc(-100% - 1rem));
   }
 }
 header {
@@ -56,51 +53,102 @@ header .hero p:nth-child(3) {
 
 nav {
   background-color: #F2F47B;
-  height: 10.25rem;
-}
-nav ul {
+  height: auto;
   border-top: 2px solid #2B00CC;
+  border-bottom: 2px solid #2B00CC;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  list-style-type: none;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
-  padding-left: 0;
 }
-nav ul li {
-  font-size: 1.125rem;
-  border-bottom: 2px solid #2B00CC;
-  width: 100vw;
-  text-align: center;
-  padding: 1rem 0;
-  text-transform: lowercase;
+nav #menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
-nav ul li:hover {
+nav #menu-toggle img {
+  height: 3rem;
+  width: 3rem;
+}
+nav #menu-toggle img path {
+  fill: #2B00CC;
+  stroke: #2B00CC;
+}
+nav .menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+nav .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+nav .menu ul li {
+  width: 100%;
+  height: 3rem;
+  border-top: 1px solid #2B00CC;
+}
+nav .menu ul li a {
+  color: #2B00CC;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.25rem;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+}
+nav .menu ul li a:hover, nav .menu ul li a:focus {
   background-color: #ebed65;
 }
-nav ul li a {
-  width: 100vw;
-  padding: 1rem 3rem;
-  text-decoration: none;
-  margin: 0;
+nav .menu.open {
+  max-height: 300px;
+  padding: 0;
 }
-@media (min-width: 634px) {
+@media (min-width: 48rem) {
   nav {
-    height: 3.75rem;
-  }
-  nav ul {
     flex-direction: row;
+  }
+  nav #menu-toggle {
+    display: none;
+  }
+  nav .menu {
+    all: unset;
+    width: 100%;
+  }
+  nav .menu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
     max-width: 70rem;
-    margin: 0 auto;
-    border-bottom: 2px solid #2B00CC;
+    margin: auto;
   }
-  nav ul li {
-    font-size: 22px;
-    border-bottom: none;
+  nav .menu ul li {
+    flex: 1;
+    border: none;
+    border-left: 2px solid #2B00CC;
+    height: unset;
   }
-  nav ul li a {
-    padding: 1rem;
-    margin: 0 0.125rem;
+  nav .menu ul li a {
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+  nav .menu ul li:nth-child(3) {
+    border-right: 2px solid #2B00CC;
   }
 }
 
@@ -121,7 +169,7 @@ html {
 /**
  * Remove the margin in all browsers.
  */
-* {
+html {
   margin: 0;
 }
 
@@ -432,15 +480,10 @@ template {
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
   background-color: #F3F4EC;
-  height: 8rem;
+  height: 18rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(1rem, 2.25vw, 1.25rem);
-}
-.all-secrets-page .card-body .card-text,
-.top-secrets-page .card-body .card-text {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
 }
@@ -490,7 +533,7 @@ template {
   .all-secrets-page .card-body,
   .top-secrets-page .card-body {
     margin-bottom: 0;
-    height: 15rem;
+    height: 20rem;
     display: flex;
     padding: 2rem;
     flex-direction: column;
@@ -499,7 +542,6 @@ template {
   .all-secrets-page .card-body .card-text,
   .top-secrets-page .card-body .card-text {
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
     max-width: 400px;
   }
@@ -514,6 +556,10 @@ template {
 
 html {
   width: 100%;
+}
+html body {
+  margin: 0;
+  min-height: 100%;
 }
 html body main {
   min-height: 100%;
@@ -531,31 +577,44 @@ html body main {
   text-align: center;
 }
 .create-secret-page p {
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(1rem, 2.25vw, 1.25rem);
   text-align: center;
   margin-bottom: 3rem;
 }
 .create-secret-page form {
   display: flex;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
   flex-direction: column;
   gap: 0.75rem;
   align-items: center;
+  width: 100%;
 }
-.create-secret-page form textarea,
+.create-secret-page form .form-label {
+  margin: 0.25rem 1rem;
+}
+.create-secret-page form .text-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.create-secret-page form label {
+  display: block;
+  text-align: left;
+  width: 91%;
+  margin: 0.25rem 1rem;
+}
+.create-secret-page form textarea#title.form-control,
+.create-secret-page form textarea#content.form-control,
 .create-secret-page form input {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   border: 0.125rem solid #2B00CC;
   border-radius: 4px;
   padding: 0.5rem;
-  background-color: #D9D9D9;
+  background-color: #e1dfdf;
   color: #525252;
-  width: 90%;
+  min-width: 90%;
   margin: auto;
-}
-.create-secret-page form textarea:nth-child(2) {
-  height: 8rem;
 }
 .create-secret-page form button {
   background-color: #F2F47B;
@@ -574,6 +633,11 @@ html body main {
 }
 .create-secret-page form button:hover {
   background-color: #ebed65;
+}
+@media (min-width: 600px) {
+  .create-secret-page form .form-label {
+    margin: 0.25rem 2rem;
+  }
 }
 .alert.alert-danger {
   display: flex;
@@ -608,6 +672,75 @@ html body main {
   text-decoration: none;
 }
 .alert.alert-danger a:hover {
+  background-color: #ebed65;
+}
+
+.page-edit-post {
+  padding: 0.5rem;
+  margin: 3rem auto 20rem;
+  color: #2B00CC;
+  max-width: 48rem;
+}
+.page-edit-post h2 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  text-align: center;
+}
+.page-edit-post p {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.page-edit-post form {
+  display: flex;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+}
+.page-edit-post form div {
+  width: 90%;
+  margin: 0;
+}
+.page-edit-post form .form-label {
+  margin: 0.25rem 1rem;
+}
+.page-edit-post form label {
+  display: block;
+  text-align: left;
+  width: 101%;
+  margin: 0.25rem 0rem;
+}
+.page-edit-post form textarea {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  border: 0.125rem solid #2B00CC;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #e1dfdf;
+  color: #525252;
+  min-width: 90%;
+  margin: auto;
+  margin: 0 auto;
+  width: 95%;
+}
+.page-edit-post form .btn {
+  background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.page-edit-post form .btn a {
+  text-decoration: none;
+}
+.page-edit-post form .btn:hover {
   background-color: #ebed65;
 }
 
@@ -705,7 +838,7 @@ html body main {
   margin: 0 0.5rem;
   color: #2B00CC;
   max-width: 70rem;
-  height: calc(100vh - 20rem);
+  min-height: calc(100% - 20rem);
   text-align: center;
 }
 .page-secret-details h2 {
@@ -735,7 +868,8 @@ html body main {
   font-size: clamp(1.25rem, 2.75vw, 1.75rem);
   font-weight: 600;
 }
-.page-secret-details .btn {
+.page-secret-details .btn,
+.page-secret-details a.btn {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
@@ -746,12 +880,55 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  width: 14rem;
+  margin: auto;
 }
-.page-secret-details .btn a {
+.page-secret-details .btn a,
+.page-secret-details a.btn a {
   text-decoration: none;
 }
-.page-secret-details .btn:hover {
+.page-secret-details .btn:hover,
+.page-secret-details a.btn:hover {
   background-color: #ebed65;
+}
+.page-secret-details .post-comment h4,
+.page-secret-details .post-rating h4,
+.page-secret-details .comment-section h4 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+}
+.page-secret-details .post-rating form .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+.page-secret-details .post-rating form .input-group select {
+  border: 2px solid #2B00CC;
+  border-radius: 4px;
+  font-family: "Space Grotesk", sans-serif;
+  color: #525252;
+  text-align: center;
+  width: 14rem;
+  padding: 0.5rem;
+  margin: auto;
+}
+.page-secret-details .post-comment form div textarea {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  border: 0.125rem solid #2B00CC;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #e1dfdf;
+  color: #525252;
+  min-width: 90%;
+  margin: auto;
+  height: 8rem;
+  margin-bottom: 0.5rem;
+}
+.page-secret-details .comment-section p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
 }
 @media (min-width: 600px) {
   .page-secret-details {

@@ -29,3 +29,15 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin text-field{
+    font-family: $body-font;
+    font-size: $body-font-size;
+    border: .125rem solid $brand-border;
+    border-radius: 4px;
+    padding: 0.5rem;
+    background-color: $field-background;
+    color: $field-color;
+    min-width: 90%;
+    margin: auto;
+}
