@@ -9,12 +9,13 @@ footer {
     height: 3rem;
     position: relative;
     overflow: hidden;
+    margin-top: auto;
 
     .marquee{
       display: flex;
       align-items: center;
       width: max-content;
-      animation: scroll 25s linear infinite;
+      animation: scroll 35s linear infinite;
 
       .marquee-content{
         display: flex;
