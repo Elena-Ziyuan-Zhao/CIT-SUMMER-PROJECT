@@ -83,7 +83,7 @@ nav #menu-toggle img path {
 nav .menu {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -475,6 +475,35 @@ template {
   text-align: center;
   margin: 3rem 0 3rem;
 }
+.all-secrets-page .sort-wrapper,
+.top-secrets-page .sort-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all-secrets-page .btn,
+.top-secrets-page .btn {
+  background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+  max-width: fit-content;
+  margin-bottom: 1rem;
+}
+.all-secrets-page .btn a,
+.top-secrets-page .btn a {
+  text-decoration: none;
+}
+.all-secrets-page .btn:hover,
+.top-secrets-page .btn:hover {
+  background-color: #ebed65;
+}
 .all-secrets-page .card-body,
 .top-secrets-page .card-body {
   border: 2px solid #2B00CC;
@@ -524,12 +553,16 @@ template {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  .all-secrets-page h2,
-  .top-secrets-page h2 {
-    padding: 4rem 0 3rem;
+  .all-secrets-page .sort-wrapper,
+  .top-secrets-page .sort-wrapper {
+    padding: 1rem 0 3rem;
     margin: 0;
     padding-top: 1rem;
     grid-column: span 2;
+  }
+  .all-secrets-page .sort-wrapper h2,
+  .top-secrets-page .sort-wrapper h2 {
+    margin-top: 1rem;
   }
   .all-secrets-page .card-body,
   .top-secrets-page .card-body {
