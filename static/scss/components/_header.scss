@@ -5,10 +5,17 @@ header {
     font-family: $header-font;
     font-size: $header-font-size;
     background-color: $brand-background;
+    margin-bottom: 2rem;
+    a {
+        text-decoration: none;
+    }
 
     .hero {
         display: flex;
         justify-content: space-around;
+        max-width: $max-content-width;
+        margin: auto;
+
 
         p:nth-child(1) {
             margin-top: 50px;
@@ -22,21 +29,3 @@ header {
         }
     }
 }
-
-// header nav{
-
-//     .container{
-
-//         .navbar-brand{
-//             text-decoration: none;
-//         }
-
-
-//         .collapse{
-//             .navbar-nav{
-//                 list-style: none;
-//                 padding-left: 0;
-//             }
-//         }
-//     }
-// }

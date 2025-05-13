@@ -11,6 +11,7 @@ nav {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    font-size: $header-font-size;
   
     #menu-toggle {
         background: none;
@@ -92,9 +93,10 @@ nav {
             ul {
                 display: flex;
                 flex-direction: row;
-                gap: 2rem;
+                gap: 0rem;
                 justify-content: center;
                 max-width: $max-content-width;
+                width: 100%;
                 margin: auto;
         
                 li {
@@ -102,14 +104,17 @@ nav {
                     border: none;
                     border-left: 2px solid $brand-border;
                     height: unset;
+                    width: 100%;
         
                     a {
                         height: auto;
                         padding: 0.5rem 1rem;
+                        width: 100%;
                     }
 
                     &:nth-child(3){
                         border-right: 2px solid $brand-border;
+                        padding-right: 0;
                     }
                 }
             }

@@ -7,7 +7,7 @@ footer {
   height: 3rem;
   position: relative;
   overflow: hidden;
-  margin-top: auto;
+  margin-top: 2rem;
 }
 footer .marquee {
   display: flex;
@@ -34,12 +34,18 @@ footer .marquee p {
 }
 header {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   background-color: #F3F4EC;
+  margin-bottom: 2rem;
+}
+header a {
+  text-decoration: none;
 }
 header .hero {
   display: flex;
   justify-content: space-around;
+  max-width: 70rem;
+  margin: auto;
 }
 header .hero p:nth-child(1) {
   margin-top: 50px;
@@ -62,6 +68,7 @@ nav {
   align-items: center;
   justify-content: flex-start;
   width: 100%;
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
 }
 nav #menu-toggle {
   background: none;
@@ -133,9 +140,10 @@ nav .menu.open {
   nav .menu ul {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 0rem;
     justify-content: center;
     max-width: 70rem;
+    width: 100%;
     margin: auto;
   }
   nav .menu ul li {
@@ -143,13 +151,16 @@ nav .menu.open {
     border: none;
     border-left: 2px solid #2B00CC;
     height: unset;
+    width: 100%;
   }
   nav .menu ul li a {
     height: auto;
     padding: 0.5rem 1rem;
+    width: 100%;
   }
   nav .menu ul li:nth-child(3) {
     border-right: 2px solid #2B00CC;
+    padding-right: 0;
   }
 }
 
@@ -471,7 +482,7 @@ template {
 .all-secrets-page h2,
 .top-secrets-page h2 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   text-align: center;
   margin: 3rem 0 3rem;
 }
@@ -509,7 +520,7 @@ template {
   border: 2px solid #2B00CC;
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #F3F4EC;
+  background-color: #fefff8;
   height: 18rem;
   display: flex;
   flex-direction: column;
@@ -520,14 +531,14 @@ template {
 .all-secrets-page .card-body .card-text a,
 .top-secrets-page .card-body .card-text a {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   font-weight: 600;
   text-decoration: none;
 }
 .all-secrets-page .all-secrets-no-posts,
 .top-secrets-page .all-secrets-no-posts {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   text-align: center;
 }
 @media (min-width: 600px) {
@@ -590,6 +601,9 @@ template {
 
 html {
   width: 100%;
+  background-image: url(../../../assets/images/background.jpg);
+  background-repeat: repeat;
+  background-size: 25rem;
 }
 html body {
   margin: 0;
@@ -599,7 +613,21 @@ html body {
   min-height: 100vh;
 }
 html body main {
-  min-height: 100%;
+  background-color: #F3F4EC;
+  margin: auto 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2B00CC;
+  box-shadow: 0.375rem 0.375rem rgba(82, 82, 82, 0.3411764706);
+  height: min-content;
+  max-width: 70rem;
+}
+@media (min-width: 48rem) {
+  html body main {
+    margin: auto;
+  }
 }
 
 .create-secret-page {
@@ -610,7 +638,7 @@ html body main {
 }
 .create-secret-page h2 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   text-align: center;
 }
 .create-secret-page p {
@@ -720,7 +748,7 @@ html body main {
 }
 .page-edit-post h2 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   text-align: center;
 }
 .page-edit-post p {
@@ -788,7 +816,7 @@ html body main {
 }
 .profile-page h2, .profile-page h3 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   font-weight: 600;
   text-align: center;
 }
@@ -811,11 +839,11 @@ html body main {
   border: 2px solid #2B00CC;
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #F3F4EC;
+  background-color: #fefff8;
 }
 .profile-page .card.mb-3 .card-body .card-title {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   font-weight: 600;
 }
 .profile-page .profile-no-posts {
@@ -880,7 +908,7 @@ html body main {
 }
 .page-secret-details h2 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   margin: 3rem 0;
   font-weight: 600;
   text-align: center;
@@ -892,7 +920,7 @@ html body main {
   border: 2px solid #2B00CC;
   padding: 0.75rem 0.75rem;
   margin-bottom: 1rem;
-  background-color: #F3F4EC;
+  background-color: #fefff8;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   text-align: left;
@@ -902,7 +930,7 @@ html body main {
 }
 .page-secret-details .card .card-body .card-title {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   font-weight: 600;
 }
 .page-secret-details .btn,
@@ -932,7 +960,7 @@ html body main {
 .page-secret-details .post-rating h4,
 .page-secret-details .comment-section h4 {
   font-family: "Space Mono", monospace;
-  font-size: clamp(1.25rem, 2.75vw, 1.75rem);
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
 }
 .page-secret-details .post-rating form .input-group {
   display: flex;
@@ -993,11 +1021,10 @@ html body main {
 
 .text-center {
   text-align: center;
-  height: calc(100vh - 20rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem 2rem;
   color: #2B00CC;
 }
 .text-center h1 {
@@ -1015,6 +1042,7 @@ html body main {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  max-width: 70rem;
 }
 .text-center .home-btn-container .btn {
   background-color: #F2F47B;
@@ -1048,9 +1076,9 @@ html body main {
     margin: 0;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 48rem) {
   .text-center {
-    height: calc(100vh - 24rem);
+    max-width: 51rem;
   }
 }
 
