@@ -24,9 +24,9 @@
         <p class="card-text"><a href="{{ url_for('secret_detail', id=secret.id) }}">{{ secret.title }}</a></p>
         <p class="card-text">{{ secret.content }}</p>
         <p class="text-muted small">
-          Posted on {{ secret.created_date.strftime('%Y-%m-%d %H:%M') }}
+          Posted on {{ secret.created_date.strftime("%Y-%m-%d %H:%M:%S")  }}
           {% if secret.expires_at %}
-            | Expires at: {{ secret.expires_at.strftime('%Y-%m-%d %H:%M') }}
+            | Expires at: {{ secret.expires_at.strftime("%Y-%m-%d %H:%M:%S")  }}
           {% else %}
             <span class="text-success">Permanent</span>
           {% endif %}
