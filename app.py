@@ -6,12 +6,15 @@ from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 
+from routes import register_routes
+
 app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wall.db"
 app.instance_path = Path("wall").resolve()
 db.init_app(app)
 
+register_routes(app)
 
 scheduler = BackgroundScheduler()
 

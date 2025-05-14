@@ -12,7 +12,9 @@ class User(db.Model):
     password = db.mapped_column(db.String)
     created_date = db.mapped_column(db.DateTime, default = datetime.now())
     
-    secrets = db.relationship("Secret", back_populates="user")
+    secrets = db.relationship("Secret", back_populates="user", cascade="all, delete-orphan") 
+    # Cascade Delete: when we delete a user, all their secrets are deleted too
+    
     # comments = db.relationship("Comment", back_populates="user")
 
 

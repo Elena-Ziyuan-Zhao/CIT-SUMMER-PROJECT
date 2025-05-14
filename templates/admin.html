@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+
+<!-- admin info display -->
+<div style="margin-bottom: 20px; padding: 10px; background-color: #f3f3f3; border: 1px solid #ccc; border-radius: 6px;">
+    Logged in as: <strong>{{ current_admin_username }}</strong>
+    <span style="color: white; background-color: #007bff; padding: 2px 6px; border-radius: 4px; margin-left: 10px;">Admin</span>
+</div>
+
+<!-- link buttons to other page -->
+<div style="display: flex; gap: 20px;">
+    <a href="{{ url_for('admin.admin_users') }}">
+        <button style="padding: 10px 20px; font-size: 16px;">Manage Users</button>
+    </a>
+    <a href="{{ url_for('admin.admin_secrets') }}">
+        <button style="padding: 10px 20px; font-size: 16px;">Manage Secrets</button>
+    </a>
+</div>
+
+{% endblock %}
