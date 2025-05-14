@@ -16,6 +16,8 @@ def login():
     user = db.session.execute(db.select(User).where(User.email == email)).scalar()
     if user and user.check_password(password):
         login_user(user)
+        if user.user_type == "admin":
+            return redirect(url_for("admin.admin_dashboard"))
         return redirect(url_for('home'))
     else:
         flash("Invalid email or password")

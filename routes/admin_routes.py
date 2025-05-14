@@ -2,21 +2,18 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from models.user import User
 from models.secret import Secret
 from db import db
+from flask_login import current_user
 
 admin_bp = Blueprint("admin", __name__)
 
 @admin_bp.route("/")
 def admin_dashboard():
-    # Uncomment when session-based login is implemented:
-    # from flask import session
-    # current_admin_username = session.get("username", "admin")
-    
-    current_admin_username = "admin_user"  # temporary for display
+
 
     users = db.session.execute(db.select(User)).scalars()
     secrets = db.session.execute(db.select(Secret)).scalars()
 
-    return render_template("admin.html", current_admin_username=current_admin_username, users=users, secrets=secrets)
+    return render_template("admin.html", current_user = current_user)
  
 
 # manage users
