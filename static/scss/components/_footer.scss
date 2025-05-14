@@ -30,9 +30,9 @@ footer {
 }
 @keyframes scroll {
     from {
-      transform: translateX(0);
+      transform: translateX(100vw);
     }
     to {
-      transform: translateX(calc(-100% - 1rem));
+      transform: translateX(calc(-100%));
     }
   }
