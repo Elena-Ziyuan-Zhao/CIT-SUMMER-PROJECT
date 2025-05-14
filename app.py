@@ -8,9 +8,9 @@ import atexit
 from routes import *
 from flask_login import LoginManager, login_required, current_user
 
-
 app = Flask(__name__)
 app.register_blueprint(auth, url_prefix="/auth")
+app.register_blueprint(admin_bp, url_prefix="/admin")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wall.db"
 app.instance_path = Path("wall").resolve()
@@ -70,6 +70,7 @@ def secret_detail(id):
         return render_template("error.html", message="Secret not found"), 404
     return render_template("secret_detail.html", secret=secret)
 
+
 @app.route("/secrets/<int:id>", methods=["POST"])
 def react_secret(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
@@ -96,6 +97,8 @@ def profile_detail(id):
         return render_template("error.html", message="Access forbidden"), 403
     user = db.session.execute(db.select(User).where(User.id == id)).scalar()
     return render_template("profile.html", user=user)
+
+
 
 @app.route("/secret/<int:id>/delete", methods = ["POST"])
 def delete_secret(id):

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script>
+function confirmDeleteUser(username) {
+    return confirm("Are you sure you want to delete user '" + username + "'?");
+}
+</script>
+
+<h2>Manage Users</h2>
+
+<div style="text-align: right; margin-bottom: 20px;">
+    <a href="{{ url_for('admin.admin_dashboard') }}">
+        <button style="padding: 6px 12px; font-size: 14px;">← Back to Dashboard</button>
+    </a>
+</div>
+
+<ul>
+    {% for user in users %}
+        <li>
+            ID {{ user.id }} —
+            <form action="{{ url_for('admin.edit_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                <input type="text" name="name" value="{{ user.username }}" />
+                <button type="submit">Save</button>
+            </form>
+            <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirmDeleteUser('{{ user.username }}');">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
