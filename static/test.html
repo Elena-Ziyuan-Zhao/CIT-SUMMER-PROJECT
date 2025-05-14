@@ -34,43 +34,59 @@
         </nav>
     </header>
     <main>
-        <div class="profile-page">
-            <h2>Profile</h2>
+        <div class="page-secret-details">
+            <h2>Secret Detail</h2>
           
-            <div class="mb-4">
-              <p><strong>Username:</strong> {{ user.username }}</p>
-              <p><strong>Email:</strong> {{ user.email }}</p>
-              <p><strong>Joined:</strong> {{ user.created_date }}</p>
-            </div>
-          
-            <h3>My Secrets</h3>
-          
-            {% for secret in user.secrets %}
-              <div class="card mb-3">
-                <div class="card-body">
-                  <p class="card-title"><a href="{{ url_for('secret_detail', id=secret.id) }}">{{ secret.title }}</a></p>
-                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque eum ad culpa quos harum? Voluptate incidunt doloremque vel delectus, exercitationem magni similique quaerat modi cumque eveniet beatae numquam cupiditate praesentium!</p>
-                  <p class="text-muted small">
-                    Posted on {{ secret.created_date.strftime('%Y-%m-%d %H:%M') }}
-                    {% if secret.expires_at %}
-                      | Expires at: {{ secret.expires_at.strftime('%Y-%m-%d %H:%M') }}
-                    {% else %}
-                      <span class="text-success">Permanent</span>
-                    {% endif %}
-                  </p>
-                  <form  method="POST" action="{{ url_for('delete_secret', id=secret.id) }}">
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                  </form>
-                  <a href="{{ url_for('edit_secret', id=secret.id) }}" class="btn btn-sm btn-warning">Edit</a>
-                </div>
+            <div class="card">
+              <div class="card-body">
+                <p class="card-title">{{ secret.title }}</p>
+                <p class="card-text">{{ secret.content }}</p>
+                <p class="text-muted small">
+                  carded by {{ secret.anonymous_carder }} on {{ secret.created_date }}
+                  {% if secret.expires_at %}
+                    | Expires at: {{ secret.expires_at }}
+                  {% endif %}
+                </p>
+                <p>{{ secret.rating }} 🌶️s</p>
               </div>
-          
-              {% else %}
-                <p class="profile-no-posts">You haven't posted any secrets yet.</p>
-          
-              {% endfor %}
-              <button><a href= "{{ url_for('create_secret', id=user.id) }}" >tell a secret</a></button>
             </div>
+          
+            <div class="mb-4 post-rating">
+              <h4>Rate this Secret</h4>
+              <form method="POST" action="{{ url_for('react_secret', id=secret.id) }}">
+                <div class="input-group w-25">
+                  <select name="rating" class="form-select" required>
+                    <option value="" disabled selected>Select rating</option>
+                    <option value="1">🌶️ 1</option>
+                    <option value="2">🌶️🌶️ 2</option>
+                    <option value="3">🌶️🌶️🌶️ 3</option>
+                    <option value="4">🌶️🌶️🌶️🌶️ 4</option>
+                    <option value="5">🌶️🌶️🌶️🌶️🌶️ 5</option>
+                  </select>
+                  <button type="submit" class="btn btn-outline-primary">Submit Rating</button>
+                </div>
+              </form>
+            </div>
+          
+            <div class="mb-4 post-comment">
+              <h4>Leave a Comment</h4>
+              <form method="POST" action="{{ url_for('react_secret', id=secret.id) }}">
+                <div class="mb-2">
+                  <textarea name="comment" class="form-control" rows="3" placeholder="Write your comment here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
+              </form>
+            </div>
+            <div class="comment-section">
+              <h4>Comments</h4>
+                  <div class="border rounded p-2 mb-2">
+                    <p class="mb-1">{{ comment.comment }}</p>
+                    <small class="text-muted"> on {{ comment.commented_at}}</small>
+                  </div>
+                <p class="text-muted">No comments yet.</p>
+            </div>
+            <a href="{{ url_for('secrets') }}" class="btn btn-outline-secondary mt-3">← Back to All Secrets</a>
+          </div>
     </main>
     <footer>
         <div class="marquee">

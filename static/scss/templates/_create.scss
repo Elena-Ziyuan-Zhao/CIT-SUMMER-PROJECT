@@ -3,9 +3,9 @@
 
 .create-secret-page{
     padding: 0.5rem;
-    margin:3rem auto 20rem;
     color: $txt-dark;
-    max-width: 48rem;
+    width: 100%;
+    max-width: 28rem;
 
     h2{
         font-family: $header-font;
@@ -55,7 +55,7 @@
         }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 37.5rem) {
         form{
             .form-label{
                 margin: 0.25rem 2rem;
@@ -63,7 +63,7 @@
         }
     }
 
-    @media (min-width: 1024px){
+    @media (min-width: 48rem){
 
     }
 }

@@ -618,6 +618,7 @@ html body main {
   margin: auto 1rem;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 2px solid #2B00CC;
@@ -644,9 +645,9 @@ html body main {
 
 .create-secret-page {
   padding: 0.5rem;
-  margin: 3rem auto 20rem;
   color: #2B00CC;
-  max-width: 48rem;
+  width: 100%;
+  max-width: 28rem;
 }
 .create-secret-page h2 {
   font-family: "Space Mono", monospace;
@@ -711,7 +712,7 @@ html body main {
 .create-secret-page form button:hover {
   background-color: #ebed65;
 }
-@media (min-width: 600px) {
+@media (min-width: 37.5rem) {
   .create-secret-page form .form-label {
     margin: 0.25rem 2rem;
   }
@@ -922,7 +923,7 @@ html body main {
 }
 
 .page-secret-details {
-  margin: 0 0.5rem;
+  margin: 0 0.5rem 2rem;
   color: #2B00CC;
   max-width: 60rem;
   min-height: calc(100% - 20rem);
@@ -931,7 +932,7 @@ html body main {
 .page-secret-details h2 {
   font-family: "Space Mono", monospace;
   font-size: clamp(1.25rem, 2.75vw, 1.5rem);
-  margin: 3rem 0;
+  margin: 1rem 0;
   font-weight: 600;
   text-align: center;
 }
@@ -940,7 +941,7 @@ html body main {
 }
 .page-secret-details .card .card-body {
   border: 2px solid #2B00CC;
-  padding: 0.75rem 0.75rem;
+  padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
   background-color: #fefff8;
   font-family: "Space Grotesk", sans-serif;
@@ -1013,9 +1014,30 @@ html body main {
   height: 8rem;
   margin-bottom: 0.5rem;
 }
-.page-secret-details .comment-section p {
+.page-secret-details .comment-section {
+  margin-bottom: 2rem;
+}
+.page-secret-details .comment-section h4 {
+  font-family: "Space Mono", monospace;
+  margin: 3rem auto 0;
+}
+.page-secret-details .comment-section p,
+.page-secret-details .comment-section small {
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
+}
+.page-secret-details .comment-section small {
+  font-size: 0.75rem;
+}
+.page-secret-details .comment-section div {
+  text-align: left;
+  border-bottom: 1px solid #2B00CC;
+  padding: 1rem 0;
+  max-width: 50rem;
+  margin: auto;
+}
+.page-secret-details .comment-section div:last-child {
+  border-bottom: none;
 }
 @media (min-width: 600px) {
   .page-secret-details {
