@@ -3,8 +3,10 @@
 
 .profile-page{
     color: $txt-dark;
-    margin: 8px;
-    max-width: $max-content-width;
+    margin: 0;
+    max-width: 34rem;
+    min-width: 16rem;
+   
     h2,h3{
         font-family: $header-font;
         font-size: $header-font-size;
@@ -36,6 +38,7 @@
         .card-body{
             border: 2px solid $brand-border;
             padding: 0.25rem 0.75rem 0.5rem;
+
             margin-bottom: 1rem;
             background-color: $post-background;
 
@@ -53,18 +56,19 @@
         margin: 2rem 0 2rem
     }
 
-    button{
+    button,
+    .btn{
         @include button-style;
         margin: 1rem auto;
         display: flex;
         justify-content: center;
+        width: fit-content;
     }
 
 // page breaks
 
 // tablet
     @media (min-width: 600px) {
-        margin: 2rem;
         h3{
             padding: 3rem 0 2rem;
             margin-top: 3rem;
@@ -79,8 +83,7 @@
 
 // laptop
     @media (min-width: 1024px){
-        margin: 4rem;
-
+        margin: 1rem;
         h3{
             padding: 4rem 0 3rem;
             margin-top: 4rem;

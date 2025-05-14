@@ -17,7 +17,7 @@
   {% for secret in user.secrets %}
     <div class="card mb-3">
       <div class="card-body">
-        <p class="card-text"><a href="{{ url_for('secret_detail', id=secret.id) }}">{{ secret.title }}</a></p>
+        <p class="card-title"><a href="{{ url_for('secret_detail', id=secret.id) }}">{{ secret.title }}</a></p>
         <p class="card-text">{{ secret.content }}</p>
         <p class="text-muted small">
           Posted on {{ secret.created_date.strftime('%Y-%m-%d %H:%M') }}
@@ -35,10 +35,10 @@
     </div>
 
     {% else %}
-      <p class="profile-no-posts">You haven't carded any secrets yet.</p>
+      <p class="profile-no-posts">You haven't posted any secrets yet.</p>
 
     {% endfor %}
-    <button><a href= "{{ url_for('create_secret', id=user.id) }}" >create a secret</a></button>
+    <button><a href= "{{ url_for('create_secret', id=user.id) }}" >tell a secret</a></button>
   </div>
   
 {% endblock %}
