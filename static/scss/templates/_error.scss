@@ -1,0 +1,27 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+.alert.alert-danger{
+    @include flex-center;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 20rem;
+    color: $txt-dark;
+    min-height: 15rem;
+    
+    h2{
+        font-size: $header-font-size;
+        margin: 0;
+        font-family: $header-font;
+    }
+    p{
+        font-size: $body-font-size;
+        font-family: $body-font;
+        margin: 2rem 0;
+    }
+
+    a{
+        @include button-style;
+    }
+}

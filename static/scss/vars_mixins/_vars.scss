@@ -1,0 +1,35 @@
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+$header-font: "Space Mono", monospace;
+$body-font: "Space Grotesk", sans-serif; 
+$header-font-size: clamp(1.25rem, 2.75vw, 1.5rem);
+$body-font-size: clamp(1rem, 2.25vw, 1.25rem);
+$max-content-width: 60rem;
+
+$txt-dark: #2B00CC;
+$txt-light: #F3F4EC;
+$txt-alt: #525252;
+
+/* ----- color scheme ----- */
+// main
+$background-color: #E0E0E0;
+$post-background: #fefff8;
+$shadow-colour: #52525257;
+
+// header
+$header-background: #F2F47B;
+$brand-background: #F3F4EC;
+$brand-border: #2B00CC;
+
+// footer
+$footer-background: #2B00CC;
+
+// form fields
+$field-color: #525252;
+$field-background: #e1dfdf;
+
+// btn
+$btn-background: #F2F47B;
+$btn-border: #2B00CC;
+
+$btn-background-hover: #ebed65;

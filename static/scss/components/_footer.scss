@@ -1,0 +1,38 @@
+@use '../vars_mixins/vars' as *;
+@use '../vars_mixins/mixins' as *;
+
+// MARQUEE FROM: https://codepen.io/hexagoncircle/pen/eYMrGwW
+footer {
+    background-color: $footer-background;
+    color: $txt-light;
+    font-family: $header-font;
+    height: 3rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+
+    .marquee{
+      display: flex;
+      align-items: center;
+      width: max-content;
+      animation: scroll 35s linear infinite;
+
+      .marquee-content{
+        display: flex;
+        gap: 1rem;
+
+        margin-right: 1rem;
+      }
+      p{
+        white-space: nowrap;
+      }
+    }
+}
+@keyframes scroll {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(calc(-100%));
+    }
+  }
