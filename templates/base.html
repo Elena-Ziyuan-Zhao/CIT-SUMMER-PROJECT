@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block pagetitle %}Secret Wall{% endblock %}</title>
-    <link href="../static/custom.css" rel="stylesheet">
-    <script src="../scripts/nav-bar.js"></script>
+    <link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='scripts/nav-bar.js') }}"></script>
 </head>    
 <body>
     <!-- Navigation Bar -->
@@ -18,7 +18,7 @@
         </div>
     </a>
     <nav>
-        <button id="menu-toggle" aria-label="Toggle Menu"><img src="assets/icons/mobile-nav.svg" alt="toggle nav icon"></button>
+        <button id="menu-toggle" aria-label="Toggle Menu"><img src="{{ url_for('static', filename='assets/icons/mobile-nav.svg') }}" alt="toggle nav icon"></button>
         <div id="menu" class="menu">
           <ul class="nav">
             <li class="nav-item">
