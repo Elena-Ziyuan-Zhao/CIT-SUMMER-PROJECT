@@ -55,12 +55,27 @@ def home():
 @login_required
 def secrets():
     sort = request.args.get("sort")
-    if sort == "spicy":
-        secrets = db.session.execute(db.select(Secret).order_by(Secret.rating.desc())).scalars()
-    else:
-        secrets = db.session.execute(db.select(Secret)).scalars()
+    match sort:
+        case "spicy":
+            secrets = db.session.execute(
+                db.select(Secret)
+                .order_by(Secret.rating.desc())
+            ).scalars()
+        case "created-date":
+            secrets = db.session.execute(
+                db.select(Secret)
+                .order_by(Secret.created_date.desc())
+            ).scalars()
+        case "expiry-date":
+            secrets = db.session.execute(
+                db.select(Secret)
+                .order_by(Secret.expires_at.desc())
+            ).scalars()
+        case default:
+            secrets = db.session.execute(
+                db.select(Secret)
+            ).scalars()
     return render_template("all_secrets.html", secrets=secrets)
-
 
 # show single secret by id
 @app.route("/secrets/<int:id>", methods=["GET"])
