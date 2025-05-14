@@ -4,14 +4,18 @@
 
 {% block content %}
 <div class="text-center">
-    <h1 class="mb-4">Welcome to Secret Wall</h2>
+    {% if current_user.is_authenticated %}
+        <h1 class="mb-4">Hello, {{ current_user.first_name }} {{ current_user.second_name }} </h1>
+    {% endif %}
+
+    <h1 class="mb-4">Welcome to Secret Wall</h1>
     <p class="lead">Share your darkest secrets anonymously here.</p>
-    <div class="home-btn-container">
+
+
+    {% if current_user.is_authenticated %}
         <a href="{{ url_for('secrets') }}" class="btn btn-primary mt-3">View All Secrets</a>
-    {# TO DO: Once the route is ready, uncomment the following lines
-        <a href="{{ url_for('top_secrets') }}" class="btn btn-outline-success">Top Secrets</a>
-        <a href="{{ url_for('profile', id=1) }}" class="btn btn-outline-secondary">My Profile</a>
-    #}
-    </div>
+    {% else %}
+        <a href="{{ url_for('auth.get_login') }}" class="btn btn-outline-dark mt-3 ms-2">Login</a>
+    {% endif %}
 </div>
 {% endblock %}

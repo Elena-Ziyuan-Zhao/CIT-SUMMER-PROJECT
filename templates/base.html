@@ -9,40 +9,28 @@
 </head>    
 <body>
     <!-- Navigation Bar -->
-    <header>
-        <div class="hero">
-            <p>THE</p>
-            <p><a href="{{ url_for('home') }}">secret</a></p>
-            <p>WALL</p>
-        </div>
-        <nav>
-            <!-- <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a> -->
-            <div>
-                <ul>
-                    <li>
-                        <a href="{{ url_for('secrets') }}">Spicy secrets</a>
-                    </li>
-                    <li>
-                        <a href="#">Login</a>
-                    </li>
-                    <li>
-                        <a href="#">Tell a secret</a>
-                    </li>
-{# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
-                    <li>
-                        <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
-                    </li>
-#}
-{#                    {% if current_user.is_authenticated %}   
-                    <li>
-                        <a href="{{ url_for('profile') }}">Profile</a>
-                    </li>
-                        {% endif %}    #}
-                </ul>
-            </div>
-        </nav>
-    </header>
-
+    <nav class="navbar navbar-light bg-light px-4">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
+      
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
+          </li>
+      
+          {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile_detail', id=current_user.id) }}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="{{ url_for('auth.logout') }}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.get_login') }}">Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
     <!-- Page Content -->
     <main class="container">
         {% block content %}
