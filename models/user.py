@@ -1,6 +1,9 @@
 from db import db
 from datetime import datetime
-class User(db.Model):
+import hashlib
+from flask_login import UserMixin
+
+class User(db.Model, UserMixin):
     __tablename__ = "users" 
 
     id = db.mapped_column(db.Integer, primary_key = True)
@@ -16,7 +19,12 @@ class User(db.Model):
     # comments = db.relationship("Comment", back_populates="user")
 
 
+    def hash_passowrd(self, password):
+        hashed = hashlib.sha256(password.encode()).hexdigest()
+        self.password = hashed
     
+    def check_password(self, password):
+        return self.password == hashlib.sha256(password.encode()).hexdigest()
 
 
 

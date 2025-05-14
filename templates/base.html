@@ -8,29 +8,28 @@
 </head>    
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
-                    </li>
-{# TO DO: Once the route is ready, uncomment the following lines to add the links to the navbar
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('top_secrets') }}">Top Secrets</a>
-                    </li>
-#}
-{#                    {% if current_user.is_authenticated %}   
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
-                    </li>
-                      {% endif %}    #}
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <nav class="navbar navbar-light bg-light px-4">
+        <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
+      
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
+          </li>
+      
+          {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('profile_detail', id=current_user.id) }}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-danger" href="{{ url_for('auth.logout') }}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.get_login') }}">Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
     <!-- Page Content -->
     <main class="container mt-5">
         {% block content %}
