@@ -16,17 +16,17 @@ db.init_app(app)
 scheduler = BackgroundScheduler()
 
 def delete_expired_secrets():
+
     with app.app_context():
         now = datetime.now()
         expired_secrets = db.session.execute(db.select(Secret).where(Secret.expires_at < now)).scalars()
         for secret in expired_secrets:
-            db.session.delete(secret)
             print(f"Deleted {secret.title}")
+            db.session.delete(secret)
         db.session.commit()
     
-scheduler.add_job(delete_expired_secrets, 'interval', seconds=10)
+scheduler.add_job(delete_expired_secrets, 'interval', seconds=1)
 scheduler.start()
-
 atexit.register(lambda: scheduler.shutdown())
 
 
@@ -113,7 +113,7 @@ def create_secret(id):
         
         if 0 < total_minutes <= 2800:
             expires_at = datetime.now() + timedelta(minutes=total_minutes)
-            new_secret = Secret(title = title, content = content, user = user, expires_at = expires_at)
+            new_secret = Secret(title = title, content = content, user = user, expires_at = expires_at, created_date = datetime.now())
         else:
             new_secret = Secret(title = title, content = content, user = user)
         db.session.add(new_secret)
@@ -125,4 +125,3 @@ def create_secret(id):
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
-        
