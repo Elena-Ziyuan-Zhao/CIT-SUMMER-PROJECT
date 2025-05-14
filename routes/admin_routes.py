@@ -5,7 +5,7 @@ from db import db
 
 admin_bp = Blueprint("admin", __name__)
 
-@admin_bp.route("/admin")
+@admin_bp.route("/")
 def admin_dashboard():
     # Uncomment when session-based login is implemented:
     # from flask import session
@@ -21,12 +21,12 @@ def admin_dashboard():
 
 # manage users
 
-@admin_bp.route("/admin/users")
+@admin_bp.route("/users")
 def admin_users():
     users = db.session.execute(db.select(User)).scalars()
     return render_template("admin_users.html", users=users)
 
-@admin_bp.route("/admin/user/<int:user_id>/delete", methods=["POST"])
+@admin_bp.route("/user/<int:user_id>/delete", methods=["POST"])
 def delete_user(user_id):
     user = db.session.execute(db.select(User).where(User.id == user_id)).scalar()
     if user:
@@ -34,7 +34,7 @@ def delete_user(user_id):
         db.session.commit()
     return redirect(url_for("admin.admin_users"))
 
-@admin_bp.route("/admin/user/<int:user_id>/edit", methods=["POST"])
+@admin_bp.route("/user/<int:user_id>/edit", methods=["POST"])
 def edit_user(user_id):
     user = db.session.execute(db.select(User).where(User.id == user_id)).scalar()
     if user:
@@ -44,12 +44,12 @@ def edit_user(user_id):
 
 # manage secrets
 
-@admin_bp.route("/admin/secrets")
+@admin_bp.route("/secrets")
 def admin_secrets():
     secrets = db.session.execute(db.select(Secret)).scalars()
     return render_template("admin_secrets.html", secrets=secrets)
 
-@admin_bp.route("/admin/secret/<int:secret_id>/delete", methods=["POST"])
+@admin_bp.route("/secret/<int:secret_id>/delete", methods=["POST"])
 def admin_delete_secret(secret_id):
     secret = db.session.execute(
         db.select(Secret).where(Secret.id == secret_id)
@@ -60,7 +60,7 @@ def admin_delete_secret(secret_id):
     return redirect(url_for("admin.admin_secrets"))
 
 # read-only secret detail
-@admin_bp.route("/admin/secret/<int:secret_id>")
+@admin_bp.route("/secret/<int:secret_id>")
 def admin_secret_detail(secret_id):
     secret = db.session.execute(
         db.select(Secret).where(Secret.id == secret_id)

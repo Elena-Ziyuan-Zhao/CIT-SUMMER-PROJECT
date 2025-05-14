@@ -13,6 +13,7 @@ from routes import register_routes
 
 app = Flask(__name__)
 app.register_blueprint(auth, url_prefix="/auth")
+app.register_blueprint(admin_bp, url_prefix="/admin")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wall.db"
 app.instance_path = Path("wall").resolve()
