@@ -5,16 +5,31 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
+from routes import *
+from flask_login import LoginManager, login_required, current_user
+
 
 app = Flask(__name__)
+app.register_blueprint(auth, url_prefix="/auth")
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wall.db"
 app.instance_path = Path("wall").resolve()
 db.init_app(app)
 
 
-scheduler = BackgroundScheduler()
+# ============ user authentification initialization ===========
 
+app.config['SECRET_KEY'] = 'afa2d4bf0aac2567c176cec8839a37490447ad1ffcffe129d46ab37e07c65c79'
+login_manager = LoginManager()
+login_manager.login_view = 'auth.get_login'
+login_manager.init_app(app)
+@login_manager.user_loader
+def load_user(user_id):
+    return db.session.execute(db.select(User).where(User.id == user_id)).scalar()
+
+
+# ========== Timer ==============
+scheduler = BackgroundScheduler()
 def delete_expired_secrets():
     with app.app_context():
         now = datetime.now()
@@ -23,18 +38,18 @@ def delete_expired_secrets():
             db.session.delete(secret)
             print(f"Deleted {secret.title}")
         db.session.commit()
-    
+
 scheduler.add_job(delete_expired_secrets, 'interval', seconds=10)
 scheduler.start()
-
 atexit.register(lambda: scheduler.shutdown())
 
-
+# ================== routes ==================
 @app.route("/")
 def home():
     return render_template("home.html")
 
 @app.route("/secrets")
+@login_required
 def secrets():
     sort = request.args.get("sort")
     if sort == "spicy":
@@ -72,7 +87,10 @@ def react_secret(id):
     return render_template("secret_detail.html", secret=secret)
 
 @app.route("/profile/<int:id>", methods = ["GET"])
+@login_required
 def profile_detail(id):
+    if current_user.id != id:
+        return render_template("error.html", message="Access forbidden"), 403
     user = db.session.execute(db.select(User).where(User.id == id)).scalar()
     return render_template("profile.html", user=user)
 
