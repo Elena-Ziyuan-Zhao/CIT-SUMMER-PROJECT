@@ -6,7 +6,6 @@
 @use 'components/footer';
 @use 'components/header';
 @use 'components/nav';
-@use 'components/posts';
 
 // normalize
 @use 'generic/normalize';
@@ -17,6 +16,7 @@
 @use 'templates/create';
 @use 'templates/error';
 @use 'templates/edit_secret';
+@use 'templates/login_register';
 @use 'templates/profile';
 @use 'templates/secret_details';
 @use 'templates/home';

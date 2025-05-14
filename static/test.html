@@ -2,106 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block pagetitle %}Secret Wall{% endblock %}</title>
+    <link href="../static/custom.css" rel="stylesheet">
     <script src="../scripts/nav-bar.js"></script>
-</head>
+</head>    
 <body>
-    <header>
-        <a class="navbar-brand" href="{{ url_for('home') }}">
-            <div class="hero">
-                <p>THE</p>
-                <p>secret</p>
-                <p>WALL</p>
-            </div>
-        </a>
-        <nav>
-            <button id="menu-toggle" aria-label="Toggle Menu"><img src="../assets/icons/mobile-nav.svg" alt="toggle nav icon"></button>
-            <div id="menu" class="menu">
-                <ul class="">
-                    <li class="">
-                        <a class="" href="{{ url_for('secrets') }}">All Secrets</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{{ url_for('top_secrets') }}">Top Secrets</a>
-                    </li>
-                    <li class="">
-                        <a class="" href="{{ url_for('profile') }}">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+  <header>
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+        <div class="hero">
+            <p>THE</p>
+            <p>secret</p>
+            <p>WALL</p>
+        </div>
+    </a>
+    <nav>
+        <button id="menu-toggle" aria-label="Toggle Menu"><img src="../assets/icons/mobile-nav.svg" alt="toggle nav icon"></button>
+        <div id="menu" class="menu">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile_detail', id=current_user.id) }}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ url_for('auth.logout') }}">Logout</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.get_login') }}">Login</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
     </header>
-    <main>
-        <div class="page-secret-details">
-            <h2>Secret Detail</h2>
-          
-            <div class="card">
-              <div class="card-body">
-                <p class="card-title">{{ secret.title }}</p>
-                <p class="card-text">{{ secret.content }}</p>
-                <p class="text-muted small">
-                  carded by {{ secret.anonymous_carder }} on {{ secret.created_date }}
-                  {% if secret.expires_at %}
-                    | Expires at: {{ secret.expires_at }}
-                  {% endif %}
-                </p>
-                <p>{{ secret.rating }} 🌶️s</p>
-              </div>
-            </div>
-          
-            <div class="mb-4 post-rating">
-              <h4>Rate this Secret</h4>
-              <form method="POST" action="{{ url_for('react_secret', id=secret.id) }}">
-                <div class="input-group w-25">
-                  <select name="rating" class="form-select" required>
-                    <option value="" disabled selected>Select rating</option>
-                    <option value="1">🌶️ 1</option>
-                    <option value="2">🌶️🌶️ 2</option>
-                    <option value="3">🌶️🌶️🌶️ 3</option>
-                    <option value="4">🌶️🌶️🌶️🌶️ 4</option>
-                    <option value="5">🌶️🌶️🌶️🌶️🌶️ 5</option>
-                  </select>
-                  <button type="submit" class="btn btn-outline-primary">Submit Rating</button>
-                </div>
-              </form>
-            </div>
-          
-            <div class="mb-4 post-comment">
-              <h4>Leave a Comment</h4>
-              <form method="POST" action="{{ url_for('react_secret', id=secret.id) }}">
-                <div class="mb-2">
-                  <textarea name="comment" class="form-control" rows="3" placeholder="Write your comment here..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
-              </form>
-            </div>
-            <div class="comment-section">
-              <h4>Comments</h4>
-                  <div class="border rounded p-2 mb-2">
-                    <p class="mb-1">{{ comment.comment }}</p>
-                    <small class="text-muted"> on {{ comment.commented_at}}</small>
-                  </div>
-                <p class="text-muted">No comments yet.</p>
-            </div>
-            <a href="{{ url_for('secrets') }}" class="btn btn-outline-secondary mt-3">← Back to All Secrets</a>
-          </div>
+    <!-- Page Content -->
+    <main class="container">
+      <div class="login-page">
+        <h2>Login</h2>
+        <form method="POST">
+            <input name="email" type="email" class="form-control mb-2" placeholder="Email" required>
+            <input name="password" type="password" class="form-control mb-2" placeholder="Password" required>
+            <button class="btn btn-primary">Login</button>
+        </form>
+        <p class="mt-3 text-center">
+          Not a member?
+          <a href="{{ url_for('auth.get_register') }}">Register here</a>
+        </p>
+      </div>
     </main>
+
     <footer>
         <div class="marquee">
             <div class="marquee-content">
                 <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
                 <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
-                <p>It's like writing in wet cement, and the cement is always wet.</p>
             </div>
-    
             <div class="marquee-content" aria-hidden="true">
                 <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
-                <p>It's like screaming into the void, but the void screams back.</p>
+                <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
-                <p>It's like writing in wet cement, and the cement is always wet.</p>
             </div>
         </div>
     </footer>

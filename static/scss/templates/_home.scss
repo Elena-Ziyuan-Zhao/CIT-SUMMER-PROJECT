@@ -8,6 +8,7 @@
     gap: 1rem;
     margin: 0.5rem 0.5rem 2rem;
     color: $txt-dark;
+    
     h1{
         font-family: $header-font;
         font-size: clamp(1.625rem, 2.5vw, 2rem);
@@ -24,11 +25,12 @@
         flex-direction: column;
         gap: 0.75rem;
         max-width: $max-content-width;
-        .btn{
-            @include button-style;
-            min-width: 13rem;
-            margin: 0 auto;
-        }
+
+    }
+    .btn{
+        @include button-style;
+        min-width: 13rem;
+        margin: 0 auto;
     }
 
 // tablet btn rearrange 

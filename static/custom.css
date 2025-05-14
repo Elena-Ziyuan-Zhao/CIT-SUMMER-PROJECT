@@ -830,6 +830,80 @@ html body main {
   }
 }
 
+.login-page,
+.register-page {
+  display: flex;
+  flex-direction: column;
+  color: #2B00CC;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.login-page h2,
+.register-page h2 {
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
+  text-align: center;
+}
+.login-page form,
+.register-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 1rem;
+  width: 100%;
+}
+.login-page form input,
+.register-page form input {
+  border: 2px solid #2B00CC;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+}
+.login-page form .btn,
+.register-page form .btn {
+  background-color: #F2F47B;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1rem, 2.25vw, 1.25rem);
+  color: #2B00CC;
+  padding: 0.5rem 1.5rem;
+  min-width: 8.75rem;
+  border: 0.125rem solid #2B00CC;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: lowercase;
+  max-width: 18rem;
+}
+.login-page form .btn a,
+.register-page form .btn a {
+  text-decoration: none;
+}
+.login-page form .btn:hover,
+.register-page form .btn:hover {
+  background-color: #ebed65;
+}
+@media (min-width: 600px) {
+  .login-page form,
+  .register-page form {
+    margin: 0 6rem;
+  }
+}
+@media (min-width: 52rem) {
+  .login-page form,
+  .register-page form {
+    margin: 0 10rem;
+  }
+}
+@media (min-width: 64rem) {
+  .login-page form,
+  .register-page form {
+    margin: 0;
+  }
+}
+
 .profile-page {
   color: #2B00CC;
   margin: 0;
@@ -1088,7 +1162,7 @@ html body main {
   gap: 0.75rem;
   max-width: 60rem;
 }
-.text-center .home-btn-container .btn {
+.text-center .btn {
   background-color: #F2F47B;
   font-family: "Space Mono", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
@@ -1102,10 +1176,10 @@ html body main {
   min-width: 13rem;
   margin: 0 auto;
 }
-.text-center .home-btn-container .btn a {
+.text-center .btn a {
   text-decoration: none;
 }
-.text-center .home-btn-container .btn:hover {
+.text-center .btn:hover {
   background-color: #ebed65;
 }
 @media (min-width: 600px) {

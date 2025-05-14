@@ -9,28 +9,38 @@
 </head>    
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-light bg-light px-4">
-        <a class="navbar-brand" href="{{ url_for('home') }}">Secret Wall</a>
-      
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
-          </li>
-      
-          {% if current_user.is_authenticated %}
+  <header>
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+        <div class="hero">
+            <p>THE</p>
+            <p>secret</p>
+            <p>WALL</p>
+        </div>
+    </a>
+    <nav>
+        <button id="menu-toggle" aria-label="Toggle Menu"><img src="../assets/icons/mobile-nav.svg" alt="toggle nav icon"></button>
+        <div id="menu" class="menu">
+          <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('profile_detail', id=current_user.id) }}">Profile</a>
+              <a class="nav-link" href="{{ url_for('secrets') }}">All Secrets</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-danger" href="{{ url_for('auth.logout') }}">Logout</a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.get_login') }}">Login</a>
-            </li>
-          {% endif %}
-        </ul>
+        
+            {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('profile_detail', id=current_user.id) }}">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ url_for('auth.logout') }}">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.get_login') }}">Login</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
       </nav>
+    </header>
     <!-- Page Content -->
     <main class="container">
         {% block content %}
@@ -43,14 +53,11 @@
                 <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
                 <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
-                <p>It's like writing in wet cement, and the cement is always wet.</p>
             </div>
-    
             <div class="marquee-content" aria-hidden="true">
                 <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
                 <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
-                <p>It's like writing in wet cement, and the cement is always wet.</p>
             </div>
         </div>
     </footer>
