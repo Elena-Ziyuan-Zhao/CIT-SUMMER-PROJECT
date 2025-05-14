@@ -6,6 +6,8 @@ from sys import argv
 from datetime import datetime, timedelta
 import random
 
+
+
 def create_tables():
     db.create_all()
 
@@ -17,7 +19,8 @@ def import_data():
         # for example: {first_name: a, second_name: b}
         reader = csv.DictReader(file)
         for row in reader:
-            user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], password = row["password"], user_type = row["user_type"])
+            user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], user_type = row["user_type"])
+            user.hash_passowrd(row["password"])
             db.session.add(user)
     db.session.commit()
 
