@@ -9,6 +9,8 @@ from routes import *
 from flask_login import LoginManager, login_required, current_user
 
 
+from routes import register_routes
+
 app = Flask(__name__)
 app.register_blueprint(auth, url_prefix="/auth")
 
@@ -16,6 +18,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///wall.db"
 app.instance_path = Path("wall").resolve()
 db.init_app(app)
 
+register_routes(app)
 
 # ============ user authentification initialization ===========
 
