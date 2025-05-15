@@ -6,4 +6,5 @@
 __pycache__
 node_modules/
 static/custom.css
-static/custom.css.map.DS_Store
+static/custom.css.map
+.DS_Store
