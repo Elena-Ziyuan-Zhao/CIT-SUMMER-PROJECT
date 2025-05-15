@@ -14,7 +14,7 @@ def create_tables():
 
 
 def import_data():
-    with open("users.csv", "r") as file:
+    with open("users.csv", "r", encoding="utf-8") as file:
         # read csv into dictionary
         # for example: {first_name: a, second_name: b}
         reader = csv.DictReader(file)
@@ -25,7 +25,7 @@ def import_data():
     db.session.commit()
 
 def generate_secrets():
-    with open("secrets.csv") as file:
+    with open("secrets.csv", encoding="utf-8") as file:
         reader = csv.DictReader(file)
         for row in reader:
             random_user = db.session.execute(db.select(User).order_by(db.func.random())).scalar()
