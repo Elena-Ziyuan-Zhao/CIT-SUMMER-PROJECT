@@ -2,7 +2,7 @@
 @use '../vars_mixins/mixins' as *;
 html{
     width: 100%;
-    background-image: url(assets/images/background.jpg);
+    background-image: url(../../../assets/images/background.jpg);
     background-repeat: repeat;
     background-size: 24rem;
     overflow-x: hidden;

@@ -64,12 +64,10 @@ nav {
                     width: 100%;
                     padding: 0;
                     background-color: transparent;
-                    transition: 0.3s ease background-color;
         
                     &:hover,
                     &:focus {
                         background-color: $btn-background-hover;
-                        transition: 0.3s ease background-color;
                     }
                 }
             }
@@ -114,7 +112,7 @@ nav {
                         width: 100%;
                     }
 
-                    &:last-child{
+                    &:nth-child(3){
                         border-right: 2px solid $brand-border;
                         padding-right: 0;
                     }

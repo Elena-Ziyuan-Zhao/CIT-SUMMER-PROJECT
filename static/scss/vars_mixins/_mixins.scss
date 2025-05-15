@@ -11,17 +11,16 @@
     border-radius: 0.25rem;
     text-decoration: none;
     text-transform: lowercase;
-    transition: 0.3s ease background-color;
-    cursor: pointer;
     a{
         text-decoration: none;
     }
-    
     &:hover{
         background-color: $btn-background-hover;
-        transition: 0.3s ease background-color;
     }
 }
+
+
+// text overflow/truncate
 
 // flex center
 @mixin flex-center{
