@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block pagetitle %}Secret Wall{% endblock %}</title>
-    <link href="../static/custom.css" rel="stylesheet">
-    <script src="../scripts/nav-bar.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
+    <script src="{{ url_for('static', filename='scripts/nav-bar.js') }}"></script>
 </head>    
 <body>
     <!-- Navigation Bar -->
@@ -18,7 +18,8 @@
         </div>
     </a>
     <nav>
-        <button id="menu-toggle" aria-label="Toggle Menu"><img src="../assets/icons/mobile-nav.svg" alt="toggle nav icon"></button>
+        <button id="menu-toggle" aria-label="Toggle Menu"><img src="{{ url_for('static', filename='assets/icons/mobile-nav.svg') }}" alt="toggle nav icon">
+        </button>
         <div id="menu" class="menu">
           <ul class="nav">
             <li class="nav-item">
@@ -50,12 +51,12 @@
     <footer>
         <div class="marquee">
             <div class="marquee-content">
-                <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
+                <p>It's like writing in sharpie on the bathroom wall, without the sharpie.</p>
                 <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <p>It's like taking a sharpie to the bathroom wall, without pissing anyone off.</p>
+                <p>It's like writing in sharpie on the bathroom wall, without the sharpie.</p>
                 <p>It's like yelling into the void, but the void yells back.</p>
                 <p>It's like therapy, except cheaper and less qualified.</p>
             </div>

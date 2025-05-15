@@ -11,11 +11,13 @@
     border-radius: 0.25rem;
     text-decoration: none;
     text-transform: lowercase;
+    transition: .3s ease background-color;
     a{
         text-decoration: none;
     }
     &:hover{
         background-color: $btn-background-hover;
+        transition: .3s ease background-color;
     }
 }
 
