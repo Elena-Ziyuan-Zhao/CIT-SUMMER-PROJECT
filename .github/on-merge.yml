@@ -2,7 +2,7 @@ name: Deploy Python Application
 
 on:
   push:
-    branches: [ "feature/*" ]
+    branches: [ "main" ]
 
 jobs:
   on-merge:
