@@ -1,5 +1,4 @@
 # Functional Test 1: Homepage and All-Secrets page are accessible
-'''
 def test_home_and_secrets_accessible(client):
     res_home = client.get("/")
     res_secrets = client.get("/secrets")
@@ -48,29 +47,62 @@ def test_add_rating(client):
     res = client.post("/secrets/1", data={"rating": "4"}, follow_redirects=True)
     assert res.status_code == 200
     assert b"4" in res.data or b"rating" in res.data.lower()
+#Fuctional Test 6: User can delete their posted secret
+def test_delete_secret(client):
+    # Post a secret first
+    client.post("/profile/1/create", data={"title": "ToDelete", "content": "This will be deleted"}, follow_redirects=True)
+    
+    # Attempt to delete the secret
+    res = client.post("/secret/1/delete", follow_redirects=True)
 
-# Functional Test 6: Submitting an invalid (non-integer) rating should not crash the app
-def test_invalid_rating(client):
-    # Add a secret to rate
-    client.post("/profile/1/create", data={"title": "BadRating", "content": "Testing invalid rating"}, follow_redirects=True)
-
-    # Submit a rating with string input
-    res = client.post("/secrets/1", data={"rating": "bad_input"}, follow_redirects=True)
+    # Ensure secret is removed from profile page
     assert res.status_code == 200
-    assert b"error" not in res.data.lower() 
+    assert b"This will be deleted" not in res.data
+#Fuctional Test 7: User can edit a secret
+def test_edit_secret(client):
+    # Post a secret to edit
+    client.post("/profile/1/create", data={"title": "EditMe", "content": "Old content"}, follow_redirects=True)
 
-# Functional Test 7: Submitting a rating out of accepted range (not between 1 and 5) should be ignored
-def test_out_of_range_rating(client):
-    # Step 1: Create a new secret to rate
-    client.post("/profile/1/create", data={"title": "OutOfRange", "content": "testing rating limits"}, follow_redirects=True)
+    # Edit the secret
+    res = client.post("/secret/1/edit", data={"title": "Edited", "content": "New content"}, follow_redirects=True)
 
-    # Step 2: Submit a rating that is too high, like 6
-    res_high = client.post("/secrets/1", data={"rating": "6"}, follow_redirects=True)
-    assert res_high.status_code == 200
-    assert b"6" not in res_high.data 
+    # Confirm changes are reflected
+    assert res.status_code == 200
+    assert b"New content" in res.data
+    assert b"Old content" not in res.data
+# Functional Test 8: Timer-based expiry 
+def test_expiry_timer(client):
+    # Post a secret with a 1-minute expiry
+    client.post("/profile/1/create", data={
+        "title": "Expiring",
+        "content": "This will expire",
+        "hour": "0",
+        "minutes": "1"
+    }, follow_redirects=True)
 
-    # Step 3: Submit a rating that is too low, like -1
-    res_low = client.post("/secrets/1", data={"rating": "-1"}, follow_redirects=True)
-    assert res_low.status_code == 200
-    assert b"-1" not in res_low.data 
-'''
+    # Check if secret appears initially
+    res = client.get("/secrets")
+    assert res.status_code == 200
+    assert b"This will expire" in res.data
+#Functional Test 9: Login is required to access protected pages
+def test_login_required_redirects(client):
+    # Simulate logout by clearing session
+    with client.session_transaction() as sess:
+        sess.clear()
+
+    # Try to access /secrets which requires login
+    res = client.get("/secrets")
+    
+    # Should be redirected to login
+    assert res.status_code == 302
+# Functional Test 10: def test_sort_options(client):
+def test_sort_options(client):
+    # Post multiple secrets
+    client.post("/profile/1/create", data={"title": "Secret1", "content": "Secret A"}, follow_redirects=True)
+    client.post("/profile/1/create", data={"title": "Secret2", "content": "Secret B"}, follow_redirects=True)
+
+    # Try different sort options
+    for sort in ["spicy", "created-date", "expiry-date"]:
+        res = client.get(f"/secrets?sort={sort}")
+        assert res.status_code == 200
+        assert b"Secret" in res.data
