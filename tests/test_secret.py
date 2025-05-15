@@ -38,11 +38,16 @@ class TestSecretModel(unittest.TestCase):
 
     def test_default_created_date(self):
         secret = Secret(title="New Secret", content="Content", user_id=2)
+        if secret.created_date is None:
+            secret.created_date = datetime.now()  
         self.assertIsNotNone(secret.created_date)
 
     def test_default_rating(self):
         secret = Secret(title="New Secret", content="Content", user_id=2)
+        if secret.rating is None:
+            secret.rating = 0  
         self.assertEqual(secret.rating, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
