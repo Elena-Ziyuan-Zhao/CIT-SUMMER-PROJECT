@@ -64,10 +64,12 @@ nav {
                     width: 100%;
                     padding: 0;
                     background-color: transparent;
+                    transition: .3s ease background-color;
         
                     &:hover,
                     &:focus {
                         background-color: $btn-background-hover;
+                        transition: .3s ease background-color;
                     }
                 }
             }
