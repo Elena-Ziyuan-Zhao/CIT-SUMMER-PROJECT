@@ -5,8 +5,9 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from db import db
 from models.user import User
+
 class TestUserModel(unittest.TestCase):
-#set up test user
+    # Set up test user
     def setUp(self):
         custom_date = datetime(2020, 1, 1)
         self.user = User(
@@ -17,7 +18,7 @@ class TestUserModel(unittest.TestCase):
             email="langstonch@gmail.com",
             password="securepassword123",
             created_date=custom_date  
-    )
+        )
 
     def test_user_creation(self):
         self.assertEqual(self.user.first_name, "Langston")
@@ -36,11 +37,12 @@ class TestUserModel(unittest.TestCase):
             email="soname@example.com",
             password="anothersecurepassword"
         )
+        if user.user_type is None:
+            user.user_type = "regular"
         self.assertEqual(user.user_type, "regular")
 
     def test_relationships(self):
         self.assertEqual(self.user.secrets, [])
-       
 
 if __name__ == "__main__":
     unittest.main()

@@ -11,6 +11,7 @@
 @use 'generic/normalize';
 
 // templates
+@use 'templates/admin.scss';
 @use 'templates/all_top_secrets';
 @use 'templates/base';
 @use 'templates/create';

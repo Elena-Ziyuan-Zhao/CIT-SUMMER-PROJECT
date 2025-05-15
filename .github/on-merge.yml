@@ -1,0 +1,15 @@
+name: Deploy Python Application
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  on-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Production
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_URL }}
+        run: |
+          curl "$deploy_url"
