@@ -5,11 +5,9 @@ class Rating(db.Model):
 
     id = db.mapped_column(db.Integer, primary_key = True)
     secret_id = db.mapped_column(db.ForeignKey("secrets.id"))
-
-    user_id = db.mapped_column(db.ForeignKey('users.id'))
-    user = db.relationship("User", back_populates="rating")
-
+    # user_id = db.mapped_column(db.ForeignKey('users.id'))
     rating = db.mapped_column(db.Integer, default = 0)
 
     secret = db.relationship("Secret", back_populates= "ratings")
+    # created_date = db.mapped_column(db.DateTime, default = datetime.now())
     
