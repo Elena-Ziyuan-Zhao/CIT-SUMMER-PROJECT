@@ -1,7 +1,7 @@
 // fonts
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-$header-font: "Space Mono", monospace;
-$body-font: "Space Grotesk", sans-serif; 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+$header-font: "Inconsolata", monospace;
+$body-font: "Karla", sans-serif;
 $header-font-size: clamp(1.25rem, 2.75vw, 1.5rem);
 $body-font-size: clamp(1rem, 2.25vw, 1.25rem);
 $max-content-width: 60rem;
@@ -9,7 +9,7 @@ $max-content-width: 60rem;
 $txt-dark: #2B00CC;
 $txt-light: #F3F4EC;
 $txt-alt: #525252;
-
+ 
 /* ----- color scheme ----- */
 // main
 $background-color: #E0E0E0;
