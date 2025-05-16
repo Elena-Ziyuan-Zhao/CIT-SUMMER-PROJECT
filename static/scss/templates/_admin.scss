@@ -21,11 +21,50 @@
         font-family: $body-font;
     }
     
-    
-
     .admin-info{
         font-family: $body-font;
         text-align: center;
+    }
+
+    .admin-delete {
+        border: none;
+        outline: none;
+        background: none;
+    }
+
+    .admin-delete:hover {
+        cursor: pointer;
+    }
+
+    .admin-delete path {
+        fill: $txt-dark;
+    }
+
+    .admin-delete:hover path {
+        transition: 75ms linear;
+        fill: red;
+    }
+
+    .table-info {
+        border-spacing: 0;
+    }
+
+    .table-info thead {
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .table-info th {
+        border-bottom: 2px solid $txt-dark;
+        // font-size: 16px;
+    }
+    
+    .table-info th, .table-info td {
+        padding-inline: .5rem;
+    }
+
+    .table-info tr:nth-child(even) {
+        background-color: rgba($color: #000000, $alpha: 0.1);
     }
 
 
