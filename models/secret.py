@@ -24,3 +24,5 @@ class Secret(db.Model):
         with open("fakenames.csv", "r") as file:
             fakenames = [line.strip() for line in file][1:]
         return random.choice(fakenames)
+    
+    
