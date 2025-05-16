@@ -31,6 +31,7 @@ def load_user(user_id):
 # ========== Timer ==============
 scheduler = BackgroundScheduler()
 def delete_expired_secrets():
+
     with app.app_context():
         now = datetime.now()
         expired_secrets = db.session.execute(db.select(Secret).where(Secret.expires_at < now)).scalars()
@@ -88,15 +89,11 @@ def secret_detail(id):
 @app.route("/secrets/<int:id>", methods=["POST"])
 def react_secret(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
-    existing_rating = db.session.execute(db.select(Rating)
-                                         .where(Rating.user_id == current_user.id, 
-                                                Rating.secret_id == secret.id)).scalar()
-    print(existing_rating)
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
     comment = request.form.get("comment")
     if comment:
-        new_comment = Comment(secret = secret, comment = comment, user = current_user)
+        new_comment = Comment(secret = secret, comment = comment)
         db.session.add(new_comment)
         db.session.commit()
     rating = request.form.get("rating")
@@ -106,7 +103,7 @@ def react_secret(id):
         secret.rating += rating
         db.session.add(new_rate)
         db.session.commit()
-    return render_template("secret_detail.html", secret = secret, has_rated = existing_rating)
+    return render_template("secret_detail.html", secret=secret)
 
 @app.route("/profile/<int:id>", methods = ["GET"])
 @login_required
@@ -145,7 +142,7 @@ def create_secret(id):
     if request.method == "POST":
         content = request.form.get("content")
         title = request.form.get("title")
-        hours = request.form.get("hours")
+        hours = request.form.get("hour")
         minutes = request.form.get("minutes")
         total_minutes = 0
         if hours:
