@@ -118,9 +118,11 @@ nav .menu ul li a {
   width: 100%;
   padding: 0;
   background-color: transparent;
+  transition: 0.3s ease background-color;
 }
 nav .menu ul li a:hover, nav .menu ul li a:focus {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 nav .menu.open {
   max-height: 300px;
@@ -518,6 +520,7 @@ template {
   margin: 0 0.5rem;
   color: #2B00CC;
   max-width: 60rem;
+  color: #2B00CC;
 }
 .all-secrets-page h2,
 .top-secrets-page h2 {
@@ -530,56 +533,53 @@ template {
 .top-secrets-page .sort-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 }
-.all-secrets-page .btn,
-.top-secrets-page .btn {
-  background-color: #F2F47B;
-  font-family: "Space Mono", monospace;
+.all-secrets-page .sort-wrapper .form-select,
+.top-secrets-page .sort-wrapper .form-select {
+  border: 2px solid #2B00CC;
+  border-radius: 4px;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
-  padding: 0.5rem 1.5rem;
-  min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  text-transform: lowercase;
-  max-width: fit-content;
   margin-bottom: 1rem;
+  width: 15rem;
 }
-.all-secrets-page .btn a,
-.top-secrets-page .btn a {
-  text-decoration: none;
-}
-.all-secrets-page .btn:hover,
-.top-secrets-page .btn:hover {
-  background-color: #ebed65;
-}
-.all-secrets-page .card-body,
-.top-secrets-page .card-body {
+.all-secrets-page .card-wrapper,
+.top-secrets-page .card-wrapper {
   border: 2px solid #2B00CC;
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
   background-color: #fefff8;
   display: flex;
   height: 21rem;
-  flex-direction: column;
-  justify-content: space-between;
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
+  text-decoration: none;
+  color: #2B00CC;
+  transition: 0.3s ease box-shadow;
 }
-.all-secrets-page .card-body .card-text,
-.top-secrets-page .card-body .card-text {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 400px;
+.all-secrets-page .card-wrapper .card-body,
+.top-secrets-page .card-wrapper .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0.5rem;
 }
-.all-secrets-page .card-body .card-text a,
-.top-secrets-page .card-body .card-text a {
+.all-secrets-page .card-wrapper .card-title,
+.top-secrets-page .card-wrapper .card-title {
   font-family: "Space Mono", monospace;
   font-size: clamp(1.25rem, 2.75vw, 1.5rem);
   font-weight: 600;
-  text-decoration: none;
+}
+.all-secrets-page .card-wrapper .text-muted,
+.top-secrets-page .card-wrapper .text-muted {
+  font-size: smaller;
+}
+.all-secrets-page .card-wrapper:hover, .all-secrets-page .card-wrapper:focus,
+.top-secrets-page .card-wrapper:hover,
+.top-secrets-page .card-wrapper:focus {
+  box-shadow: 0.25rem 0.25rem rgba(82, 82, 82, 0.3411764706);
+  transition: 0.3s ease box-shadow;
 }
 .all-secrets-page .all-secrets-no-posts,
 .top-secrets-page .all-secrets-no-posts {
@@ -593,8 +593,16 @@ template {
     padding: 3rem 0 2rem;
     margin-top: 3rem;
   }
-  .all-secrets-page .btn .card.mb-3 .card-body,
-  .top-secrets-page .btn .card.mb-3 .card-body {
+  .all-secrets-page .sort-wrapper,
+  .top-secrets-page .sort-wrapper {
+    margin-right: 1rem;
+  }
+  .all-secrets-page .card-wrapper,
+  .top-secrets-page .card-wrapper {
+    margin: 1rem;
+  }
+  .all-secrets-page .card-body,
+  .top-secrets-page .card-body {
     padding: 0.5rem 2rem 1rem;
   }
 }
@@ -606,6 +614,11 @@ template {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
+  .all-secrets-page h2,
+  .top-secrets-page h2 {
+    margin-top: 1rem;
+    grid-column: span 2;
+  }
   .all-secrets-page .sort-wrapper,
   .top-secrets-page .sort-wrapper {
     padding: 1rem 0 0;
@@ -613,18 +626,20 @@ template {
     padding-top: 1rem;
     grid-column: span 2;
   }
-  .all-secrets-page .sort-wrapper h2,
-  .top-secrets-page .sort-wrapper h2 {
-    margin-top: 1rem;
+  .all-secrets-page .card-wrapper,
+  .top-secrets-page .card-wrapper {
+    margin: 0;
+    height: 28rem;
+    display: flex;
+    padding: 1rem 2rem;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: hidden;
   }
   .all-secrets-page .card-body,
   .top-secrets-page .card-body {
-    margin-bottom: 0;
-    height: 30rem;
-    display: flex;
-    padding: 2rem;
-    flex-direction: column;
-    justify-content: space-around;
+    padding: 0;
+    margin: 0;
   }
   .all-secrets-page .all-secrets-no-posts,
   .top-secrets-page .all-secrets-no-posts {
@@ -745,12 +760,14 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
 }
 .create-secret-page form button a {
   text-decoration: none;
 }
 .create-secret-page form button:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 @media (min-width: 37.5rem) {
   .create-secret-page form .form-label {
@@ -790,12 +807,14 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
 }
 .alert.alert-danger a a {
   text-decoration: none;
 }
 .alert.alert-danger a:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 
 .page-edit-post {
@@ -857,12 +876,14 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
 }
 .page-edit-post form .btn a {
   text-decoration: none;
 }
 .page-edit-post form .btn:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 @media (min-width: 48rem) {
   .page-edit-post {
@@ -915,6 +936,7 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
   max-width: 18rem;
 }
 .login-page form .btn a,
@@ -924,6 +946,7 @@ html body main {
 .login-page form .btn:hover,
 .register-page form .btn:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {
   .login-page form,
@@ -998,6 +1021,7 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
   margin: 1rem auto;
   display: flex;
   justify-content: center;
@@ -1010,6 +1034,7 @@ html body main {
 .profile-page button:hover,
 .profile-page .btn:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {
   .profile-page h3 {
@@ -1082,6 +1107,7 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
   width: 14rem;
   margin: auto;
 }
@@ -1092,6 +1118,7 @@ html body main {
 .page-secret-details .btn:hover,
 .page-secret-details a.btn:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 .page-secret-details .post-comment h4,
 .page-secret-details .post-rating h4,
@@ -1213,6 +1240,7 @@ html body main {
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
+  transition: 0.3s ease background-color;
   min-width: 13rem;
   margin: 0 auto;
 }
@@ -1221,6 +1249,7 @@ html body main {
 }
 .text-center .btn:hover {
   background-color: #ebed65;
+  transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {
   .text-center .home-btn-container {

@@ -1,0 +1,44 @@
+name: Test Python Application
+
+on:
+  push:
+    branches: [ "feature/*" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.13"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 flask pytest Flask-Login
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Lint with flake8
+        run: |
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      - name: Test with pytest
+        run: |
+          pytest
+  create-pull-request:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ success() }}
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Create pull request
+        run: gh pr create -B main -H ${{ github.ref_name }} --title "Merge ${{ github.ref_name }} into main" --body "Automated PR via Github Actions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: github.com/Elena-Ziyuan-Zhao/CIT-SUMMER-PROJECT
