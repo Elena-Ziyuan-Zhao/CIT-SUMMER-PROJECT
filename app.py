@@ -17,6 +17,7 @@ app.instance_path = Path("wall").resolve()
 db.init_app(app)
 
 
+
 # ============ user authentification initialization ===========
 
 app.config['SECRET_KEY'] = 'afa2d4bf0aac2567c176cec8839a37490447ad1ffcffe129d46ab37e07c65c79'
@@ -167,3 +168,5 @@ def create_secret(id):
 
 if __name__ == "__main__":
     app.run(debug=True, port=8888)
+
+# testing the push
