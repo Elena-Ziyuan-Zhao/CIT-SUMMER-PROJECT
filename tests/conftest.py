@@ -38,4 +38,4 @@ def create_fakenames_file():
     with open("fakenames.csv", "w") as f:
         f.write("Anonymous Panda\nAnonymous Fox\nAnonymous Owl\n")
     yield
-    
+    os.remove("fakenames.csv")
