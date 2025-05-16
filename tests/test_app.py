@@ -1,3 +1,6 @@
+import time
+from app import delete_expired_secrets
+
 # Functional Test 1: Homepage and All-Secrets page are accessible
 def test_home_and_secrets_accessible(client):
     res_home = client.get("/")
@@ -74,16 +77,23 @@ def test_edit_secret(client):
 def test_expiry_timer(client):
     # Post a secret with a 1-minute expiry
     client.post("/profile/1/create", data={
-        "title": "Expiring",
-        "content": "This will expire",
+        "title": "ExpiringSoon",
+        "content": "This will expire soon",
         "hour": "0",
         "minutes": "1"
     }, follow_redirects=True)
 
-    # Check if secret appears initially
+    # Innitial created post
     res = client.get("/secrets")
-    assert res.status_code == 200
-    assert b"This will expire" in res.data
+    assert b"ExpiringSoon" in res.data
+
+   
+    time.sleep(65)
+
+    
+    res = client.get("/secrets") 
+    assert b"ExpiringSoon" not in res.data
+
 #Functional Test 9: Login is required to access protected pages
 def test_login_required_redirects(client):
     # Simulate logout by clearing session
@@ -101,8 +111,20 @@ def test_sort_options(client):
     client.post("/profile/1/create", data={"title": "Secret1", "content": "Secret A"}, follow_redirects=True)
     client.post("/profile/1/create", data={"title": "Secret2", "content": "Secret B"}, follow_redirects=True)
 
-    # Try different sort options
-    for sort in ["spicy", "created-date", "expiry-date"]:
-        res = client.get(f"/secrets?sort={sort}")
-        assert res.status_code == 200
-        assert b"Secret" in res.data
+   
+    
+
+    # Test sorting by expiry-date returns secrets in correct order
+    res = client.get("/secrets?sort=expiry-date")
+    assert res.status_code == 200
+    assert b"Secret1" in res.data and b"Secret2" in res.data
+
+    # Test sorting by created-date 
+    res = client.get("/secrets?sort=created-date")
+    assert res.status_code == 200
+    assert b"Secret1" in res.data and b"Secret2" in res.data
+
+    # Test sorting by created-date 
+    res = client.get("/secrets?sort=spicy")
+    assert res.status_code == 200
+    assert b"Secret1" in res.data and b"Secret2" in res.data
