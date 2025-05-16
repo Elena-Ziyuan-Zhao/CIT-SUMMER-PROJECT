@@ -160,7 +160,7 @@ nav .menu.open {
     padding: 0.5rem 0;
     width: 100%;
   }
-  nav .menu ul li:nth-child(3) {
+  nav .menu ul li:last-child {
     border-right: 2px solid #2B00CC;
     padding-right: 0;
   }
@@ -496,6 +496,37 @@ template {
 .admin .admin-info {
   font-family: "Space Grotesk", sans-serif;
   text-align: center;
+}
+.admin .admin-delete {
+  border: none;
+  outline: none;
+  background: none;
+}
+.admin .admin-delete:hover {
+  cursor: pointer;
+}
+.admin .admin-delete path {
+  fill: #2B00CC;
+}
+.admin .admin-delete:hover path {
+  transition: 75ms linear;
+  fill: red;
+}
+.admin .table-info {
+  border-spacing: 0;
+}
+.admin .table-info thead {
+  text-align: left;
+  border-collapse: collapse;
+}
+.admin .table-info th {
+  border-bottom: 2px solid #2B00CC;
+}
+.admin .table-info th, .admin .table-info td {
+  padding-inline: 0.5rem;
+}
+.admin .table-info tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .admin ul {
   list-style: none;
