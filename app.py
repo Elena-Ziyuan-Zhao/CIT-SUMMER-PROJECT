@@ -55,6 +55,7 @@ def home():
 @login_required
 def secrets():
     sort = request.args.get("sort")
+
     match sort:
         case "spicy":
             secrets = db.session.execute(
@@ -69,7 +70,8 @@ def secrets():
         case "expiry-date":
             secrets = db.session.execute(
                 db.select(Secret)
-                .order_by(Secret.expires_at.desc())
+                .where(Secret.expires_at != "")
+                .order_by(Secret.expires_at.asc())
             ).scalars()
         case default:
             secrets = db.session.execute(
@@ -158,7 +160,7 @@ def create_secret(id):
             expires_at = datetime.now() + timedelta(minutes=total_minutes)
             new_secret = Secret(title = title, content = content, user = user, expires_at = expires_at, created_date = datetime.now())
         else:
-            new_secret = Secret(title = title, content = content, user = user)
+            new_secret = Secret(title = title, content = content, user = user, created_date = datetime.now())
         db.session.add(new_secret)
         db.session.commit()
         return redirect(url_for('profile_detail', id=user.id))
