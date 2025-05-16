@@ -83,6 +83,11 @@ def secret_detail(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
+    existing_rating = db.session.execute(db.select(Rating)
+                                         .where(Rating.user_id == current_user.id).where(Rating.secret_id == secret.id)).scalar()
+    
+    if existing_rating:
+        return render_template("secret_detail.html", secret = secret, has_rated = True)
     return render_template("secret_detail.html", secret=secret)
 
 
@@ -90,25 +95,27 @@ def secret_detail(id):
 def react_secret(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
 
-    existing_rating = db.session.execute(db.select(Rating)
-                                         .where(Rating.user_id == current_user.id)).scalar()
-    print(existing_rating)
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
-    
+
     comment = request.form.get("comment")
     rating = request.form.get("rating")
     if comment:
         new_comment = Comment(secret = secret, comment = comment, user = current_user)
         db.session.add(new_comment)
         db.session.commit()
-    if rating and not existing_rating:
+
+    if rating:
         rating = int(rating)
         new_rate = Rating(rating = rating, secret = secret, user = current_user)
         secret.rating += rating
         db.session.add(new_rate)
         db.session.commit()
+
+    existing_rating = db.session.execute(db.select(Rating)
+                                         .where(Rating.user_id == current_user.id).where(Rating.secret_id == secret.id)).scalar()
     return render_template("secret_detail.html", secret = secret, has_rated = existing_rating)
+
 
 @app.route("/profile/<int:id>", methods = ["GET"])
 @login_required
