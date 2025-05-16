@@ -89,21 +89,22 @@ def secret_detail(id):
 @app.route("/secrets/<int:id>", methods=["POST"])
 def react_secret(id):
     secret = db.session.execute(db.select(Secret).where(Secret.id == id)).scalar()
+
     existing_rating = db.session.execute(db.select(Rating)
-                                         .where(Rating.user_id == current_user.id, 
-                                                Rating.secret_id == secret.id)).scalar()
+                                         .where(Rating.user_id == current_user.id)).scalar()
     print(existing_rating)
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
+    
     comment = request.form.get("comment")
+    rating = request.form.get("rating")
     if comment:
         new_comment = Comment(secret = secret, comment = comment, user = current_user)
         db.session.add(new_comment)
         db.session.commit()
-    rating = request.form.get("rating")
-    if rating:
+    if rating and not existing_rating:
         rating = int(rating)
-        new_rate = Rating(rating = rating, secret = secret)
+        new_rate = Rating(rating = rating, secret = secret, user = current_user)
         secret.rating += rating
         db.session.add(new_rate)
         db.session.commit()
