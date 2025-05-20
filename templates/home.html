@@ -5,7 +5,7 @@
 {% block content %}
 <div class="text-center">
     {% if current_user.is_authenticated %}
-        <h1 class="mb-4">Hello, {{ current_user.first_name }} {{ current_user.second_name }} </h1>
+        <h1 class="mb-4">Hello, {{ current_user.username }} </h1>
     {% endif %}
 
     <h1 class="mb-4">Welcome to Secret Wall</h1>

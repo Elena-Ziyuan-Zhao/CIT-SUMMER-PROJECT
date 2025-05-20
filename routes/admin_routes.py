@@ -2,12 +2,13 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from models.user import User
 from models.secret import Secret
 from db import db
-from flask_login import current_user
+from flask_login import current_user, login_required
 from sqlalchemy import or_, func
 
 admin_bp = Blueprint("admin", __name__)
 
 @admin_bp.route("/")
+@login_required
 def admin_dashboard():
 
 
@@ -20,6 +21,7 @@ def admin_dashboard():
 # manage users
 
 @admin_bp.route("/users")
+@login_required
 def admin_users():
     query = request.args.get("q", "").strip()
     stmt = db.select(User)
@@ -35,6 +37,7 @@ def admin_users():
     return render_template("admin_users.html", users=users, query=query)
 
 @admin_bp.route("/user/<int:user_id>/delete", methods=["POST"])
+@login_required
 def delete_user(user_id):
     user = db.session.execute(db.select(User).where(User.id == user_id)).scalar()
     if user:
@@ -46,6 +49,7 @@ def delete_user(user_id):
 # manage secrets
 
 @admin_bp.route("/secrets")
+@login_required
 def admin_secrets():
     query = request.args.get("q", "").strip().lower()
     stmt = db.select(Secret).join(Secret.user, isouter=True)
@@ -69,6 +73,7 @@ def admin_secrets():
     return render_template("admin_secrets.html", secrets=secrets, query=query)
 
 @admin_bp.route("/secret/<int:secret_id>/delete", methods=["POST"])
+@login_required
 def admin_delete_secret(secret_id):
     secret = db.session.execute(
         db.select(Secret).where(Secret.id == secret_id)
@@ -80,6 +85,7 @@ def admin_delete_secret(secret_id):
 
 # read-only secret detail
 @admin_bp.route("/secret/<int:secret_id>")
+@login_required
 def admin_secret_detail(secret_id):
     secret = db.session.execute(
         db.select(Secret).where(Secret.id == secret_id)
