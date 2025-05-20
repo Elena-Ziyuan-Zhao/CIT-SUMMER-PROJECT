@@ -26,6 +26,7 @@ login_manager.login_view = 'auth.get_login'
 login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
+
     return db.session.execute(db.select(User).where(User.id == user_id)).scalar()
 
 
@@ -178,5 +179,3 @@ def create_secret(id):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True, port=8888)
-
-# testing the push

@@ -1,7 +1,7 @@
 .venv
 .env
 .vscode
-*.csv
+students.csv
 *.db
 __pycache__
 node_modules/
