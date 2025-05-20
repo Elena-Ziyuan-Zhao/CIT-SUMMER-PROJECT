@@ -1,6 +1,5 @@
 from db import db
 from models import *
-from app import app
 import csv
 from sys import argv
 from datetime import datetime, timedelta
