@@ -5,6 +5,7 @@ import csv
 from sys import argv
 from datetime import datetime, timedelta
 import random
+import os
 
 
 
@@ -14,7 +15,10 @@ def create_tables():
 
 
 def import_data():
-    with open("students.csv", "r", encoding="utf-8") as file:
+    csv_path = "/etc/secrets/students.csv"
+    if not os.path.exists(csv_path):
+        csv_path = "students.csv"
+    with open(csv_path, "r", encoding="utf-8") as file:
         # read csv into dictionary
         # for example: {first_name: a, second_name: b}
         reader = csv.DictReader(file)
@@ -59,3 +63,9 @@ if __name__ == "__main__":
     else:
         print(f'{option} not defined')
 
+
+def reset_db():
+    drop_tables()
+    create_tables()
+    import_data()
+    generate_secrets()

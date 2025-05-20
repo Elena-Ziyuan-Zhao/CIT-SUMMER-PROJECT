@@ -7,7 +7,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 from routes import *
 from flask_login import LoginManager, login_required, current_user
-
+from manage import reset_db
 app = Flask(__name__)
 app.register_blueprint(auth, url_prefix="/auth")
 app.register_blueprint(admin_bp, url_prefix="/admin")
@@ -26,6 +26,7 @@ login_manager.login_view = 'auth.get_login'
 login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
+
     return db.session.execute(db.select(User).where(User.id == user_id)).scalar()
 
 
@@ -177,6 +178,6 @@ def create_secret(id):
 
 
 if __name__ == "__main__":
+    with app.app_context():
+        reset_db()
     app.run(host="0.0.0.0", debug=True, port=8888)
-
-# testing the push
