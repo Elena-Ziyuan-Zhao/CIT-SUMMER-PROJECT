@@ -1,6 +1,5 @@
 from db import db
 from models import *
-from app import app
 import csv
 from sys import argv
 from datetime import datetime, timedelta
@@ -68,8 +67,7 @@ if __name__ == "__main__":
 '''
 
 
-if __name__ == "__main__":
-    app.app_context().push()
+def reset_db():
     drop_tables()
     create_tables()
     import_data()
