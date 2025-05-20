@@ -47,6 +47,8 @@ def drop_tables():
     db.drop_all()
 
 
+
+'''
 option = argv[1]
 if __name__ == "__main__":
     app.app_context().push()
@@ -63,9 +65,13 @@ if __name__ == "__main__":
     else:
         print(f'{option} not defined')
 
+'''
 
-def reset_db():
+
+if __name__ == "__main__":
+    app.app_context().push()
     drop_tables()
     create_tables()
     import_data()
     generate_secrets()
+    
