@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_user, logout_user, login_required
 from db import db
 from models import *
+from datetime import datetime
 
 auth = Blueprint('auth', __name__)
 
@@ -19,10 +20,11 @@ def login():
         if user.user_type == "admin":
             return redirect(url_for("admin.admin_dashboard"))
         return redirect(url_for('home'))
-    else:
-        flash("Invalid email or password")
-        return redirect(url_for('auth.get_login'))
-
+    elif not user:
+        flash("You are not a member")
+    elif not user.check_password(password):
+        flash("Incorrect password")
+    return redirect(url_for('auth.get_login'))
 
 @auth.route('/register')
 def get_register():
@@ -33,26 +35,31 @@ def register():
     email = request.form["email"]
     password = request.form['password']
     confirm = request.form['confirm']
-    first_name = request.form['first_name']
-    second_name = request.form['second_name']
+
     username = request.form['username']
     
+    student = db.session.execute(db.select(Student).where(Student.email == email)).scalar()
     find_user = db.session.execute(db.select(User).where(User.email == email)).scalar()
+    
 
-    if password != confirm:
-        flash("Password does not match")
-    elif find_user:
-        flash("This email is already registered")
-    else:
+    if password == confirm and not find_user and student:
         user = User(email=email,
-                first_name=first_name,
-                second_name=second_name,
-                username = username)
+                username = username,
+                first_name = student.first_name,
+                second_name = student.second_name,
+                created_date = datetime.now())
         user.hash_passowrd(password)
         db.session.add(user)
         db.session.commit()
         flash("registration successful")
         return redirect(url_for("auth.get_login"))
+    if password != confirm:
+        flash("Password does not match")
+    elif find_user:
+        flash("This email is already registered")
+    elif not student:
+        flash("use your BCIT email")
+    return redirect(url_for("auth.get_register"))
     
 
 @auth.route('/logout')
