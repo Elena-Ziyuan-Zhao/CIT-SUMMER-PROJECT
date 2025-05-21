@@ -116,7 +116,7 @@ nav {
                     }
 
                     &:last-child{
-                        border-right: 2px solid var(--brand-border);
+                        border-right: 2px solid $brand-border;
                         padding-right: 0;
                     }
                 }

@@ -1,10 +1,10 @@
 from db import db
 from models import *
-from app import app
 import csv
 from sys import argv
 from datetime import datetime, timedelta
 import random
+import os
 
 
 
@@ -14,14 +14,20 @@ def create_tables():
 
 
 def import_data():
-    with open("users.csv", "r", encoding="utf-8") as file:
+    csv_path = "/etc/secrets/students.csv"
+    if not os.path.exists(csv_path):
+        csv_path = "students.csv"
+    with open(csv_path, "r", encoding="utf-8") as file:
         # read csv into dictionary
         # for example: {first_name: a, second_name: b}
         reader = csv.DictReader(file)
         for row in reader:
-            user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], user_type = row["user_type"])
-            user.hash_passowrd(row["password"])
-            db.session.add(user)
+            student = Student(first_name = row["first_name"], second_name = row["second_name"], email = row["email"] )
+            if row["role"] == "admin":
+                user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], user_type = row["role"])
+                user.hash_passowrd(row["password"])
+                db.session.add(user)
+            db.session.add(student)
     db.session.commit()
 
 def generate_secrets():
@@ -32,12 +38,16 @@ def generate_secrets():
             secret = Secret(title = row["title"], content = row["content"], user = random_user)
             db.session.add(secret)
     db.session.commit()
+
+
             
 
 def drop_tables():
     db.drop_all()
 
 
+
+'''
 option = argv[1]
 if __name__ == "__main__":
     app.app_context().push()
@@ -54,3 +64,12 @@ if __name__ == "__main__":
     else:
         print(f'{option} not defined')
 
+'''
+
+
+def reset_db():
+    drop_tables()
+    create_tables()
+    import_data()
+    generate_secrets()
+    
