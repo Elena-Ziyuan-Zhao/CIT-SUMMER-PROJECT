@@ -1,28 +1,27 @@
 @use '../vars_mixins/vars' as *;
 
 @mixin button-style{
-    background-color: $btn-background;
+    background-color: var(--btn-background);
     font-family: $header-font;
     font-size: $body-font-size;
-    color: $txt-dark;
+    color: var(--txt-dark);
     padding: 0.5rem 1.5rem;
     min-width: 8.75rem;
-    border: .125rem solid $btn-border;
+    border: .125rem solid var(--btn-border);
     border-radius: 0.25rem;
     text-decoration: none;
     text-transform: lowercase;
     transition: .3s ease background-color;
+    cursor: pointer;
     a{
         text-decoration: none;
     }
     &:hover{
-        background-color: $btn-background-hover;
+        background-color: var(--btn-background-hover);
         transition: .3s ease background-color;
     }
 }
 
-
-// text overflow/truncate
 
 // flex center
 @mixin flex-center{
@@ -35,11 +34,11 @@
 @mixin text-field{
     font-family: $body-font;
     font-size: $body-font-size;
-    border: .125rem solid $brand-border;
+    border: .125rem solid var(--brand-border);
     border-radius: 4px;
     padding: 0.5rem;
-    background-color: $field-background;
-    color: $field-color;
+    background-color: var(--field-background);
+    color: var(--field-colour);
     min-width: 90%;
     margin: auto;
 }

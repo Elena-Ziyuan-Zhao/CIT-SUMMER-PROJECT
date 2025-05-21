@@ -3,8 +3,8 @@
 
 // MARQUEE FROM: https://codepen.io/hexagoncircle/pen/eYMrGwW
 footer {
-    background-color: $footer-background;
-    color: $txt-light;
+    background-color: var(--footer-background);
+    color: var(--txt-light);
     font-family: $header-font;
     height: 3rem;
     position: relative;

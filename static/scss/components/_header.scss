@@ -4,10 +4,22 @@
 header {
     font-family: $header-font;
     font-size: $header-font-size;
-    background-color: $brand-background;
+    background-color: var(--brand-background);
     margin-bottom: 2rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     a {
         text-decoration: none;
+    }
+
+    form{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        svg{
+            stroke: var(--txt-dark);
+            height: 2rem;
+        }
     }
 
     .hero {
@@ -15,7 +27,7 @@ header {
         justify-content: space-around;
         max-width: $max-content-width;
         margin: auto;
-
+        color: var(--txt-dark);
 
         p:nth-child(1) {
             margin-top: 50px;

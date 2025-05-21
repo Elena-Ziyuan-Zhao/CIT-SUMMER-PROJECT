@@ -2,7 +2,7 @@
 @use '../vars_mixins/mixins' as *;
 
 .profile-page{
-    color: $txt-dark;
+    color: var(--txt-dark);
     margin: 0;
     max-width: 34rem;
     min-width: 16rem;
@@ -17,7 +17,7 @@
         text-align: left;
     }
     h3{
-        border-top: .125rem solid $brand-border;
+        border-top: .125rem solid var(--brand-border);
         padding: 2rem 0 1rem;
     }
     p{
@@ -36,10 +36,10 @@
 // profile posts
     .card.mb-3{
         .card-body{
-            border: 2px solid $brand-border;
+            border: 2px solid var(--brand-border);
             padding: 0.25rem 0.75rem 0.5rem;
             margin-bottom: 1rem;
-            background-color: $post-background;
+            background-color: var(--post-background);
 
             .card-title{
                 font-family: $header-font;
