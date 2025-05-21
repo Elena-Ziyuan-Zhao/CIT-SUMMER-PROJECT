@@ -1,8 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
 /* ----- color scheme ----- */
+/* ----- light mode ----- */
+:root {
+  --background-image: url("/static/assets/images/background-light.jpg");
+  --txt-dark: #2B00CC;
+  --txt-light: #F3F4EC;
+  --txt-alt: #525252;
+  --post-background: #fefff8;
+  --shadow-colour: #52525257;
+  --header-background: #F2F47B;
+  --brand-background: #F3F4EC;
+  --brand-border: #2B00CC;
+  --footer-background: #2B00CC;
+  --field-colour: #525252;
+  --field-background: #e1dfdf;
+  --btn-background: #F2F47B;
+  --btn-border: #2B00CC;
+  --btn-background-hover: #ebed65;
+}
+
+[data-theme=dark] {
+  --background-image: url("/static/assets/images/background-dark.jpg");
+  --txt-dark: #E5E8D9;
+  --txt-light: #BBE774;
+  --txt-alt: #938581;
+  --post-background: #362E38;
+  --shadow-colour: #daf6ae8d;
+  --header-background: #1C1C21;
+  --brand-background: #121113;
+  --brand-border: #BBE774;
+  --footer-background: #1C1C21;
+  --field-colour: #121113;
+  --field-background: #E5E8D9;
+  --btn-background: #1C1C21;
+  --btn-border: #BBE774;
+  --btn-background-hover: #121113;
+}
+
 footer {
-  background-color: #2B00CC;
-  color: #F3F4EC;
+  background-color: var(--footer-background);
+  color: var(--txt-light);
   font-family: "Inconsolata", monospace;
   height: 3rem;
   position: relative;
@@ -35,17 +72,29 @@ footer .marquee p {
 header {
   font-family: "Inconsolata", monospace;
   font-size: clamp(1.25rem, 2.75vw, 1.5rem);
-  background-color: #F3F4EC;
+  background-color: var(--brand-background);
   margin-bottom: 2rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 header a {
   text-decoration: none;
+}
+header form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+header form svg {
+  stroke: var(--txt-dark);
+  height: 2rem;
 }
 header .hero {
   display: flex;
   justify-content: space-around;
   max-width: 60rem;
   margin: auto;
+  color: var(--txt-dark);
 }
 header .hero p:nth-child(1) {
   margin-top: 50px;
@@ -59,16 +108,17 @@ header .hero p:nth-child(3) {
 }
 
 nav {
-  background-color: #F2F47B;
+  background-color: var(--header-background);
   height: auto;
-  border-top: 2px solid #2B00CC;
-  border-bottom: 2px solid #2B00CC;
+  border-top: 2px solid var(--brand-border);
+  border-bottom: 2px solid var(--brand-border);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   width: 100%;
   font-size: clamp(1.25rem, 2.75vw, 1.5rem);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 nav #menu-toggle {
   background: none;
@@ -84,8 +134,8 @@ nav #menu-toggle img {
   width: 3rem;
 }
 nav #menu-toggle img path {
-  fill: #2B00CC;
-  stroke: #2B00CC;
+  fill: var(--brand-border);
+  stroke: var(--brand-border);
 }
 nav .menu {
   max-height: 0;
@@ -106,10 +156,10 @@ nav .menu ul {
 nav .menu ul li {
   width: 100%;
   height: 3rem;
-  border-top: 1px solid #2B00CC;
+  border-top: 1px solid var(--brand-border);
 }
 nav .menu ul li a {
-  color: #2B00CC;
+  color: var(--txt-dark);
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -121,7 +171,7 @@ nav .menu ul li a {
   transition: 0.3s ease background-color;
 }
 nav .menu ul li a:hover, nav .menu ul li a:focus {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 nav .menu.open {
@@ -151,7 +201,7 @@ nav .menu.open {
   nav .menu ul li {
     flex: 1;
     border: none;
-    border-left: 2px solid #2B00CC;
+    border-left: 2px solid var(--brand-border);
     height: unset;
     width: 33%;
   }
@@ -160,8 +210,8 @@ nav .menu.open {
     padding: 0.5rem 0;
     width: 100%;
   }
-  nav .menu ul li:nth-child(3) {
-    border-right: 2px solid #2B00CC;
+  nav .menu ul li:last-child {
+    border-right: 2px solid var(--brand-border);
     padding-right: 0;
   }
 }
@@ -480,7 +530,7 @@ template {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  color: #2B00CC;
+  color: var(--txt-dark);
 }
 .admin h1,
 .admin h2 {
@@ -506,7 +556,7 @@ template {
 .admin ul li {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #2B00CC;
+  border-bottom: 1px solid var(--brand-border);
 }
 .admin ul li:last-child {
   border-bottom: none;
@@ -518,9 +568,9 @@ template {
 .all-secrets-page,
 .top-secrets-page {
   margin: 0 0.5rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
   max-width: 60rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
 }
 .all-secrets-page h2,
 .top-secrets-page h2 {
@@ -537,7 +587,7 @@ template {
 }
 .all-secrets-page .sort-wrapper .form-select,
 .top-secrets-page .sort-wrapper .form-select {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   border-radius: 4px;
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
@@ -546,17 +596,18 @@ template {
 }
 .all-secrets-page .card-wrapper,
 .top-secrets-page .card-wrapper {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #fefff8;
+  background-color: var(--post-background);
   display: flex;
   height: 21rem;
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   text-decoration: none;
-  color: #2B00CC;
+  color: var(--txt-dark);
   transition: 0.3s ease box-shadow;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 .all-secrets-page .card-wrapper .card-body,
 .top-secrets-page .card-wrapper .card-body {
@@ -578,7 +629,7 @@ template {
 .all-secrets-page .card-wrapper:hover, .all-secrets-page .card-wrapper:focus,
 .top-secrets-page .card-wrapper:hover,
 .top-secrets-page .card-wrapper:focus {
-  box-shadow: 0.25rem 0.25rem rgba(82, 82, 82, 0.3411764706);
+  box-shadow: 0.25rem 0.25rem var(--shadow-colour);
   transition: 0.3s ease box-shadow;
 }
 .all-secrets-page .all-secrets-no-posts,
@@ -656,10 +707,11 @@ template {
 
 html {
   width: 100%;
-  background-image: url("/static/assets/images/background.jpg");
+  background-image: var(--background-image);
   background-repeat: repeat;
   background-size: 24rem;
   overflow-x: hidden;
+  transition: 0.3s ease-in-out background-image;
 }
 html body {
   margin: 0;
@@ -669,17 +721,21 @@ html body {
   min-height: 100vh;
 }
 html body main {
-  background-color: #F3F4EC;
+  background-color: var(--brand-background);
   margin: auto 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #2B00CC;
-  box-shadow: 0.375rem 0.375rem rgba(82, 82, 82, 0.3411764706);
+  border: 2px solid var(--brand-border);
+  box-shadow: 0.375rem 0.375rem var(--shadow-colour);
   height: min-content;
   max-width: 60rem;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+html body main a {
+  color: var(--txt-alt);
 }
 @media (min-width: 37.5rem) {
   html body main {
@@ -700,7 +756,7 @@ html body main {
 
 .create-secret-page {
   padding: 0.5rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
   width: 100%;
   max-width: 28rem;
 }
@@ -741,32 +797,33 @@ html body main {
 .create-secret-page form input {
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--brand-border);
   border-radius: 4px;
   padding: 0.5rem;
-  background-color: #e1dfdf;
-  color: #525252;
+  background-color: var(--field-background);
+  color: var(--field-colour);
   min-width: 90%;
   margin: auto;
 }
 .create-secret-page form button {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
 }
 .create-secret-page form button a {
   text-decoration: none;
 }
 .create-secret-page form button:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 @media (min-width: 37.5rem) {
@@ -783,7 +840,7 @@ html body main {
   display: flex;
   flex-direction: column;
   max-width: 20rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
   min-height: 15rem;
 }
 .alert.alert-danger h2 {
@@ -797,30 +854,31 @@ html body main {
   margin: 2rem 0;
 }
 .alert.alert-danger a {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
 }
 .alert.alert-danger a a {
   text-decoration: none;
 }
 .alert.alert-danger a:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 
 .page-edit-post {
   padding: 0.5rem 0;
   margin: 0rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
   width: 100%;
 }
 .page-edit-post h2 {
@@ -857,32 +915,33 @@ html body main {
 .page-edit-post form textarea {
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--brand-border);
   border-radius: 4px;
   padding: 0.5rem;
-  background-color: #e1dfdf;
-  color: #525252;
+  background-color: var(--field-background);
+  color: var(--field-colour);
   min-width: 90%;
   margin: auto;
 }
 .page-edit-post form .btn {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
 }
 .page-edit-post form .btn a {
   text-decoration: none;
 }
 .page-edit-post form .btn:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 @media (min-width: 48rem) {
@@ -895,7 +954,7 @@ html body main {
 .register-page {
   display: flex;
   flex-direction: column;
-  color: #2B00CC;
+  color: var(--txt-dark);
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   justify-content: center;
@@ -919,24 +978,25 @@ html body main {
 }
 .login-page form input,
 .register-page form input {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   border-radius: 4px;
   padding: 0.5rem;
   width: 100%;
 }
 .login-page form .btn,
 .register-page form .btn {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
   max-width: 18rem;
 }
 .login-page form .btn a,
@@ -945,7 +1005,7 @@ html body main {
 }
 .login-page form .btn:hover,
 .register-page form .btn:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {
@@ -968,7 +1028,7 @@ html body main {
 }
 
 .profile-page {
-  color: #2B00CC;
+  color: var(--txt-dark);
   margin: 0;
   max-width: 34rem;
   min-width: 16rem;
@@ -983,7 +1043,7 @@ html body main {
   text-align: left;
 }
 .profile-page h3 {
-  border-top: 0.125rem solid #2B00CC;
+  border-top: 0.125rem solid var(--brand-border);
   padding: 2rem 0 1rem;
 }
 .profile-page p {
@@ -995,10 +1055,10 @@ html body main {
   text-transform: uppercase;
 }
 .profile-page .card.mb-3 .card-body {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #fefff8;
+  background-color: var(--post-background);
 }
 .profile-page .card.mb-3 .card-body .card-title {
   font-family: "Inconsolata", monospace;
@@ -1011,17 +1071,18 @@ html body main {
 }
 .profile-page button,
 .profile-page .btn {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
   margin: 1rem auto;
   display: flex;
   justify-content: center;
@@ -1033,7 +1094,7 @@ html body main {
 }
 .profile-page button:hover,
 .profile-page .btn:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {
@@ -1063,7 +1124,7 @@ html body main {
 
 .page-secret-details {
   margin: 0 0.5rem 2rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
   max-width: 60rem;
   min-height: calc(100% - 20rem);
   text-align: center;
@@ -1079,10 +1140,10 @@ html body main {
   margin-bottom: 3rem;
 }
 .page-secret-details .card .card-body {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   padding: 0.25rem 0.75rem 0.5rem;
   margin-bottom: 1rem;
-  background-color: #fefff8;
+  background-color: var(--post-background);
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
   text-align: left;
@@ -1097,17 +1158,18 @@ html body main {
 }
 .page-secret-details .btn,
 .page-secret-details a.btn {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
   width: 14rem;
   margin: auto;
 }
@@ -1117,7 +1179,7 @@ html body main {
 }
 .page-secret-details .btn:hover,
 .page-secret-details a.btn:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 .page-secret-details .post-comment h4,
@@ -1133,10 +1195,10 @@ html body main {
   margin-bottom: 3rem;
 }
 .page-secret-details .post-rating form .input-group select {
-  border: 2px solid #2B00CC;
+  border: 2px solid var(--brand-border);
   border-radius: 4px;
   font-family: "Karla", sans-serif;
-  color: #525252;
+  color: var(--field-colour);
   text-align: center;
   width: 14rem;
   padding: 0.5rem;
@@ -1145,11 +1207,11 @@ html body main {
 .page-secret-details .post-comment form div textarea {
   font-family: "Karla", sans-serif;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--brand-border);
   border-radius: 4px;
   padding: 0.5rem;
-  background-color: #e1dfdf;
-  color: #525252;
+  background-color: var(--field-background);
+  color: var(--field-colour);
   min-width: 90%;
   margin: auto;
   height: 8rem;
@@ -1172,7 +1234,7 @@ html body main {
 }
 .page-secret-details .comment-section div {
   text-align: left;
-  border-bottom: 1px solid #2B00CC;
+  border-bottom: 1px solid var(--brand-border);
   padding: 1rem 0;
   max-width: 50rem;
   margin: auto;
@@ -1210,7 +1272,7 @@ html body main {
   flex-direction: column;
   gap: 1rem;
   margin: 0.5rem 0.5rem 2rem;
-  color: #2B00CC;
+  color: var(--txt-dark);
 }
 .text-center h1 {
   font-family: "Inconsolata", monospace;
@@ -1230,17 +1292,18 @@ html body main {
   max-width: 60rem;
 }
 .text-center .btn {
-  background-color: #F2F47B;
+  background-color: var(--btn-background);
   font-family: "Inconsolata", monospace;
   font-size: clamp(1rem, 2.25vw, 1.25rem);
-  color: #2B00CC;
+  color: var(--txt-dark);
   padding: 0.5rem 1.5rem;
   min-width: 8.75rem;
-  border: 0.125rem solid #2B00CC;
+  border: 0.125rem solid var(--btn-border);
   border-radius: 0.25rem;
   text-decoration: none;
   text-transform: lowercase;
   transition: 0.3s ease background-color;
+  cursor: pointer;
   min-width: 13rem;
   margin: 0 auto;
 }
@@ -1248,7 +1311,7 @@ html body main {
   text-decoration: none;
 }
 .text-center .btn:hover {
-  background-color: #ebed65;
+  background-color: var(--btn-background-hover);
   transition: 0.3s ease background-color;
 }
 @media (min-width: 600px) {

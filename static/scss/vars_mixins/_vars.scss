@@ -1,35 +1,70 @@
 // fonts
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+// fonts
 $header-font: "Inconsolata", monospace;
 $body-font: "Karla", sans-serif;
 $header-font-size: clamp(1.25rem, 2.75vw, 1.5rem);
 $body-font-size: clamp(1rem, 2.25vw, 1.25rem);
+
+// page width
 $max-content-width: 60rem;
 
-$txt-dark: #2B00CC;
-$txt-light: #F3F4EC;
-$txt-alt: #525252;
- 
 /* ----- color scheme ----- */
+
+/* ----- light mode ----- */
+:root {
+    --background-image: url("/static/assets/images/background-light.jpg");
+    --txt-dark: #2B00CC;
+    --txt-light: #F3F4EC;
+    --txt-alt: #525252;
+ 
 // main
-$background-color: #E0E0E0;
-$post-background: #fefff8;
-$shadow-colour: #52525257;
+    --post-background: #fefff8;
+    --shadow-colour: #52525257;
 
 // header
-$header-background: #F2F47B;
-$brand-background: #F3F4EC;
-$brand-border: #2B00CC;
+    --header-background: #F2F47B;
+    --brand-background: #F3F4EC;
+    --brand-border: #2B00CC;
 
 // footer
-$footer-background: #2B00CC;
+    --footer-background: #2B00CC;
 
 // form fields
-$field-color: #525252;
-$field-background: #e1dfdf;
+    --field-colour: #525252;
+    --field-background: #e1dfdf;
 
 // btn
-$btn-background: #F2F47B;
-$btn-border: #2B00CC;
+    --btn-background: #F2F47B;
+    --btn-border: #2B00CC;
+    --btn-background-hover: #ebed65;
+}
 
-$btn-background-hover: #ebed65;
+[data-theme="dark"] {
+    --background-image: url("/static/assets/images/background-dark.jpg");
+    --txt-dark: #E5E8D9;
+    --txt-light: #BBE774;
+    --txt-alt: #938581;
+    
+// main
+    --post-background: #362E38;
+    --shadow-colour: #daf6ae8d;
+
+// header
+    --header-background: #1C1C21;
+    --brand-background: #121113;
+    --brand-border: #BBE774;
+
+// footer
+    --footer-background: #1C1C21;
+
+// form fields
+    --field-colour: #121113;
+    --field-background: #E5E8D9;
+
+// btn
+    --btn-background: #1C1C21;
+    --btn-border: #BBE774;
+    --btn-background-hover: #121113;
+}

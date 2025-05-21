@@ -2,16 +2,17 @@
 @use '../vars_mixins/mixins' as *;
 
 nav {
-    background-color: $header-background;
+    background-color: var(--header-background);
     height: auto;
-    border-top: 2px solid $brand-border;
-    border-bottom: 2px solid $brand-border;
+    border-top: 2px solid var(--brand-border);
+    border-bottom: 2px solid var(--brand-border);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
     font-size: $header-font-size;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
   
     #menu-toggle {
         background: none;
@@ -27,8 +28,8 @@ nav {
             width: 3rem;
     
             path {
-                fill: $brand-border;
-                stroke: $brand-border;
+                fill: var(--brand-border);
+                stroke: var(--brand-border);
             }
         }
     }
@@ -52,10 +53,10 @@ nav {
             li {
                 width: 100%;
                 height: 3rem;
-                border-top: 1px solid $brand-border;
+                border-top: 1px solid var(--brand-border);
     
                 a {
-                    color: $txt-dark;
+                    color: var(--txt-dark);
                     text-decoration: none;
                     display: flex;
                     justify-content: center;
@@ -68,7 +69,7 @@ nav {
         
                     &:hover,
                     &:focus {
-                        background-color: $btn-background-hover;
+                        background-color: var(--btn-background-hover);
                         transition: .3s ease background-color;
                     }
                 }
@@ -104,7 +105,7 @@ nav {
                 li {
                     flex: 1;
                     border: none;
-                    border-left: 2px solid $brand-border;
+                    border-left: 2px solid var(--brand-border);
                     height: unset;
                     width: 33%;
         
@@ -114,8 +115,8 @@ nav {
                         width: 100%;
                     }
 
-                    &:nth-child(3){
-                        border-right: 2px solid $brand-border;
+                    &:last-child{
+                        border-right: 2px solid var(--brand-border);
                         padding-right: 0;
                     }
                 }

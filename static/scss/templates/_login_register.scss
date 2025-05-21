@@ -5,7 +5,7 @@
 .register-page{
     display: flex;
     flex-direction: column;
-    color: $txt-dark;
+    color: var(--txt-dark);
     font-family: $body-font;
     font-size: $body-font-size;
     justify-content: center;    
@@ -27,7 +27,7 @@
         width: 100%;
 
         input{
-            border: 2px solid $brand-border;
+            border: 2px solid var(--brand-border);
             border-radius: 4px;
             padding: 0.5rem;
             width: 100%
