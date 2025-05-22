@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     first_name = db.mapped_column(db.String)
     second_name = db.mapped_column(db.String)
     username = db.mapped_column(db.String)
-    user_type = db.mapped_column(db.String, default = "regular")
+    role = db.mapped_column(db.String, default = "regular")
     email = db.mapped_column(db.String)
     password = db.mapped_column(db.String)
     created_date = db.mapped_column(db.DateTime, default = datetime.now())

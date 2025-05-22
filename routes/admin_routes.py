@@ -7,13 +7,13 @@ from sqlalchemy import or_, func
 
 admin_bp = Blueprint("admin", __name__)
 
+@admin_bp.before_request
+def check_admin_role():
+    if not current_user.is_authenticated or current_user.role != 'admin':
+        return render_template("error.html", message = "Access denied")
 @admin_bp.route("/")
 @login_required
 def admin_dashboard():
-
-
-    users = db.session.execute(db.select(User)).scalars()
-    secrets = db.session.execute(db.select(Secret)).scalars()
 
     return render_template("admin.html", current_user = current_user)
  
@@ -82,6 +82,7 @@ def admin_delete_secret(secret_id):
         db.session.delete(secret)
         db.session.commit()
     return redirect(url_for("admin.admin_secrets"))
+
 
 # read-only secret detail
 @admin_bp.route("/secret/<int:secret_id>")

@@ -24,7 +24,7 @@ def import_data():
         for row in reader:
             student = Student(first_name = row["first_name"], second_name = row["second_name"], email = row["email"] )
             if row["role"] == "admin":
-                user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], user_type = row["role"])
+                user = User(first_name = row["first_name"], second_name = row["second_name"], email = row["email"], username = row["username"], role = row["role"])
                 user.hash_passowrd(row["password"])
                 db.session.add(user)
             db.session.add(student)

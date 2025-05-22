@@ -101,6 +101,9 @@ def react_secret(id):
 
     if not secret:
         return render_template("error.html", message="Secret not found"), 404
+    
+    existing_rating = db.session.execute(db.select(Rating)
+                                         .where(Rating.user_id == current_user.id).where(Rating.secret_id == secret.id)).scalar()
 
     comment = request.form.get("comment")
     rating = request.form.get("rating")
@@ -109,7 +112,7 @@ def react_secret(id):
         db.session.add(new_comment)
         db.session.commit()
 
-    if rating:
+    if rating and not existing_rating:
         rating = int(rating)
         new_rate = Rating(rating = rating, secret = secret, user = current_user)
         secret.rating += rating
@@ -118,6 +121,7 @@ def react_secret(id):
 
     existing_rating = db.session.execute(db.select(Rating)
                                          .where(Rating.user_id == current_user.id).where(Rating.secret_id == secret.id)).scalar()
+
     return render_template("secret_detail.html", secret = secret, has_rated = existing_rating)
 
 
